@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import null
 
@@ -19,7 +19,15 @@ class Ticket(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html")
+    Otype = "Enzu"
+    Oid = 911
+    Oticket = Ticket(type=Otype, id=Oid)
+    try:
+        db.session.add(Oticket)
+        db.session.commit()
+        return render_template("index.html")
+    except:
+        return "Zero-ticket error"
 
 
 @app.route('/login')
@@ -34,6 +42,7 @@ def admin():
 
 @app.route('/client', methods=['POST', 'GET'])
 def client():
+    db_output=Ticket.query.all()
     if request.method == "POST":
         t_type = request.form['type']
         t_id = request.form['id']
@@ -42,11 +51,11 @@ def client():
         try:
             db.session.add(Temp)
             db.session.commit()
-            return null
+            return render_template("client_ui.html", tickets=db_output)
         except:
             return "Generation error"
     else:
-        return render_template("client_ui.html")
+        return render_template("client_ui.html", tickets=db_output)
 
 
 @app.route('/queue')

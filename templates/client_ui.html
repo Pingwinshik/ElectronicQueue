@@ -258,12 +258,12 @@
         </div>
         <div class="w3-container w3-animate-top" align="center">
           <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2><br />
-          <h1 class="text-blackish"><b>A-001</b></h1><br />
+          <h1 class="text-blackish"><b>{{ tickets[0].type }}-{{ tickets[0].id }}</b></h1><br />
         </div>
         <div class="w3-container" align="center">
           <div class="w3-bar w3-margin-top" style="width: 25vw">
-            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">101</b></div>
-            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">1</b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">N/A</b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">{{ tickets[0].counter }}</b></div>
           </div>
         </div>
         <div class="w3-container text-dark-grey" align="center">
