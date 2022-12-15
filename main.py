@@ -1,6 +1,17 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Tickets.db'
+db = SQLAlchemy(app)
+
+
+class Ticket(db.Model):
+    type = db.Column(db.String(1), primary_key=False, nullable=False)
+    id = db.Column(db.Integer(999), primary_key=False, nullable=False)
+
+    def __repr__(self):
+        return '<Ticket>'
 
 @app.route('/')
 @app.route('/index')
