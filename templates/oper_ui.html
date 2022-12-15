@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>СУО ДГТУ: Панель оператора</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
+	</head>
+	<body>
+		<div id="Operator" class="tab" style="display: block">
+			<div class="w3-container a-padding-24" style="max-height:460px;max-width:570px;height:460px;width:570px;position:static;">
+				<h1 class="text-blackish"><b>Работа с клиентом</b></h1>
+				<h2 class="text-blackish"><b>Номер талона:</b></h2>
+				<div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
+					<div class="w3-display-middle"><h1><b id="number">А-001</b></h1></div>
+				</div>
+				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>A-002</b></span>​<br>
+				<span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>1</b></span>​
+				<button class="w3-button w3-round w3-padding-8 a-button-blue a-button-blue-hover a-margin-bottom-8 w3-block w3-round-large" id="stoptimer" onclick="clearInterval(function)">Закончить сеанс</button>
+				<div class="w3-bar a-margin-bottom-8">
+					<button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width:48%">Перенаправить клиента</button>
+					<button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-right" style="width:48%">Вызвать по номеру</button>
+				</div>
+				<div class="w3-container a-margin-bottom-8"></div>
+				<button class="w3-button w3-round w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large" name="button" onclick="openTab('OperatorRests')">Выйти на перерыв</button>
+			</div>
+		</div>
+		<div id="OperatorRests" class="tab" style="display: none">
+			<div class="w3-container a-padding-24" style="max-height:460px;max-width:570px;height:460px;width:570px;position:static;">
+				<h1><b>Работа с клиентом</b></h1>
+				<h2><b>Номер талона:</b></h2>
+				<div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
+					<div class="w3-display-middle"><h1><b id="number"></b></h1></div>
+				</div>
+				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>A-002</b></span>​<br>
+				<span class="left w3-dark-grey">Количество ожидающих:</span><span class="right"><b>1</b></span>​
+				<button class="w3-button w3-round w3-padding-8 a-button-grey-blue a-button-grey-blue-hover a-margin-bottom-8 w3-block w3-round-large w3-disabled" name="button">-</button>
+				<div class="w3-bar a-margin-bottom-8">
+					<button class="w3-bar-item w3-round w3-disabled a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width:48%">-</button>
+					<button class="w3-bar-item w3-round w3-disabled a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-right" style="width:48%">-</button>
+				</div>
+				<div class="w3-container a-margin-bottom-8"></div>
+				<button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к работе</button>
+			</div>
+		</div>
+		<div id="Statistics">
+			<div class="w3-container w3-padding-24" style="max-height:274px;max-width:570px;height:274px;width:570px;position:static;">
+				<h1><b>Статистика</b></h1>
+				<span class="left w3-dark-grey">Дата:</span><span class="right"><b id="date">12.12.2022</b></span>​<br>
+				<span class="left w3-dark-grey">Время:</span><span class="right"><b id="time">12:20:00</b></span>​<br>
+				<span class="left w3-dark-grey">Этот сеанс длится:</span><span class="right"><b><span id="minutes">00</span>:<span id="seconds">00</span></b></span>​<br>
+				<div class="w3-container a-margin-bottom-8"></div>
+				<span class="left w3-dark-grey">Талонов за день:</span><span class="right"><b>23</b></span>​<br>
+				<span class="left w3-dark-grey">Среднее время обслуживания:</span><span class="right"><b>4:20</b></span>​<br>
+				<span class="left w3-dark-grey">Нормативное время обслуживания:</span><span class="right"><b>5:00</b></span>​
+			</div>
+		</div>
+
+		<script>
+		const milliseconds = 1000
+		setInterval(() => {
+		var date = new Date();
+			var current_date = date.getDate()+"."+date.getMonth()+"."+date.getFullYear();
+			document.getElementById("date").innerHTML = current_date;
+			var current_time = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
+			document.getElementById("time").innerHTML = current_time;}, milliseconds);
+		</script>
+
+		<script>
+		var second = 0;
+		var timer = setInterval(upTimer, 1000);
+		function upTimer (count) {return count > 9 ? count : "0" + count;}
+		setInterval(function(){
+		document.getElementById("seconds").innerHTML= upTimer(++second % 60);
+		document.getElementById("minutes").innerHTML= upTimer(parseInt(second / 60, 10));}, 1000);
+		</script>
+		<script src="../js/tab_opener.js"></script>
+	</body>
+</html>

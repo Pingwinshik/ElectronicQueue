@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>СИСТЕМА УПРАВЛЕНИЯ ОЧЕРЕДЬЮ ДГТУ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
+  </head>
+  <body>
+    <!--achtunger-->
+    <div id="proto" class="w3-modal">
+      <div class="w3-modal-content">
+        <header class="w3-container w3-teal">
+          <span
+            onclick="document.getElementById('proto').style.display='none'"
+            class="w3-button w3-display-topright"
+            >&times;</span
+          >
+          <h1><b>Achtung! Внимание!</b></h1>
+        </header>
+        <div class="w3-container">
+          <p>Это прототип.</p>
+          <p>Его функционал ограничен.</p>
+          <p>Спасибо за понимание 😸</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("proto").style.display = "block";
+    </script>
+    <!--main queue tab-->
+    <div id="Queue" class="tab">
+      <div
+        class="userspace w3-center"
+        style="height: 100vh; position: relative"
+      >
+        <div class="w3-container w3-animate-top" align="center">
+          <h4><b>Вы записаны!</b></h4>
+        </div>
+        <div class="w3-container w3-animate-top" align="center">
+          <h2><b>Ваш номер в очереди:</b></h2>
+        </div>
+        <div class="w3-container w3-animate-top" align="center">
+          <h1><b id="number"></b></h1>
+        </div>
+        <div class="w3-row">
+          <div class="w3-third w3-container w3-green">
+            Кабинет: <br />
+            <h2><b id="room"></b></h2>
+          </div>
+          <div class="w3-third w3-container">
+            Время: <br />
+            <h2><b id="time"> </b></h2>
+          </div>
+        </div>
+        <img src="ticketQR.svg" alt="QR" width="200" height="200" />
+        <div class="w3-container w3-margin-top w3-margin-bottom">
+          <button
+            class="w3-button w3-padding-16 w3-ios-light-grey w3-margin-top w3-block"
+            name="button"
+            onclick="href = /admin;"
+          >
+            <b>Отменить запись</b>
+          </button>
+          <button
+            class="w3-button w3-padding-16 w3-ios-light-grey w3-margin-top w3-block"
+            name="button"
+            onclick="location.href='index.html';"
+          >
+            <b>Оценить</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--    <div class="header" align=center>
+			<h1> <img src = "img/icons/dstu.svg" alt="ДГТУ"/></p>
+			  Ваша заявка принята! </p>
+			  Вы приглашены в кабинет <b id="room"></b>.</p>
+			  Дата: <b id="date"> </b></p>
+			  Время: <b id="time"> </b></p>
+			  С собой иметь: <b id="docs"> </b></p>
+			</h1>
+			</div>-->
+    <script src="../static/js/ticket_fetcher.js"></script>
+  </body>
+</html>

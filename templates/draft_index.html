@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>СУО ДГТУ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../css/additionals.css"/>
+  </head>
+  <body>
+    <!--achtunger-->
+    <div id="proto" class="w3-modal">
+      <div class="w3-modal-content">
+        <header class="w3-container w3-teal">
+          <span
+            onclick="document.getElementById('proto').style.display='none'"
+            class="w3-button w3-display-topright"
+            >&times;</span
+          >
+          <h1><b>Achtung! Внимание!</b></h1>
+        </header>
+        <div class="w3-container">
+          <p>Это прототип.</p>
+          <p>Его функционал ограничен.</p>
+          <p>Спасибо за понимание 😸</p>
+        </div>
+      </div>
+    </div>
+    <script>
+    document.getElementById("proto").style.display = "block";
+    </script>
+    <!-- start	 -->
+    <div id="Start" class="tab">
+      <div class="userspace" style="height: 100vh; position: relative">
+        <div class="w3-container w3-animate-left" align="left">
+          <h1><b>Добрый день!</b></h1>
+        </div>
+        <div
+          class="w3-panel w3-button-search w3-margin w3-round-large"
+          style="height: 40px; line-height: 40px"
+        >
+          <form class="search-container">
+            <img
+              class="search-icon"
+              src="../../img/icons/search.svg"
+              alt="ДГТУ"
+              width="20"
+              height="20"
+              style="margin-right: 10px"
+            /><input
+              type="text"
+              id="search-bar"
+              placeholder="Поиск по услугам..."
+              style="border: none; background: transparent; width: 90%"
+            />
+          </form>
+        </div>
+        <div class="w3-container" align="left">
+          <h6 style="color: #616161">
+            Выберите тип обращения, нажав на одну из кнопок ниже
+          </h6>
+        </div>
+        <div
+          class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle"
+          style="width: 100%"
+        >
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Bachelor');"
+          >
+            <img
+              class="search-icon"
+              src="../img/icons/feather.svg"
+              alt="Перо"
+              width="20"
+              height="20"
+              align="left"
+              style="margin-right: 10px"
+            /><b>Хочу поступить </b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Review');"
+          >
+            <img
+              class="search-icon"
+              src="../img/icons/shuffle.svg"
+              alt="Стрелки"
+              width="20"
+              height="20"
+              align="left"
+              style="margin-right: 10px"
+            /><b>Перевод и восстановление</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Review');"
+          >
+            <img
+              class="search-icon"
+              src="../img/icons/file-text.svg"
+              alt="Документ"
+              width="20"
+              height="20"
+              align="left"
+              style="margin-right: 10px"
+            /><b>Хочу подать документы</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Review');"
+          >
+            <img
+              class="search-icon"
+              src="../img/icons/user.svg"
+              alt="Человек"
+              width="20"
+              height="20"
+              align="left"
+              style="margin-right: 10px"
+            /><b>Интересует консультация </b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 w3-button-other w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('etc');"
+            style="background-color: transparent"
+          >
+            <b>Другое</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 	bachelor	 -->
+    <div id="Bachelor" class="tab" style="display: none">
+      <div class="userspace" style="height: 100vh; position: relative">
+        <div class="w3-container w3-animate-left" align="left">
+          <h1><b>Поступление</b></h1>
+        </div>
+        <div
+          class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle"
+          style="width: 100%"
+        >
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Bachelor2')"
+          >
+            <b>Хочу поступить в бакалавриат</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Хочу поступить в Школу Х</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Хочу в магистратуру</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Хочу поступить в колледж</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 w3-button-other w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Start')"
+          >
+            <b>Назад</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 	bachelor2	 -->
+    <div id="Bachelor2" class="tab" style="display: none">
+      <div class="userspace" style="height: 100vh; position: relative">
+        <div class="w3-container w3-animate-left" align="left">
+          <h1><b>Бакалавриат</b></h1>
+        </div>
+        <div
+          class="w3-panel w3-ios-light-grey w3-margin"
+          style="height: 40px; line-height: 40px"
+        >
+          <form class="search-container">
+            <img
+              class="search-icon"
+              src="../img/icons/search.svg"
+              alt="ДГТУ"
+              width="20"
+              height="20"
+              style="margin-right: 10px"
+            /><input
+              type="text"
+              id="search-bar"
+              placeholder="Поиск по услугам..."
+              style="border: none; background: transparent; width: 90%"
+            />
+          </form>
+        </div>
+        <div class="w3-container w3-margin-top w3-margin-bottom">
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Социально-гуманитарные науки</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Строительство, архитектура</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>IT-Технологии</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Агро, биотехнологии, транспорт</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Авиа и машиностроение</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Дизайн</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Review')"
+          >
+            <b>Оценить</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 w3-button-other w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Start')"
+          >
+            <b>Назад</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 	etc	 -->
+    <div id="etc" class="tab" style="display: none">
+      <div class="userspace" style="height: 100vh; position: relative">
+        <div class="w3-container w3-animate-left" align="left">
+          <h1><b>Другие услуги</b></h1>
+        </div>
+        <div
+          class="w3-panel w3-ios-light-grey w3-margin"
+          style="height: 40px; line-height: 40px"
+        >
+          <form class="search-container">
+            <img
+              class="search-icon"
+              src="../img/icons/search.svg"
+              alt="ДГТУ"
+              width="20"
+              height="20"
+              style="margin-right: 10px"
+            /><input
+              type="text"
+              id="search-bar"
+              placeholder="Поиск по услугам..."
+              style="border: none; background: transparent; width: 90%"
+            />
+          </form>
+        </div>
+        <div
+          class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle"
+          style="width: 100%"
+        >
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Зелёный зал</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='queue.html';"
+          >
+            <b>Секретарь</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 w3-button-other w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="openTab('Start')"
+          >
+            <b>Назад</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--review-->
+    <div id="Review" class="tab" style="display: none">
+      <div class="userspace w3-center" style="height: 100vh; position: relative">
+        <div class="w3-container w3-animate-left" align="left">
+          <h1><b>Отзыв</b></h1>
+          Оцените, пожалуйста, качество нашего обслуживания. Это очень поможет
+          нам в будущем!
+        </div>
+        <div class="w3-container w3-animate-left" align="left">
+          <h2><b>Оценка</b></h2>
+          На сколько мы вам помогли? <br />
+          <img src="../img/icons/star.svg" alt="ДГТУ" width="20" height="20" />
+          <img src="../img/icons/star.svg" alt="ДГТУ" width="20" height="20" />
+          <img src="../img/icons/star.svg" alt="ДГТУ" width="20" height="20" />
+          <img src="../img/icons/star.svg" alt="ДГТУ" width="20" height="20" />
+          <img src="../img/icons/star.svg" alt="ДГТУ" width="20" height="20" />
+        </div>
+        <div class="w3-panel w3-ios-light-grey w3-margin">
+          <textarea
+            rows="8"
+            placeholder="Оставьте свой отзыв(необязательно)"
+            style="
+              border: none;
+              background: transparent;
+              width: 100%;
+              resize: none;
+            "
+          ></textarea>
+        </div>
+        <div class="w3-container w3-margin-top w3-margin-bottom">
+          <button
+            class="w3-button w3-round w3-padding-16 a-button-grey-blue w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='index_draft.html';"
+          >
+            <b>Отправить отзыв</b>
+          </button>
+          <button
+            class="w3-button w3-round w3-padding-16 w3-button-other w3-ripple w3-margin-top w3-block w3-round-xlarge"
+            name="button"
+            onclick="location.href='index_draft.html';"
+          >
+            <b>Пропустить</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/tab_opener.js"></script>
+  </body>
+</html>

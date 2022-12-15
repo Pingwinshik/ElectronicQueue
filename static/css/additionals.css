@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+.a-light-grey,
+.a-hover-light-grey:hover{
+  color: #000 !important;
+  background-color: #F1F1F7 !important;
+}
+.text-dark-grey {
+  color: #83838D !important;
+}
+.text-blackish {
+  color: #1A1B1D;
+}
+.a-button-grey-blue-hover:hover {
+  color: #5a87e9 !important;
+  background-color: #fafafa !important;
+}
+.a-button-grey-blue {
+  color: #5a87e9 !important;
+  background-color: #f1f1f7 !important;
+}
+.a-button-blue {
+  color: #ffffff !important;
+  background-color: #5a87e9 !important;
+}
+.a-button-blue-hover:hover {
+  color: #eef2fb !important;
+  background-color: #5179d2 !important;
+}
+.a-margin-8 {
+  margin: 8px !important;
+}
+.a-margin-bottom-8 {
+  margin-bottom: 8px !important;
+}
+.a-margin-16 {
+  margin: 16px !important;
+}
+.a-margin-48 {
+  margin: 48px !important;
+}
+.a-ticket{color:#000000!important;width: 522px; height: 90px;  background: #E9EDF5; border-radius: 10px;}
+.right{float:right;}
+.left{float:left;}
+.a-padding-24{padding-top:24px!important;padding-bottom:24px!important;padding-left:24px!important;padding-right:24px!important}
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+@media (min-width: 767px) {
+  .hidden-terminal {
+    display: none;
+  }
+}
