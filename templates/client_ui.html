@@ -4,13 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>СУО ДГТУ: Интерфейс пользователя</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
     <!-- Flickity CSS -->
-    <link rel="stylesheet" href="../static/flickity.min.css" />
+    <link rel="stylesheet" href="../static/flickity/flickity.min.css" />
     <!-- Flickity JavaScript -->
-    <script src="../static/flickity.pkgd.min.js"></script>
+    <script src="../static/flickity/flickity.pkgd.min.js"></script>
     <style>
       .carousel {
         background: #ffffff;
@@ -29,7 +28,7 @@
         content: counter(gallery-cell);
         line-height: 100%;
         font-size: 0px;
-        color: 5A87E9;
+        color: #5A87E9;
       }
     </style>
   </head>
@@ -39,7 +38,7 @@
       <!--mobile-->
       <div class="userspace-mobile hidden-terminal" style="height: 97.5vh; position: relative">
         <div class="w3-display-container w3-animate-left w3-margin" align="left">
-          <img src="../img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
+          <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
           <h1 class="text-blackish" style="margin-left: 50px"><b>Приветстуем!</b></h1>
         </div>
         <div class="w3-container text-dark-grey" align="left">
@@ -49,45 +48,45 @@
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">СПО</h4>
             </div>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Bachelor');" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Бакалавриат</h4>
             </div>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Магистратура</h4>
             </div>
           </div>
           <h2 class="text-blackish"><b>Перевод и восстановление</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Перевод / восст.</h4>
             </div>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Договоры</h4>
             </div>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Зелёный зал</h4>
             </div>
           </div>
           <h2 class="text-blackish"><b>Другие услуги</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Т-Университет</h4>
             </div>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Школа Х</h4>
             </div>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
+              <img class="search-icon a-margin-8" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">ПИШ</h4>
             </div>
           </div>
@@ -96,7 +95,7 @@
       <!--terminal-->
       <div class="userspace-terminal hidden-mobile a-margin-48" style="height: 97.5vh; position: relative">
         <div class="w3-display-container w3-animate-left w3-margin" align="left">
-          <img src="../img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
+          <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
           <h1 class="text-blackish" style="margin-left: 50px"><b>Приветстуем!</b></h1>
         </div>
         <div class="w3-container text-dark-grey" align="left">
@@ -106,15 +105,15 @@
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">СПО</h3>
             </div>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Bachelor');" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Бакалавриат</h3>
             </div>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Магистратура</h3>
             </div>
           </div>
@@ -123,15 +122,15 @@
           <h2 class="text-blackish"><b>Перевод и восстановление</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Перевод / восст.</h3>
             </div>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Зелёный зал</h3>
             </div>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Договоры</h3>
             </div>
           </div>
@@ -140,15 +139,15 @@
           <h2 class="text-blackish"><b>Другие услуги</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Т-Университет</h3>
             </div>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Школа Х</h3>
             </div>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
-              <img class="search-icon a-margin-16" src="../img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
+              <img class="search-icon a-margin-16" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">ПИШ</h3>
             </div>
           </div>
@@ -163,34 +162,34 @@
         </div>
         <div class="w3-panel text-dark-grey w3-margin">
           <p>
-            <img src="../img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
+            <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
             Поиск по услугам...
           </p>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа, машиностроение, дизайн
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа, машиностроение, дизайн
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Инноватика, энергетика, приборостроение
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Инноватика, энергетика, приборостроение
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтехнологии, ветеринария
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтехнологии, ветеринария
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Start')">
-            <img class="search-icon" src="../img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
+            <img class="search-icon" src="../static/img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
           </button>
         </div>
       </div>
@@ -200,31 +199,31 @@
         </div>
         <div class="w3-panel text-dark-grey w3-margin">
           <p>
-            <img src="../img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
+            <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
             Поиск по услугам...
           </p>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа и машиностроение
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа и машиностроение
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
-            <img class="search-icon" src="../img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Дизайн
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Дизайн
           </button>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Start')">
-            <img class="search-icon" src="../img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
+            <img class="search-icon" src="../static/img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
           </button>
         </div>
       </div>
@@ -269,9 +268,9 @@
         </div>
         <div class="w3-container text-dark-grey" align="center">
           <h5 style="width: 25vw">Сфотографируйте это окно. А лучше наведите камеру Вашего смартфона на QR-код ниже — так вы сможете отслеживать свою очередь в реальном времени.</h5>
-          <img src="../ticketQR.svg" alt="QR" width="240" height="240" />
+          <img src="ticketQR.svg" alt="QR" width="240" height="240" />
           <br />
-          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-round-large w3-block w3-margin-top w3-margin-bottom" style="width: 25%" name="button" onclick="location.href='ui.html';"><b>Следующий</b></button>
+          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-round-large w3-block w3-margin-top w3-margin-bottom" style="width: 25%" name="button" onclick="openTab('Start')"><b>Следующий</b></button>
         </div>
       </div>
     </div>
@@ -301,6 +300,6 @@
         </div>
       </div>
     </div>
-    <script src="../js/tab_opener.js"></script>
+    <script src="../static/js/tab_opener.js"></script>
   </body>
 </html>
