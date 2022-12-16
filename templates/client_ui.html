@@ -47,7 +47,7 @@
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle hidden-terminal" style="width: 100%">
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
+              <div class="carousel-cell a-button-grey-blue" onclick="openTab('Ticket')" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">СПО</h4>
             </div>
@@ -104,10 +104,12 @@
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-center hidden-mobile" style="width: 100%">
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
+            <form method="post">
+              <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Ticket')" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">СПО</h3>
             </div>
+            </form>
             <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Bachelor');" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Бакалавриат</h3>
@@ -167,9 +169,13 @@
           </p>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
+          <form method="post">
+            <input type="text" name="type" id="type" value="С">
+            <input type="text" name="room" id="room" value="1-431">
+          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" type="submit" name="button" onclick="openTab('Ticket')">
             <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
           </button>
+            <form>
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Ticket')">
             <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура
           </button>
@@ -258,12 +264,12 @@
         </div>
         <div class="w3-container w3-animate-top" align="center">
           <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2><br />
-          <h1 class="text-blackish"><b>{{ tickets[0].type }}-{{ tickets[0].id }}</b></h1><br />
+          <h1 class="text-blackish"><b>{{ tickets[-1].type }}-{{ tickets[-1].id }}</b></h1><br />
         </div>
         <div class="w3-container" align="center">
           <div class="w3-bar w3-margin-top" style="width: 25vw">
-            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">N/A</b></div>
-            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">{{ tickets[0].counter }}</b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">{{ tickets[-1].room }}</b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">{{ tickets[-1].counter }}</b></div>
           </div>
         </div>
         <div class="w3-container text-dark-grey" align="center">

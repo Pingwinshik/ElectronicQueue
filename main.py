@@ -10,6 +10,7 @@ db = SQLAlchemy(app)
 class Ticket(db.Model):
     type = db.Column(db.String(1), primary_key=False, nullable=False)
     id = db.Column(db.Integer, primary_key=False, nullable=False)
+    room = db.Column(db.String(5), primary_key=False, nullable=False)
     counter = db.Column(db.Integer, primary_key=True, nullable=False)
 
     def __repr__(self):
@@ -21,7 +22,8 @@ class Ticket(db.Model):
 def index():
     Otype = "Enzu"
     Oid = 911
-    Oticket = Ticket(type=Otype, id=Oid)
+    Oroom = "N/A"
+    Oticket = Ticket(type=Otype, id=Oid, room=Oroom)
     try:
         db.session.add(Oticket)
         db.session.commit()
@@ -45,8 +47,9 @@ def client():
     db_output=Ticket.query.all()
     if request.method == "POST":
         t_type = request.form['type']
-        t_id = request.form['id']
-        Temp = Ticket(type=t_type, id=t_id)
+        t_room = request.form['room']
+        t_id = (db_output[-1].counter)
+        Temp = Ticket(type=t_type, id=t_id, room=t_room)
 
         try:
             db.session.add(Temp)
