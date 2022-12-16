@@ -108,7 +108,7 @@
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Бакалавриат</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'M', room: '1-123'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Магистратура</h3>
             </div>
@@ -121,15 +121,15 @@
           <br />
           <h2 class="text-blackish"><b>Услуги</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'П', room: '1-193А'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Перевод / восст.</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'З', room: '1-186ЮБ'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Зелёный зал</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Р', room: '1-102'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Договоры</h3>
             </div>
@@ -138,15 +138,15 @@
           <br />
           <h2 class="text-blackish"><b>Консультации</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Т', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Т-Университет</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Х', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Школа Х</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="location.href='/ticket';" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ш', room: '1-130'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">ПИШ</h3>
             </div>
@@ -668,5 +668,25 @@
       </div>
     </div>
     <script src="../static/js/tab_opener.js"></script>
+    <script>
+      function load(params, method='post') {
+        const form = document.createElement('form');
+        form.method = method;
+
+        for (const key in params) {
+          if (params.hasOwnProperty(key)) {
+            const hiddenField = document.createElement('input');
+            hiddenField.type = 'hidden';
+            hiddenField.name = key;
+            hiddenField.value = params[key];
+
+            form.appendChild(hiddenField);
+          }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+      }
+    </script>
   </body>
 </html>
