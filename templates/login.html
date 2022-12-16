@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>СУО ДГТУ: Логин к панели оператора</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
-    <link rel="stylesheet" type="text/css" href="../static/css/additionals.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
   </head>
   <body>
     <!-- start	 -->
     <div id="Start" class="tab">
-      <div
-        class="userspace"
-        style="height: 100vh; position: relative"
-        align="center"
-      >
+      <div class="userspace" style="height: 100vh; position: relative" align="center">
         <div class="w3-container" align="center">
           <h1 class="text-blackish"><b>Добрый день!</b></h1>
         </div>
@@ -22,39 +18,20 @@
           <form class="w3-container" align="center">
             <div class="w3-section" align="center">
               <label><b>Логин</b></label>
-              <input
-                class="w3-input w3-border w3-margin-bottom"
-                type="text"
-                placeholder="Иванов Иван Иванович"
-                name="usrname"
-                required
-              />
+              <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Иванов Иван Иванович" name="usrname" required />
               <label><b>Пароль</b></label>
-              <input
-                class="w3-input w3-border"
-                type="password"
-                placeholder="*****"
-                name="psw"
-                required
-              />
-              <a
-                href="/oper"
+              <input class="w3-input w3-border" type="password" placeholder="*****" name="psw" required />
+              <a href="/oper"
                 class="w3-button w3-hover-button-blue w3-block a-button-blue w3-section w3-padding"
-                ><b>Войти</b></a
-              >
-              <input
-                class="w3-check w3-margin-top"
-                type="checkbox"
-                checked="checked"
-              />
+                onclick="window.open(this.href,'targetWindow','toolbar=0,location=0,status=0,menubar=0o,scrollbars=0,resizable=0,width=570,height=735'); return false;"
+                ><b>Войти</b></a>
+              <input class="w3-check w3-margin-top" type="checkbox" checked="checked" />
               Запомнить меня
             </div>
           </form>
 
           <div class="w3-container w3-border-top w3-padding-16">
-            <span class="w3-right w3-padding w3-hide-small"
-              >Забыли <a href="https://rutracker.org">пароль?</a></span
-            >
+            <span class="w3-right w3-padding w3-hide-small">Забыли <a href="https://edu.donstu.ru">пароль?</a></span>
           </div>
         </div>
       </div>

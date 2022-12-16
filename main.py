@@ -39,7 +39,7 @@ def login():
 
 @app.route('/admin')
 def admin():
-    return render_template("admin_ui.html")
+    return render_template("admin.html")
 
 
 @app.route('/client', methods=['POST', 'GET'])
@@ -54,26 +54,28 @@ def client():
         try:
             db.session.add(Temp)
             db.session.commit()
-            return render_template("client_ui.html", tickets=db_output)
+            db_output = Ticket.query.all()
+            return render_template("ticket.html", tickets=db_output)
         except:
             return "Generation error"
     else:
-        return render_template("client_ui.html", tickets=db_output)
+        return render_template("client.html", tickets=db_output)
 
 
-@app.route('/queue')
+@app.route('/ticket')
 def queue():
-    return render_template("queue.html")
+    db_output = Ticket.query.all()
+    return render_template("ticket.html", tickets=db_output)
 
 
-@app.route('/volonter')
+@app.route('/volunteer')
 def volonter():
-    return render_template("volonter_ui.html")
+    return render_template("volunteer.html")
 
 
 @app.route('/oper')
 def oper():
-    return render_template("oper_ui.html")
+    return render_template("oper.html")
 
 
 if __name__ == '__main__':

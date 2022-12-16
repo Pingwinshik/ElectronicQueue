@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>СУО ДГТУ: Интерфейс пользователя</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
+    <!-- Flickity CSS -->
+    <link rel="stylesheet" href="../static/flickity/flickity.min.css" />
+    <!-- Flickity JavaScript -->
+    <script src="../static/flickity/flickity.pkgd.min.js"></script>
+    <style>
+      .carousel {
+        background: #ffffff;
+      }
+      .carousel-cell {
+        width: 66%;
+        height: 200px;
+        margin-right: 10px;
+        background: #8c8;
+        border-radius: 10px;
+        counter-increment: gallery-cell;
+      }
+      .carousel-cell:before {
+        display: block;
+        text-align: center;
+        content: counter(gallery-cell);
+        line-height: 100%;
+        font-size: 0px;
+        color: 5A87E9;
+      }
+    </style>
+  </head>
+  <body>
+    <!--queue mobile-->
+    <div id="Ticket" class="tab">
+      <div class="userspace-mobile hidden-terminal w3-container w3-center">
+        <div class="w3-container w3-animate-top" align="center">
+          <h4><b>Вы записаны!</b></h4>
+        </div>
+        <div class="w3-container w3-animate-top" align="center">
+          <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2>
+          <br />
+          <h1 class="text-blackish"><b>A-001</b></h1>
+          <br />
+        </div>
+        <div class="w3-bar w3-margin-top" style="width: 80vw; height: 20vh">
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">101</b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">1</b></div>
+        </div>
+        <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
+          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
+            <b>Отменить запись</b>
+          </button>
+          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-margin-top w3-round-large w3-block" name="button" onclick="openTab('Review');">
+            <b>Оценить</b>
+          </button>
+        </div>
+      </div>
+      <!--queue terminal-->
+      <div class="userspace-terminal hidden-mobile w3-center w3-containter w3-margin-64" style="height: 90vh; position: relative">
+        <div class="w3-container w3-animate-top" align="center">
+          <h4><b>Вы записаны!</b></h4>
+        </div>
+        <div class="w3-container w3-animate-top" align="center">
+          <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2>
+          <br />
+          <h1 class="text-blackish"><b>{{tickets[-1].type}}-{{tickets[-1].id}}</b></h1>
+          <br />
+        </div>
+        <div class="w3-container" align="center">
+          <div class="w3-bar w3-margin-top" style="width: 25vw">
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">{{tickets[-1].room}}</b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">{{tickets[-1].counter % 5}}</b></div>
+          </div>
+        </div>
+        <div class="w3-container text-dark-grey" align="center">
+          <h5 style="width: 25vw">Сфотографируйте это окно. А лучше наведите камеру Вашего смартфона на QR-код ниже — так вы сможете отслеживать свою очередь в реальном времени.</h5>
+          <img src="../static/ticketQR.svg" alt="QR" width="240" height="240" />
+          <br />
+          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-round-large w3-block w3-margin-top w3-margin-bottom" style="width: 25%" name="button" onclick="location.href='/client';"><b>Следующий</b></button>
+        </div>
+      </div>
+    </div>
+    <!--review-->
+    <div id="Review" class="tab" style="display: none">
+      <div class="userspace w3-center" style="height: 100vh; position: relative">
+        <div class="w3-container w3-animate-left" align="left">
+          <h1 class="text-blackish"><b>Отзыв</b></h1>
+          Оцените, пожалуйста, качество нашего обслуживания. Это очень поможет нам в будущем!
+        </div>
+        <div class="w3-container w3-animate-left" align="left">
+          <h2 class="text-blackish"><b>Оценка</b></h2>
+          На сколько мы вам помогли? <br />
+        </div>
+        <div class="w3-bar w3-margin-top" style="width: 100%" align="center">
+          <button class="w3-button w3-padding-8 a-light-grey w3-round-large" style="width: 30%"><h1>😊</h1></button>
+          <button class="w3-button w3-padding-8 a-light-grey w3-round-large" style="width: 30%"><h1>😐</h1></button>
+          <button class="w3-button w3-padding-8 a-light-grey w3-round-large" style="width: 30%"><h1>😣</h1></button>
+        </div>
+        <div class="w3-panel text-dark-grey w3-margin">
+          <p style="padding-bottom: 25vh" align="left">Напишите свои предложения (необязательно)</p>
+        </div>
+        <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
+          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
+            <b>Отправить отзыв</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/tab_opener.js"></script>
+  </body>
+</html>
