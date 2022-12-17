@@ -11,6 +11,7 @@ class Ticket(db.Model):
     type = db.Column(db.String(1), primary_key=False, nullable=False)
     id = db.Column(db.Integer, primary_key=False, nullable=False)
     room = db.Column(db.String(5), primary_key=False, nullable=False)
+    status = db.Column(db.Boolean, primary_key=False, nullable=False)
     counter = db.Column(db.Integer, primary_key=True, nullable=False)
 
     def __repr__(self):
@@ -51,7 +52,7 @@ def client():
                 t_id = 1
             else:
                 t_id = (tester[-1].id + 1)
-        Temp = Ticket(type=t_type, id=t_id, room=t_room)
+        Temp = Ticket(type=t_type, id=t_id, room=t_room, status=True)
         try:
             db.session.add(Temp)
             db.session.commit()
@@ -76,7 +77,8 @@ def volonter():
 
 @app.route('/oper')
 def oper():
-    return render_template("oper.html")
+    db_output = Ticket.query.all()
+    return render_template("oper.html", tickets=db_output, count=len(db_output))
 
 
 if __name__ == '__main__':

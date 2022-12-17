@@ -13,10 +13,10 @@
 				<h1 class="text-blackish"><b>Работа с клиентом</b></h1>
 				<h2 class="text-blackish"><b>Номер талона:</b></h2>
 				<div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
-					<div class="w3-display-middle"><h1><b id="number">А-001</b></h1></div>
+					<div class="w3-display-middle"><h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1></div>
 				</div>
-				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>A-002</b></span>​<br>
-				<span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>1</b></span>​
+				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>{% if not tickets or count == 1: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].id) }} {% endif %}</b></span>​<br>
+				<span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>{{ count }}</b></span>​
 				<button class="w3-button w3-round w3-padding-8 a-button-blue a-button-blue-hover a-margin-bottom-8 w3-block w3-round-large" id="stoptimer" onclick="clearInterval(function)">Закончить сеанс</button>
 				<div class="w3-bar a-margin-bottom-8">
 					<button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width:48%">Перенаправить клиента</button>
