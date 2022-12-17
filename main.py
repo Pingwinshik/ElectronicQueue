@@ -28,14 +28,32 @@ def login():
     return render_template("login.html")
 
 
-@app.route('/admin')
+@app.route('/admin', methods=['POST', 'GET'])
 def admin():
-    return render_template("admin.html")
+    db_output = Ticket.query.all()
+    if request.method == "POST":
+        action = request.form['adm_action']
+        if action == "1":
+            Ticket.query.delete()
+            db.session.commit()
+            db_output = Ticket.query.all()
+            return render_template("admin.html", tickets=db_output, count=len(db_output))
+        if action == "2":
+            db_output = Ticket.query.all()
+            return render_template("admin.html", tickets=db_output, count=len(db_output))
+        if action == "3":
+            t_output = open('TicketList.txt', 'w')
+            for N in range(0, len(db_output)):
+                unt = db_output[N].type + '-' + str('{:03}'.format(db_output[N].id))
+                t_output.write(', '.join((str(db_output[N].counter), unt, db_output[N].room, str(db_output[N].status), "\n")))
+            return render_template("admin.html", tickets=db_output, count=len(db_output))
+    else:
+        return render_template("admin.html", tickets=db_output, count=len(db_output))
 
 
 @app.route('/client', methods=['POST', 'GET'])
 def client():
-    db_output=Ticket.query.all()
+    db_output = Ticket.query.all()
     tester = []
     if request.method == "POST":
         t_type = request.form['type']
