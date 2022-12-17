@@ -1,11 +1,9 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import null
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Tickets.db'
 db = SQLAlchemy(app)
-
 
 class Ticket(db.Model):
     type = db.Column(db.String(1), primary_key=False, nullable=False)
@@ -38,7 +36,7 @@ def admin():
 @app.route('/client', methods=['POST', 'GET'])
 def client():
     db_output=Ticket.query.all()
-    tester=[]
+    tester = []
     if request.method == "POST":
         t_type = request.form['type']
         t_room = request.form['room']
@@ -75,11 +73,35 @@ def volonter():
     return render_template("volunteer.html")
 
 
-@app.route('/oper')
+@app.route('/oper', methods=['POST', 'GET'])
+
 def oper():
     db_output = Ticket.query.all()
-    return render_template("oper.html", tickets=db_output, count=len(db_output))
+    tester = []
+    if request.method == "POST":
+        tester = []
+        for elem in db_output:
+            if elem.status == True:
+                tester.append(elem)
+        if not tester:
+            return render_template("oper.html", tickets=tester, count=len(tester))
+        else:
+            t_disable = tester[0].counter
+            change = Ticket.query.get(t_disable)
+            change.status = False
+            db.session.commit()
+            db_output = Ticket.query.all()
+            tester = []
+            for elem in db_output:
+                if elem.status == True:
+                    tester.append(elem)
+            return render_template("oper.html", tickets=tester, count=len(tester))
+    else:
+        for elem in db_output:
+            if elem.status == True:
+                tester.append(elem)
+        return render_template("oper.html", tickets=tester, count=len(tester))
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True, port=2554)
