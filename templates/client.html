@@ -51,7 +51,7 @@
               <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Бакалавриат</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'M', room: '1-123'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Магистратура</h4>
             </div>
@@ -62,30 +62,30 @@
           </div>
           <h2 class="text-blackish"><b>Услуги</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'П', room: '1-193А'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Перевод / восст.</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
-              <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
-              <h4 class="w3-bottom a-margin-8">Договоры</h4>
-            </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'З', room: '1-186ЮБ'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Зелёный зал</h4>
+            </div>
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Р', room: '1-102'})" style="width: 150px; height: 72px">
+              <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
+              <h4 class="w3-bottom a-margin-8">Договоры</h4>
             </div>
           </div>
           <h2 class="text-blackish"><b>Консультации</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Т', room: '1-177'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Т-Университет</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Х', room: '1-177'});" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Школа Х</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="location.href='/ticket';" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ш', room: '1-130'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">ПИШ</h4>
             </div>
@@ -217,9 +217,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center  onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="С" style="display: none">
+                <input type="text" name="room" value="1-140" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
           <div id="bach_build" class="w3-modal">
@@ -239,9 +243,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="A" style="display: none">
+                <input type="text" name="room" value="1-171" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
           <div id="bach_it" class="w3-modal">
@@ -263,9 +271,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="И" style="display: none">
+                <input type="text" name="room" value="1-161" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
           <div id="bach_agro" class="w3-modal">
@@ -286,9 +298,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="Б" style="display: none">
+                <input type="text" name="room" value="1-161" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
           <div id="bach_avia" class="w3-modal">
@@ -310,9 +326,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="Д" style="display: none">
+                <input type="text" name="room" value="1-193Б" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
           <div id="bach_inno" class="w3-modal">
@@ -333,9 +353,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="Э" style="display: none">
+                <input type="text" name="room" value="1-177" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
           <div id="bach_chem" class="w3-modal">
@@ -358,9 +382,13 @@
               <br />
               </div>
                 <br />
-                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" style="width: 75%" align=center onclick="location.href='/ticket';">
+              <form method="post">
+                <input type="text" name="type" value="В" style="display: none">
+                <input type="text" name="room" value="1-193" style="display: none">
+                <button class="w3-button w3-display-bottommiddle w3-padding-16 a-button-blue w3-margin-bottom w3-block w3-round-xlarge a-button-blue-hover" name="button" type="submit" style="width: 75%" align=center onclick="location.href='/ticket';">
                 Поступить сюда
               </button>
+              </form>
             </div>
           </div>
       </div>

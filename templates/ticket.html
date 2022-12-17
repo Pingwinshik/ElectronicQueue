@@ -42,12 +42,12 @@
         <div class="w3-container w3-animate-top" align="center">
           <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2>
           <br />
-          <h1 class="text-blackish"><b>A-001</b></h1>
+          <h1 class="text-blackish"><b>{{tickets[-1].type}}-{{tickets[-1].id}}</b></h1>
           <br />
         </div>
         <div class="w3-bar w3-margin-top" style="width: 80vw; height: 20vh">
-          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">101</b></div>
-          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">1</b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number">{{tickets[-1].room}}</b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br /><b id="number">{{tickets[-1].counter % 5}}</b></div>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
