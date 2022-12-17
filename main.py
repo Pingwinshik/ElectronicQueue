@@ -20,16 +20,8 @@ class Ticket(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
-    Otype = "Enzu"
-    Oid = 911
-    Oroom = "N/A"
-    Oticket = Ticket(type=Otype, id=Oid, room=Oroom)
-    try:
-        db.session.add(Oticket)
-        db.session.commit()
-        return render_template("index.html")
-    except:
-        return "Zero-ticket error"
+    return render_template("index.html")
+
 
 
 @app.route('/login')
@@ -45,12 +37,21 @@ def admin():
 @app.route('/client', methods=['POST', 'GET'])
 def client():
     db_output=Ticket.query.all()
+    tester=[]
     if request.method == "POST":
         t_type = request.form['type']
         t_room = request.form['room']
-        t_id = (db_output[-1].counter)
+        if not db_output:
+            t_id = 1
+        else:
+            for elem in db_output:
+                if elem.type == t_type:
+                    tester.append(elem)
+            if not tester:
+                t_id = 1
+            else:
+                t_id = (tester[-1].id + 1)
         Temp = Ticket(type=t_type, id=t_id, room=t_room)
-
         try:
             db.session.add(Temp)
             db.session.commit()
