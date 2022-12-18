@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, login_required
+import webbrowser
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Tickets.db'
 db = SQLAlchemy(app)
+
 
 class Ticket(db.Model):
     type = db.Column(db.String(1), primary_key=False, nullable=False)
@@ -16,39 +19,71 @@ class Ticket(db.Model):
         return '<Ticket %r>' % self.counter
 
 
+admin_login = "admin"
+oper_login = "oper"
+volunteer_login = "volunteer"
+admin_password = "password"
+
+
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
 
 
-
-@app.route('/login')
+@app.route("/login", methods=["POST", "GET"])
 def login():
-    return render_template("login.html")
-
-
-@app.route('/admin', methods=['POST', 'GET'])
-def admin():
-    db_output = Ticket.query.all()
-    if request.method == "POST":
-        action = request.form['adm_action']
-        if action == "1":
-            Ticket.query.delete()
-            db.session.commit()
-            db_output = Ticket.query.all()
-            return render_template("admin.html", tickets=db_output, count=len(db_output))
-        if action == "2":
-            db_output = Ticket.query.all()
-            return render_template("admin.html", tickets=db_output, count=len(db_output))
-        if action == "3":
-            t_output = open('TicketList.txt', 'w')
-            for N in range(0, len(db_output)):
-                unt = db_output[N].type + '-' + str('{:03}'.format(db_output[N].id))
-                t_output.write(', '.join((str(db_output[N].counter), unt, db_output[N].room, str(db_output[N].status), "\n")))
-            return render_template("admin.html", tickets=db_output, count=len(db_output))
+    if request.method == 'POST':
+        db_output = Ticket.query.all()
+        if (request.form.get('username')):
+            if (request.form['username'] == admin_login and request.form['password'] == admin_password):
+                return render_template("admin.html", tickets=db_output, count=len(db_output))
+            elif (request.form['username'] == oper_login and request.form['password'] == admin_password):
+                tester = []
+                for elem in db_output:
+                    if elem.status == True:
+                        tester.append(elem)
+                return render_template("oper.html", tickets=tester, count=len(tester))
+            elif (request.form['username'] == volunteer_login and request.form['password'] == admin_password):
+                return render_template("volunteer.html")
+            else:
+                return render_template("login.html")
+        if (request.form.get('adm_action')):
+            if request.form['adm_action'] == "1":
+                Ticket.query.delete()
+                db.session.commit()
+                db_output = Ticket.query.all()
+                return render_template("admin.html", tickets=db_output, count=len(db_output))
+            if request.form['adm_action'] == "2":
+                db_output = Ticket.query.all()
+                return render_template("admin.html", tickets=db_output, count=len(db_output))
+            if request.form['adm_action'] == "3":
+                t_output = open('TicketList.txt', 'w')
+                for N in range(0, len(db_output)):
+                    unt = db_output[N].type + '-' + str('{:03}'.format(db_output[N].id))
+                    t_output.write(
+                        ', '.join((str(db_output[N].counter), unt, db_output[N].room, str(db_output[N].status), "\n")))
+                return render_template("admin.html", tickets=db_output, count=len(db_output))
+        else:
+            tester = []
+            for elem in db_output:
+                if elem.status == True:
+                    tester.append(elem)
+            if not tester:
+                return render_template("oper.html", tickets=tester, count=len(tester))
+            else:
+                t_disable = tester[0].counter
+                change = Ticket.query.get(t_disable)
+                change.status = False
+                db.session.commit()
+                db_output = Ticket.query.all()
+                tester = []
+                for elem in db_output:
+                    if elem.status == True:
+                        tester.append(elem)
+                return render_template("oper.html", tickets=tester, count=len(tester))
     else:
-        return render_template("admin.html", tickets=db_output, count=len(db_output))
+        return render_template("login.html")
 
 
 @app.route('/client', methods=['POST', 'GET'])
@@ -89,36 +124,6 @@ def queue():
 @app.route('/volunteer')
 def volonter():
     return render_template("volunteer.html")
-
-
-@app.route('/oper', methods=['POST', 'GET'])
-
-def oper():
-    db_output = Ticket.query.all()
-    tester = []
-    if request.method == "POST":
-        tester = []
-        for elem in db_output:
-            if elem.status == True:
-                tester.append(elem)
-        if not tester:
-            return render_template("oper.html", tickets=tester, count=len(tester))
-        else:
-            t_disable = tester[0].counter
-            change = Ticket.query.get(t_disable)
-            change.status = False
-            db.session.commit()
-            db_output = Ticket.query.all()
-            tester = []
-            for elem in db_output:
-                if elem.status == True:
-                    tester.append(elem)
-            return render_template("oper.html", tickets=tester, count=len(tester))
-    else:
-        for elem in db_output:
-            if elem.status == True:
-                tester.append(elem)
-        return render_template("oper.html", tickets=tester, count=len(tester))
 
 
 if __name__ == '__main__':

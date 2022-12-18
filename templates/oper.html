@@ -18,6 +18,7 @@
 				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>{% if not tickets or count == 1: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].id) }} {% endif %}</b></span>​<br>
 				<span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>{{ count }}</b></span>​
 				<form method="post">
+				<input type="number" name="oper_action" value="Exists" style="display: none">
 				<button class="w3-button w3-round w3-padding-8 a-button-blue a-button-blue-hover a-margin-bottom-8 w3-block w3-round-large" type="submit" id="stoptimer">Закончить сеанс</button>
 				</form>
 				<div class="w3-bar a-margin-bottom-8">
