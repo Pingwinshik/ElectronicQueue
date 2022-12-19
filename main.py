@@ -106,7 +106,7 @@ def client():
             db.session.add(Temp)
             db.session.commit()
             db_output = Ticket.query.all()
-            return render_template("ticket.html", tickets=db_output)
+            return render_template("ticket.html", tickets=db_output[-1], val=db_output[-1].counter)
         except:
             return "Generation error"
     else:
@@ -115,8 +115,9 @@ def client():
 
 @app.route('/ticket')
 def queue():
+    val = int(request.args.get('val'))
     db_output = Ticket.query.all()
-    return render_template("ticket.html", tickets=db_output)
+    return render_template("ticket.html", tickets=db_output[val])
 
 
 @app.route('/volunteer')
