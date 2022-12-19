@@ -1,3 +1,4 @@
+import qrcode
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -106,6 +107,18 @@ def client():
             db.session.add(Temp)
             db.session.commit()
             db_output = Ticket.query.all()
+            qr = qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=25,
+                border=4,
+            )
+            code = "http://192.168.50.186:2554/ticket?val=" + str(db_output[-1].counter - 1)
+            qr.add_data(code)
+            qr.make(fit=True)
+
+            img = qr.make_image(fill_color=(90,135,233), back_color=(255,255,255))
+            img.save("static/ticketQR.png", "PNG")
             return render_template("ticket.html", tickets=db_output[-1], val=db_output[-1].counter)
         except:
             return "Generation error"
