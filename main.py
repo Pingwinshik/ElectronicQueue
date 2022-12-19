@@ -119,6 +119,15 @@ def queue():
     db_output = Ticket.query.all()
     return render_template("ticket.html", tickets=db_output[val])
 
+@app.route('/screen')
+def screen():
+    db_output = Ticket.query.all()
+    tester = []
+    for elem in db_output:
+        if elem.status == True:
+            tester.append(elem)
+    return render_template("screen.html", tickets=tester, temp=len(tester)-1)
+
 
 @app.route('/volunteer')
 def volonter():

@@ -20,16 +20,8 @@
       <th><h1><b>Кабинет</b></h1></th>
     </tr>
     <tr>
-      <td><h2>А-001</h2></td>
-      <td><h2>1-101</h2></td>
-    </tr>
-    <tr>
-      <td><h2>А-001</h2></td>
-      <td><h2>1-101</h2></td>
-    </tr>
-    <tr>
-      <td><h2>А-001</h2></td>
-      <td><h2>1-101</h2></td>
+      <td><h2>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</h2></td>
+      <td><h2>{% if not tickets: %}   {% else: %} {{ tickets[0].room }} {% endif %}</h2></td>
     </tr>
   </table>
   <table class="w3-table-all w3-right w3-centered w3-xxlarge" style="width: 50%">
@@ -37,18 +29,12 @@
       <th><h1><b>Талон</b></h1></th>
       <th><h1><b>Кабинет</b></h1></th>
     </tr>
-    <tr>
-      <td><h2>А-001</h2></td>
-      <td><h2>1-101</h2></td>
-    </tr>
-    <tr>
-      <td><h2>А-001</h2></td>
-      <td><h2>1-101</h2></td>
-    </tr>
-    <tr>
-      <td><h2>А-001</h2></td>
-      <td><h2>1-101</h2></td>
-    </tr>
+      {% for element in range(1, temp) %}
+        <tr>
+          <td><h2>{% if (temp>=1): %}{{ tickets[element].type }}-{{'{:03}'.format(tickets[element].id) }}{% endif %}</h2></td>
+          <td><h2>{% if (temp>=1): %}{{ tickets[element].room }}{% endif %}</h2></td>
+        </tr>
+      {% endfor %}
   </table>
   </div>
   </body>
