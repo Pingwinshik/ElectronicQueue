@@ -10,6 +10,13 @@
 .text-blackish {
   color: #1A1B1D;
 }
+.a-grey {
+  background-color: #f1f1f7 !important;
+}
+.a-hider {
+  color: #ffffff !important;
+  background-color: #ffffff !important;
+}
 .a-button-grey-blue-hover:hover {
   color: #5a87e9 !important;
   background-color: #fafafa !important;
