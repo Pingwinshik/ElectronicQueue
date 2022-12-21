@@ -58,6 +58,7 @@ def index():
 def login():
     if request.method == 'POST':
         db_output = Ticket.query.all()
+        cod = request.form.get('secret_code')
         if (request.form.get('username')):
             if (request.form['username'] == admin_login and request.form['password'] == admin_password):
                 return render_template("admin.html", tickets=db_output, count=len(db_output))
