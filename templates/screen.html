@@ -38,8 +38,8 @@
         </th>
       </tr>
       <tr>
-        <td><h1>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</h1></td>
-        <td><h1>{% if not tickets: %} {% else: %} {{ tickets[0].room }}/1 {% endif %}</h1></td>
+        <td><h1>{% if (not tickets) or (OP==False): %} Талоны не вызваны{% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</h1></td>
+        <td><h1>{% if (not tickets) or (OP==False): %} {% else: %} {{ tickets[0].room }}/1 {% endif %}</h1></td>
       </tr>
     </table>
     <table class="w3-table-all w3-right w3-centered w3-xxlarge" style="width: 50%">
@@ -51,7 +51,7 @@
           <h1><b>Кабинет</b></h1>
         </th>
       </tr>
-      {% for element in range(1, temp) %}
+      {% for element in range(start, temp) %}
       <tr>
         <td><h1>{% if (temp>=1): %}{{ tickets[element].type }}-{{'{:03}'.format(tickets[element].id) }}{% endif %}</h1></td>
         <td><h1>{% if (temp>=1): %}{{ tickets[element].room }}{% endif %}</h1></td>

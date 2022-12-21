@@ -18,6 +18,8 @@ class Ticket(db.Model):
         return '<Ticket %r>' % self.counter
 
 
+operator_existance = False
+
 admin_login = "admin"
 oper_login = "oper"
 volunteer_login = "volunteer"
@@ -61,6 +63,8 @@ def login():
                 return render_template("admin.html", tickets=db_output, count=len(db_output))
             elif (request.form['username'] == oper_login and request.form['password'] == admin_password):
                 tester = []
+                global operator_existance
+                operator_existance = True
                 for elem in db_output:
                     if elem.status == True:
                         tester.append(elem)
@@ -156,19 +160,16 @@ def queue():
 
 @app.route('/screen')
 def screen():
-    if request.method == "POST":
-        db_output = Ticket.query.all()
-        tester = []
-        for elem in db_output:
-            if elem.status == True:
-                tester.append(elem)
-        return (tester, len(tester) - 1)
+    if operator_existance == False:
+        start = 0
+    else:
+        start = 1
     db_output = Ticket.query.all()
     tester = []
     for elem in db_output:
         if elem.status == True:
             tester.append(elem)
-    return render_template("screen.html", tickets=tester, temp=len(tester))
+    return render_template("screen.html", tickets=tester, temp=len(tester), OP=operator_existance, start=start)
 
 
 @app.route('/volunteer')
