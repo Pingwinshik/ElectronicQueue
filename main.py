@@ -152,7 +152,7 @@ def client():
 def queue():
     val = int(request.args.get('val'))
     db_output = Ticket.query.all()
-    return render_template("ticket.html", tickets=db_output[val])
+    return render_template("ticket.html", tickets=db_output[val], nav=room_id[db_output[val].room])
 
 @app.route('/screen')
 def screen():
