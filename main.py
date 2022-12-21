@@ -22,6 +22,28 @@ admin_login = "admin"
 oper_login = "oper"
 volunteer_login = "volunteer"
 admin_password = "password"
+room_id = {
+    '1-102': 1,
+    '1-105': 2,
+    '1-106': 3,
+    '1-109': 4,
+    '1-110': 5,
+    '1-113': 6,
+    '1-123': 7,
+    '1-127': 8,
+    '1-130': 9,
+    '1-140': 10,
+    '1-143': 11,
+    '1-143а': 12,
+    '1-149': 13,
+    '1-161': 17,
+    '1-165': 18,
+    '1-177': 19,
+    '1-186Б': 20,
+    '1-193Б': 21,
+    '1-193А': 22,
+    '1-193': 23,
+}
 
 
 @app.route('/')
@@ -113,13 +135,13 @@ def client():
                 box_size=25,
                 border=4,
             )
-            code = "http://192.168.50.186:2554/ticket?val=" + str(db_output[-1].counter - 1)
+            code = "" + request.base_url[:-7] + "/ticket?val=" + str(db_output[-1].counter - 1)
             qr.add_data(code)
             qr.make(fit=True)
 
             img = qr.make_image(fill_color=(90,135,233), back_color=(255,255,255))
             img.save("static/ticketQR.png", "PNG")
-            return render_template("ticket.html", tickets=db_output[-1], val=db_output[-1].counter)
+            return render_template("ticket.html", tickets=db_output[-1], val=db_output[-1].counter, nav=room_id[db_output[-1].room])
         except:
             return "Generation error"
     else:
@@ -134,12 +156,19 @@ def queue():
 
 @app.route('/screen')
 def screen():
+    if request.method == "POST":
+        db_output = Ticket.query.all()
+        tester = []
+        for elem in db_output:
+            if elem.status == True:
+                tester.append(elem)
+        return (tester, len(tester) - 1)
     db_output = Ticket.query.all()
     tester = []
     for elem in db_output:
         if elem.status == True:
             tester.append(elem)
-    return render_template("screen.html", tickets=tester, temp=len(tester)-1)
+    return render_template("screen.html", tickets=tester, temp=len(tester))
 
 
 @app.route('/volunteer')

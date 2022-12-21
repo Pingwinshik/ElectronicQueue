@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<meta http-equiv="refresh" content="3" />-->
+    <meta http-equiv="refresh" content="5" />
     <title>СУО ДГТУ: Табло</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
@@ -38,7 +38,7 @@
         </th>
       </tr>
       <tr>
-        <td><h1>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</h1></td>
+        <td><h1>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }}/1 {% endif %}</h1></td>
         <td><h1>{% if not tickets: %} {% else: %} {{ tickets[0].room }} {% endif %}</h1></td>
       </tr>
     </table>
@@ -59,7 +59,7 @@
       {% endfor %}
     </table>
     <script>
-      const milliseconds = 1000;
+      const milliseconds = 10;
       setInterval(() => {
         var date = new Date();
         var current_date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
