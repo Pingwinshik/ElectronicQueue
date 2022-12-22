@@ -67,9 +67,9 @@
         <div class="w3-container a-margin-bottom-8"></div>
         <span class="left w3-dark-grey">Талонов за день:</span><span class="right"><b>23</b></span
         >​<br />
-        <span class="left w3-dark-grey">Среднее время обслуживания:</span><span class="right"><b>4:20</b></span
+        <span class="left w3-dark-grey">Среднее время обслуживания:</span><span class="right"><b>3:27</b></span
         >​<br />
-        <span class="left w3-dark-grey">Нормативное время обслуживания:</span><span class="right"><b>5:00</b></span
+        <span class="left w3-dark-grey">Нормативное время обслуживания:</span><span class="right"><b>4:00</b></span
         >​
       </div>
     </div>
@@ -78,7 +78,7 @@
       const milliseconds = 1000;
       setInterval(() => {
         var date = new Date();
-        var current_date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+        var current_date = date.getDate() + "." + 12 + "." + date.getFullYear();
         document.getElementById("date").innerHTML = current_date;
         var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         document.getElementById("time").innerHTML = current_time;

@@ -62,7 +62,7 @@
       const milliseconds = 10;
       setInterval(() => {
         var date = new Date();
-        var current_date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+        var current_date = date.getDate() + "." + 12 + "." + date.getFullYear();
         document.getElementById("date").innerHTML = current_date;
         var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         document.getElementById("time").innerHTML = current_time;
