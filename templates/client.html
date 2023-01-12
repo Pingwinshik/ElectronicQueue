@@ -44,7 +44,7 @@
         <div class="w3-container text-dark-grey" align="left">
           <h5>Выберите тип обращения, нажав на одну из кнопок ниже</h5>
         </div>
-        <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle hidden-terminal" style="width: 100%">
+        <div class="w3-container w3-margin-top w3-margin-bottom hidden-terminal" style="width: 100%">
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
             <div class="carousel-cell a-button-grey-blue" onclick="openTab('Bachelor');" style="width: 150px; height: 72px">
@@ -62,7 +62,7 @@
           </div>
           <h2 class="text-blackish"><b>Услуги</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'П', room: '1-143А'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'П', room: '1-193А'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Перевод / восст.</h4>
             </div>
@@ -70,31 +70,36 @@
               <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Зелёный зал</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Р', room: '1-102'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Р', room: '1-110'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Договоры</h4>
             </div>
           </div>
           <h2 class="text-blackish"><b>Консультации</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Т', room: '1-105'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Т', room: '1-177'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Т-Университет</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Х', room: '1-105'});" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Х', room: '1-177'});" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Школа Х</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ш', room: '1-130'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ш', room: '1-177'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">ПИШ</h4>
             </div>
           </div>
           <br />
-          <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ч', room: '1-113'})" style="width: 400px; height: 72px">
-              <h3 class="w3-center a-margin-8">I'm a foreigner</h3>
-              <h3 class="w3-center a-margin-8">Я иностранец</h3>
+          <h2 class="text-blackish"><b>Для иностранцев</b></h2>
+          <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
+            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ч', room: '1-113'})" style="width: 150px; height: 96px">
+              <img class="search-icon a-margin-8" src="../static/img/icons/globe.svg" width="24" height="24" /><br />
+              <h4 class="w3-bottom a-margin-8">I'm a foreigner<br />Я иностранец</h4>
+            </div>
+            <div class="carousel-cell a-hider" style="width: 150px; height: 96px">
+            </div>
+            <div class="carousel-cell a-hider" style="width: 150px; height: 96px">
             </div>
           </div>
         </div>
@@ -125,10 +130,9 @@
             </div>
           </div>
           <br />
-          <br />
           <h2 class="text-blackish"><b>Услуги</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'П', room: '1-143А'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'П', room: '1-193А'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Перевод / восст.</h3>
             </div>
@@ -136,7 +140,7 @@
               <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Зелёный зал</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Р', room: '1-102'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Р', room: '1-110'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Договоры</h3>
             </div>
@@ -145,24 +149,30 @@
           <br />
           <h2 class="text-blackish"><b>Консультации</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Т', room: '1-105'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Т', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Т-Университет</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Х', room: '1-105'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Х', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Школа Х</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ш', room: '1-130'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ш', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">ПИШ</h3>
             </div>
           </div>
           <br />
+          <br />
+          <h2 class="text-blackish"><b>Для иностранцев</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover w3-round-xlarge" onclick="load({type: 'Ч', room: '1-113'})" style="width: 100vw; height: 10vh">
-              <h2 class="w3-center a-margin-8">I'm a foreigner</h2>
-              <h2 class="w3-center a-margin-8">Я иностранец</h2>
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ч', room: '1-113'})" style="width: 30vw; height: 12.5vh">
+              <img class="search-icon a-margin-16" src="../static/img/icons/globe.svg" alt="Монитор" width="24" height="24" /><br />
+              <h3 class="w3-bottom a-margin-16">I'm foreigner<br />Я иностранец</h3>
+            </div>
+            <div class="carousel-cell a-hider" style="width: 30vw; height: 12.5vh">
+            </div>
+            <div class="carousel-cell a-hider" style="width: 30vw; height: 12.5vh">
             </div>
           </div>
         </div>
@@ -213,7 +223,7 @@
               <span onclick="document.getElementById('bach_soc').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Комиссия № 5</h3>
+              <h3>МФЦ 5:Социально-гуманитарные науки</h3>
               <br />
               37.00.00 Психологические науки<br />
               38.00.00 Экономика и управления<br />
@@ -236,8 +246,10 @@
               <input type="text" name="type" value="С" style="display: none" />
               <input type="text" name="room" value="1-140" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="С" style="display: none" />
-              <input type="text" name="room" value="1-140" style="display: none" />
+              <input type="text" name="room" value="1-165" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -249,7 +261,7 @@
               <span onclick="document.getElementById('bach_build').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Строительство, архитектура</h3>
+              <h3>МЦФ 7: Строительство, архитектура</h3>
               <br />
               07.00.00 Архитектура<br />
               08.00.00 Техника и технологии строительства<br />
@@ -264,8 +276,10 @@
               <input type="text" name="type" value="A" style="display: none" />
               <input type="text" name="room" value="1-105" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="A" style="display: none" />
-              <input type="text" name="room" value="1-105" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -277,7 +291,7 @@
               <span onclick="document.getElementById('bach_it').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>IT-технологии</h3>
+              <h3>МФЦ 2: IT-технологии</h3>
               <br />
               01.00.00 Математика и механика<br />
               02.00.00 Компьютерные и информационные науки<br />
@@ -294,8 +308,10 @@
               <input type="text" name="type" value="И" style="display: none" />
               <input type="text" name="room" value="1-149" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="И" style="display: none" />
-              <input type="text" name="room" value="1-149" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -307,7 +323,7 @@
               <span onclick="document.getElementById('bach_agro').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Агро, биотехнологии, транспорт</h3>
+              <h3>МФЦ 3: Агро, биотехнологии, транспорт</h3>
               <br />
               11.00.00 Электроника, радиотехника и системы связи<br />
               19.00.00 Промышленная экология и биотехнологии<br />
@@ -323,8 +339,10 @@
               <input type="text" name="type" value="Б" style="display: none" />
               <input type="text" name="room" value="1-149" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="Б" style="display: none" />
-              <input type="text" name="room" value="1-149" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -336,7 +354,7 @@
               <span onclick="document.getElementById('bach_avia').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Авиа и машиностроение, дизайн</h3>
+              <h3>МФЦ 4: Авиа и машиностроение, дизайн</h3>
               <br />
               15.00.00 Машиностроение<br />
               22.00.00 Технологии материалов<br />
@@ -353,8 +371,10 @@
               <input type="text" name="type" value="Д" style="display: none" />
               <input type="text" name="room" value="1-143" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="Д" style="display: none" />
-              <input type="text" name="room" value="1-143" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -366,7 +386,7 @@
               <span onclick="document.getElementById('bach_inno').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Инноватика, энергетика, прибор.</h3>
+              <h3>МФЦ 1: Инноватика, энергетика, прибор.</h3>
               <br />
               12.00.00 Фотоника, приборостроение, оптические и биотехнические системы и технологии<br />
               13.00.00 Электро- и теплоэнергетика<br />
@@ -382,8 +402,10 @@
               <input type="text" name="type" value="Э" style="display: none" />
               <input type="text" name="room" value="1-105" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="Э" style="display: none" />
-              <input type="text" name="room" value="1-105" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -395,7 +417,7 @@
               <span onclick="document.getElementById('bach_chem').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Пожарная безопасность, химтех</h3>
+              <h3>МФЦ 6: Пожарная безопасность, химтех</h3>
               <br />
               16.00.00 Физико-технические науки и технологии<br />
               18.00.00 Химические технологии<br />
@@ -413,8 +435,10 @@
               <input type="text" name="type" value="В" style="display: none" />
               <input type="text" name="room" value="1-143" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="В" style="display: none" />
-              <input type="text" name="room" value="1-143" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -455,6 +479,35 @@
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Start')">
             <img class="search-icon" src="../static/img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
           </button>
+          <div class="long-show">
+                          <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />
+                        <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+          </div>
         </div>
         <div id="bach_soc_t" class="w3-modal">
           <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
@@ -463,7 +516,7 @@
               <span onclick="document.getElementById('bach_soc_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Социально-гуманитарные науки</h3>
+              <h3>МФЦ 5: Социально-гуманитарные науки</h3>
               <br />
               37.00.00 Психологические науки<br />
               38.00.00 Экономика и управления<br />
@@ -486,9 +539,10 @@
               <input type="text" name="type" value="С" style="display: none" />
               <input type="text" name="room" value="1-140" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
               <form method="post">
                 <input type="text" name="type" value="С" style="display: none" />
-                <input type="text" name="room" value="1-140" style="display: none" />
+                <input type="text" name="room" value="1-165" style="display: none" />
                 <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
               </form>
             </form>
@@ -501,7 +555,7 @@
               <span onclick="document.getElementById('bach_build_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>КСтроительство, архитектура</h3>
+              <h3>МФЦ 7: Строительство, архитектура</h3>
               <br />
               07.00.00 Архитектура<br />
               08.00.00 Техника и технологии строительства<br />
@@ -516,8 +570,10 @@
               <input type="text" name="type" value="A" style="display: none" />
               <input type="text" name="room" value="1-105" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="A" style="display: none" />
-              <input type="text" name="room" value="1-105" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -529,7 +585,7 @@
               <span onclick="document.getElementById('bach_it_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>IT-Технологии</h3>
+              <h3>МФЦ 2: IT-Технологии</h3>
               <br />
               01.00.00 Математика и механика<br />
               02.00.00 Компьютерные и информационные науки<br />
@@ -546,8 +602,10 @@
               <input type="text" name="type" value="И" style="display: none" />
               <input type="text" name="room" value="1-149" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="И" style="display: none" />
-              <input type="text" name="room" value="1-149" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -559,7 +617,7 @@
               <span onclick="document.getElementById('bach_agro_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Агро, биотехнологии, транспорт</h3>
+              <h3>МФЦ 3: Агро, биотехнологии, транспорт</h3>
               <br />
               11.00.00 Электроника, радиотехника и системы связи<br />
               19.00.00 Промышленная экология и биотехнологии<br />
@@ -575,8 +633,10 @@
               <input type="text" name="type" value="Б" style="display: none" />
               <input type="text" name="room" value="1-149" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="Б" style="display: none" />
-              <input type="text" name="room" value="1-149" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -588,7 +648,7 @@
               <span onclick="document.getElementById('bach_avia_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Авиа и машиностроение, дизайн</h3>
+              <h3>МФЦ 4: Авиа и машиностроение, дизайн</h3>
               <br />
               15.00.00 Машиностроение<br />
               22.00.00 Технологии материалов<br />
@@ -605,8 +665,10 @@
               <input type="text" name="type" value="Д" style="display: none" />
               <input type="text" name="room" value="1-143" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="Д" style="display: none" />
-              <input type="text" name="room" value="1-143" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -618,7 +680,7 @@
               <span onclick="document.getElementById('bach_inno_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Инноватика, энергетика, приборостроение</h3>
+              <h3>МФЦ 1: Инноватика, энергетика, приборостроение</h3>
               <br />
               12.00.00 Фотоника, приборостроение, оптические и биотехнические системы и технологии<br />
               13.00.00 Электро- и теплоэнергетика<br />
@@ -634,8 +696,10 @@
               <input type="text" name="type" value="Э" style="display: none" />
               <input type="text" name="room" value="1-105" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="Э" style="display: none" />
-              <input type="text" name="room" value="1-105" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -647,7 +711,7 @@
               <span onclick="document.getElementById('bach_chem_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="w3-container w3-margin">
-              <h3>Пожарная безопасность, химтех</h3>
+              <h3>МФЦ 6: Пожарная безопасность, химтех</h3>
               <br />
               16.00.00 Физико-технические науки и технологии<br />
               18.00.00 Химические технологии<br />
@@ -665,8 +729,10 @@
               <input type="text" name="type" value="В" style="display: none" />
               <input type="text" name="room" value="1-143" style="display: none" />
               <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
+            </form>
+            <form method="post">
               <input type="text" name="type" value="В" style="display: none" />
-              <input type="text" name="room" value="1-143" style="display: none" />
+              <input type="text" name="room" value="1-161" style="display: none" />
               <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
             </form>
           </div>
@@ -710,6 +776,7 @@
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Start')">
             <img class="search-icon" src="../static/img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
           </button>
+
         </div>
       </div>
       <div class="userspace-terminal hidden-mobile a-margin-48">
@@ -747,6 +814,43 @@
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" onclick="openTab('Start')">
             <img class="search-icon" src="../static/img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
           </button>
+          <div class="long-show">
+               <br />
+              <br />
+              <br />
+              <br />
+            <br />
+              <br />
+              <br />
+              <br />
+            <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />
+                        <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+                      <br />
+              <br />
+              <br />
+              <br />              <br />
+              <br />
+              <br />
+          </div>
         </div>
       </div>
     </div>

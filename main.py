@@ -177,6 +177,46 @@ def screen():
 def volonter():
     return render_template("volunteer.html")
 
+@app.route('/client_long', methods=['POST', 'GET'])
+def client_long():
+    db_output = Ticket.query.all()
+    tester = []
+    if request.method == "POST":
+        k_type = request.form['type']
+        k_room = request.form['room']
+        if not db_output:
+            k_id = 1
+        else:
+            for elem in db_output:
+                if elem.type == k_type:
+                    tester.append(elem)
+            if not tester:
+                t_id = 1
+            else:
+                t_id = (tester[-1].id + 1)
+        Temp = Ticket(type=k_type, id=t_id, room=k_room, status=True)
+        try:
+            db.session.add(Temp)
+            db.session.commit()
+            db_output = Ticket.query.all()
+            qr = qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=25,
+                border=4,
+            )
+            code = "" + request.base_url[:-7] + "/ticket?val=" + str(db_output[-1].counter - 1)
+            qr.add_data(code)
+            qr.make(fit=True)
+
+            img = qr.make_image(fill_color=(90,135,233), back_color=(255,255,255))
+            img.save("static/ticketQR.png", "PNG")
+            return render_template("ticket.html", tickets=db_output[-1], val=db_output[-1].counter, nav=room_id[db_output[-1].room])
+        except:
+            return "Generation error"
+    else:
+        return render_template("client_long.html", tickets=db_output)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=2554)
