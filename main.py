@@ -170,6 +170,7 @@ def screen():
     db_output = Ticket.query.all()
     tester = []
     for elem in db_output:
+        winsound.PlaySound('announcement.wav', winsound.SND_ALIAS)
         if elem.status == True:
             tester.append(elem)
     return render_template("screen.html", tickets=tester, temp=len(tester), OP=operator_existance, start=start)
