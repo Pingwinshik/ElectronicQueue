@@ -1,4 +1,4 @@
-import qrcode
+import qrcode, winsound
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -19,7 +19,8 @@ class Ticket(db.Model):
 
 
 operator_existance = False
-
+tablo_sound = False
+test_ticket_id = 4
 admin_login = "admin"
 oper_login = "oper"
 volunteer_login = "volunteer"
@@ -107,6 +108,7 @@ def login():
                 for elem in db_output:
                     if elem.status == True:
                         tester.append(elem)
+                        tablo_sound = True
                 return render_template("oper.html", tickets=tester, count=len(tester))
     else:
         return render_template("login.html")
@@ -173,28 +175,24 @@ def screen():
     return render_template("screen.html", tickets=tester, temp=len(tester), OP=operator_existance, start=start)
 
 
-@app.route('/volunteer')
+@app.route('/volunteer', methods=['POST', 'GET'])
 def volonter():
-    return render_template("volunteer.html")
-
-@app.route('/client_long', methods=['POST', 'GET'])
-def client_long():
     db_output = Ticket.query.all()
     tester = []
     if request.method == "POST":
-        k_type = request.form['type']
-        k_room = request.form['room']
+        t_type = request.form['type']
+        t_room = request.form['room']
         if not db_output:
-            k_id = 1
+            t_id = 1
         else:
             for elem in db_output:
-                if elem.type == k_type:
+                if elem.type == t_type:
                     tester.append(elem)
             if not tester:
                 t_id = 1
             else:
                 t_id = (tester[-1].id + 1)
-        Temp = Ticket(type=k_type, id=t_id, room=k_room, status=True)
+        Temp = Ticket(type=t_type, id=t_id, room=t_room, status=True)
         try:
             db.session.add(Temp)
             db.session.commit()
@@ -215,8 +213,20 @@ def client_long():
         except:
             return "Generation error"
     else:
-        return render_template("client_long.html", tickets=db_output)
+        return render_template("client.html", tickets=db_output)
 
+@app.route('/statistic')
+def statistic():
+    if operator_existance == False:
+        start = 0
+    else:
+        start = 1
+    db_output = Ticket.query.all()
+    tester = []
+    for elem in db_output:
+        if elem.status == True:
+            tester.append(elem)
+    return render_template("screen.html", tickets=tester, temp=len(tester), OP=operator_existance, start=start)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=2554)

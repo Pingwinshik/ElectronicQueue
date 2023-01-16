@@ -53,9 +53,23 @@
   .hidden-mobile {
     display: none;
   }
+  .hidden-terminal_long{
+    display: none;
+  }
 }
 @media (min-width: 767px) {
   .hidden-terminal {
+    display: none;
+  }
+  .hidden-terminal_long{
+    display: none;
+  }
+}
+@media (min-height: 1081px) {
+  .hidden-terminal {
+    display: none;
+  }
+  .hidden-mobile{
     display: none;
   }
 }

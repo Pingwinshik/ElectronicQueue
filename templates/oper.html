@@ -43,12 +43,24 @@
               <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
            </div>
          </div>
-                <div class="w3-container a-margin-bottom-8"></div>
         <div class="w3-container a-margin-bottom-8"></div>
-        <label><b>Введите кабинет</b></label>
-        <input type="text" class="w3-input w3-border w3-margin-bottom"/>
-        <div class="w3-container a-margin-bottom-8"></div>
-        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Перенаправить талон</button>
+        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="Accordion('Demo1')" class="w3-btn w3-block w3-black w3-left-align">Выберите комиссию для перенапрваления</button>
+        <div id="Demo1" class="w3-container w3-hide" style="max-height: 100px; overflow: scroll">
+          <div>Комиссия 1</div>
+          <div>Комиссия 2</div>
+          <div>Комиссия 3</div>
+          <div>Комиссия 4</div>
+          <div>Комиссия 6</div>
+          <div>Комиссия 7</div>
+          <div>ПИЩ</div>
+          <div>Школа Х</div>
+          <div>Магистратура</div>
+          <div>Авиационный коледж</div>
+          <div>коледж</div>
+          <div>коледж</div>
+          <div>Зеленый зал</div>
+          <div> </div>
+        </div>
         <div class="w3-container a-margin-bottom-8"></div>
         <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к текущему талону</button>
       </div>
@@ -65,7 +77,7 @@
          </div>
                 <div class="w3-container a-margin-bottom-8"></div>
         <div class="w3-container a-margin-bottom-8"></div>
-        <label><b>Введите талон</b></label>
+        <label><b>Введите талона для вызова</b></label>
         <input type="text" class="w3-input w3-border w3-margin-bottom"/>
         <div class="w3-container a-margin-bottom-8"></div>
         <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вызвать талон</button>
@@ -94,7 +106,6 @@
         <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к работе</button>
       </div>
         </div>
-
     <div id="Statistics">
       <div class="w3-container w3-padding-24" style="max-height: 274px; max-width: 570px; height: 274px; width: 570px; position: static">
         <h1><b>Статистика</b></h1>
@@ -115,7 +126,6 @@
         >​
       </div>
     </div>
-
     <script>
       const milliseconds = 1000;
       setInterval(() => {
@@ -133,6 +143,14 @@
       function upTimer(count) {
         return count > 9 ? count : "0" + count;
       }
+function Accordion(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
       setInterval(function () {
         document.getElementById("seconds").innerHTML = upTimer(++second % 60);
         document.getElementById("minutes").innerHTML = upTimer(parseInt(second / 60, 10));
