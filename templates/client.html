@@ -106,9 +106,11 @@
       </div>
       <!--terminal-->
       <div class="userspace-terminal hidden-mobile a-margin-48">
-        <div class="w3-display-container w3-animate-left w3-margin" align="left">
-          <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
-          <h1 class="text-blackish" style="margin-left: 50px"><b>Приветствуем!</b></h1>
+        <div class=" w3-animate-left w3-margin-left" align="left">
+          <img src="../static/img/icons/dstu.svg" alt="ДГТУ" width="90" height="90" style="margin-right: 10px" />
+        </div>
+          <div class="w3-animate-left w3-margin-left" align="left">
+            <h1 class="text-blackish" style=""><b>Приветствуем!</b></h1>
         </div>
         <div class="w3-container text-dark-grey" align="left">
           <h5>Выберите тип обращения, нажав на одну из кнопок ниже</h5>
@@ -163,10 +165,11 @@
             </div>
           </div>
           <br />
-          <br />
-          <h2 class="text-blackish"><b>Для иностранцев</b></h2>
+          <div class="w3-container" style="width: 43%" display="inline">
+            <span class="left text-blackish"><h2><b>Для иностранцев</b></h2></span><span class="right text-dark-grey"> <h4>For foreigners</h4></span>
+          </div>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ч', room: '1-113'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ч', room: '1-113'})" style="width: 30vw; height: 14vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/globe.svg" alt="Монитор" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">I'm foreigner<br />Я иностранец</h3>
             </div>
