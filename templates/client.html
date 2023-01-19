@@ -186,13 +186,16 @@
     <!-- 	bachelor	 -->
     <div id="Bachelor" class="tab" style="display: none">
       <div class="userspace-mobile hidden-terminal">
-        <div class="w3-container w3-animate-left">
-          <h1 class="text-blackish"><b>Бакалавриат</b></h1>
+        <div class="w3-animate-left w3-bar">
+          <button class="w3-button w3-padding-8 a-button-grey w3-margin-top w3-bar-item w3-round-xlarge a-button-dark-grey-hover" name="button" onclick="openTab('Start')">
+            <img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="24" height="24" align="left" style="margin-right: 10px" />
+          </button>
+          <h1 class="text-blackish w3-bar-item"><b>Бакалавриат</b></h1>
         </div>
         <div class="w3-panel text-dark-grey w3-margin">
           <p>
             <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
-            Поиск по услугам...
+            Поиск по факультетам...
           </p>
         </div>
         <div class="w3-container">
@@ -225,9 +228,6 @@
         <div class="w3-container w3-margin-top w3-margin-bottom w3-bar">
           <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 45%; height:12.5vh" onclick="document.getElementById('bach_chem').style.display='block'">
             <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтех
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-margin-left w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 45%; height:12.5vh" onclick="openTab('Start')">
-            <img class="search-icon" src="../static/img/icons/shuffle.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Назад
           </button>
         </div>
         <div id="bach_soc" class="w3-modal">
