@@ -65,11 +65,3 @@
     display: none;
   }
 }
-@media (min-height: 1081px) {
-  .hidden-terminal {
-    display: none;
-  }
-  .hidden-mobile{
-    display: none;
-  }
-}
