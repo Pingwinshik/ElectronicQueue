@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Tickets" uuid="93eab5b8-97bd-4da6-ac86-a030d37c04b6">
-      <driver-ref>sqlite.xerial</driver-ref>
+    <data-source source="LOCAL" name="Tickets@localhost" uuid="e501f39a-983b-49e3-b2a9-5dd091443f74">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\PythonDB_Tester\Tickets.db</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/Tickets</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

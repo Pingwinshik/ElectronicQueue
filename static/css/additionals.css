@@ -10,6 +10,16 @@
 .text-blackish {
   color: #1A1B1D;
 }
+.text-blue {
+  color: #5a87e9;
+}
+.a-grey {
+  background-color: #f1f1f7 !important;
+}
+.a-hider {
+  color: #ffffff !important;
+  background-color: #ffffff !important;
+}
 .a-button-grey-blue-hover:hover {
   color: #5a87e9 !important;
   background-color: #fafafa !important;
@@ -22,9 +32,16 @@
   color: #ffffff !important;
   background-color: #5a87e9 !important;
 }
+.center {
+  vertical-align: middle;
+}
 .a-button-blue-hover:hover {
   color: #eef2fb !important;
   background-color: #5179d2 !important;
+}
+.a-button-light-blue-hover:hover {
+  color: #1A4FC1 !important;
+  background-color: #C9D8F8 !important;
 }
 .a-margin-8 {
   margin: 8px !important;
@@ -42,6 +59,7 @@
 .right{float:right;}
 .left{float:left;}
 .a-padding-24{padding-top:24px!important;padding-bottom:24px!important;padding-left:24px!important;padding-right:24px!important}
+
 @media (max-width: 767px) {
   .hidden-mobile {
     display: none;

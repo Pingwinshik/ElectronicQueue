@@ -1,83 +1,181 @@
 <!DOCTYPE html>
 <html lang="">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>СУО ДГТУ: Панель оператора</title>
-		<link rel="stylesheet" type="text/css" href="../static/css/w3pro.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
-	</head>
-	<body>
-		<div id="Operator" class="tab" style="display: block">
-			<div class="w3-container a-padding-24" style="max-height:460px;max-width:570px;height:460px;width:570px;position:static;">
-				<h1 class="text-blackish"><b>Работа с клиентом</b></h1>
-				<h2 class="text-blackish"><b>Номер талона:</b></h2>
-				<div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
-					<div class="w3-display-middle"><h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1></div>
-				</div>
-				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>{% if not tickets or count == 1: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].id) }} {% endif %}</b></span>​<br>
-				<span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>{{ count }}</b></span>​
-				<form method="post">
-				<input type="number" name="oper_action" value="Exists" style="display: none">
-				<button class="w3-button w3-round w3-padding-8 a-button-blue a-button-blue-hover a-margin-bottom-8 w3-block w3-round-large" type="submit" id="stoptimer">Закончить сеанс</button>
-				</form>
-				<div class="w3-bar a-margin-bottom-8">
-					<button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width:48%">Перенаправить клиента</button>
-					<button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-right" style="width:48%">Вызвать по номеру</button>
-				</div>
-				<div class="w3-container a-margin-bottom-8"></div>
-				<button class="w3-button w3-round w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large" name="button" onclick="openTab('OperatorRests')">Выйти на перерыв</button>
-			</div>
-		</div>
-		<div id="OperatorRests" class="tab" style="display: none">
-			<div class="w3-container a-padding-24" style="max-height:460px;max-width:570px;height:460px;width:570px;position:static;">
-				<h1><b>Работа с клиентом</b></h1>
-				<h2><b>Номер талона:</b></h2>
-				<div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
-					<div class="w3-display-middle"><h1><b id="number"></b></h1></div>
-				</div>
-				<span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>A-002</b></span>​<br>
-				<span class="left w3-dark-grey">Количество ожидающих:</span><span class="right"><b>1</b></span>​
-				<button class="w3-button w3-round w3-padding-8 a-button-grey-blue a-button-grey-blue-hover a-margin-bottom-8 w3-block w3-round-large w3-disabled" name="button">-</button>
-				<div class="w3-bar a-margin-bottom-8">
-					<button class="w3-bar-item w3-round w3-disabled a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width:48%">-</button>
-					<button class="w3-bar-item w3-round w3-disabled a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-right" style="width:48%">-</button>
-				</div>
-				<div class="w3-container a-margin-bottom-8"></div>
-				<button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к работе</button>
-			</div>
-		</div>
-		<div id="Statistics">
-			<div class="w3-container w3-padding-24" style="max-height:274px;max-width:570px;height:274px;width:570px;position:static;">
-				<h1><b>Статистика</b></h1>
-				<span class="left w3-dark-grey">Дата:</span><span class="right"><b id="date">12.12.2022</b></span>​<br>
-				<span class="left w3-dark-grey">Время:</span><span class="right"><b id="time">12:20:00</b></span>​<br>
-				<span class="left w3-dark-grey">Этот сеанс длится:</span><span class="right"><b><span id="minutes">00</span>:<span id="seconds">00</span></b></span>​<br>
-				<div class="w3-container a-margin-bottom-8"></div>
-				<span class="left w3-dark-grey">Талонов за день:</span><span class="right"><b>23</b></span>​<br>
-				<span class="left w3-dark-grey">Среднее время обслуживания:</span><span class="right"><b>4:20</b></span>​<br>
-				<span class="left w3-dark-grey">Нормативное время обслуживания:</span><span class="right"><b>5:00</b></span>​
-			</div>
-		</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>СУО ДГТУ: Панель оператора</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
+  </head>
+  <body>
+    <div id="Operator" class="tab" style="display: block">
+      <div class="w3-container a-padding-24" style="max-height: 460px; max-width: 570px; height: 460px; width: 570px; position: static">
+        <h1 class="text-blackish"><b>Работа с клиентом</b></h1>
+        <h2 class="text-blackish"><b>Номер талона:</b></h2>
+        <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
+          <div class="w3-display-middle">
+            <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+          </div>
+        </div>
+        <span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>{% if not tickets or count == 1: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].id) }} {% endif %}</b></span
+        >​<br />
+        <span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>{{ count }}</b></span
+        >​
+        <form method="post">
+          <input type="number" name="oper_action" value="Exists" style="display: none" />
+          <button class="w3-button w3-round w3-padding-8 a-button-blue a-button-blue-hover a-margin-bottom-8 w3-block w3-round-large" type="submit" id="stoptimer">Закончить сеанс</button>
+        </form>
+        <div class="w3-bar a-margin-bottom-8">
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width: 48%" name="button" onclick="openTab('OperatorRerouting')">Перенаправить</button>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-right" style="width: 48%" name="button" onclick="openTab('OperatorChoosing')">Вызвать по номеру</button>
+        </div>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <button class="w3-button w3-round w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large" name="button" onclick="openTab('OperatorRests')">Выйти на перерыв</button>
+      </div>
+    </div>
+    <!--Rerouting-->
+        <div id="OperatorRerouting" class="tab" style="display: none">
+      <div class="w3-container a-padding-24" style="max-height: 460px; max-width: 570px; height: 460px; width: 570px; position: static">
+        <h1><b>Работа с клиентом</b></h1>
+        <h2><b>Номер талона:</b></h2>
+          <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
+           <div class="w3-display-middle">
+              <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+           </div>
+         </div>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="Accordion('Demo1')" class="w3-btn w3-block w3-black w3-left-align">Выберите комиссию для перенапрваления</button>
+        <div id="Demo1" class="w3-container w3-hide" style="max-height: 150px; overflow: scroll">
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Социально-гуманитарные науки</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Строительство, архитектура</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">IT-Технологии</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Агро, биотехнологии, транспорт</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Авиа и машиностроение, дизайн</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Инноватика, энергетика, прибор</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Пожарная безопасность, химтех</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Магистратура</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Авиастроительный колледж</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">КЭУиП</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">IThub</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Перевод / восстановление</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Зелёный зал</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Договоры</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Т-Университет</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Школа Х</button>
+                  <div class="w3-container a-margin-bottom-8"></div>
+          <button class="w3-bar-item w3-button w3-padding-8 a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">ПИШ</button>
+        </div>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к текущему талону</button>
+      </div>
+    </div>
+        <!--Choosing-->
+           <div id="OperatorChoosing" class="tab" style="display: none">
+      <div class="w3-container a-padding-24" style="max-height: 460px; max-width: 570px; height: 460px; width: 570px; position: static">
+        <h1><b>Работа с клиентом</b></h1>
+        <h2><b>Номер талона:</b></h2>
+          <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
+           <div class="w3-display-middle">
+              <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+           </div>
+         </div>
+                <div class="w3-container a-margin-bottom-8"></div>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <label><b>Введите талона для вызова</b></label>
+        <input type="text" class="w3-input w3-border w3-margin-bottom"/>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вызвать талон</button>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к текущему талону</button>
+      </div>
+    </div>
+    <!--Rests-->
+        <div id="OperatorRests" class="tab" style="display: none">
+      <div class="w3-container a-padding-24" style="max-height: 460px; max-width: 570px; height: 460px; width: 570px; position: static">
+        <h1><b>Работа с клиентом</b></h1>
+        <h2><b>Номер талона:</b></h2>
+        <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
+          <div class="w3-display-middle">
+            <h1><b id="number"></b></h1>
+          </div>
+        </div>
+        <span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b></b></span>​<br />
+        <span class="left w3-dark-grey">Количество ожидающих:</span><span class="right"><b></b></span>​
+        <button class="w3-button w3-round w3-padding-8 a-button-grey-blue a-button-grey-blue-hover a-margin-bottom-8 w3-block w3-round-large w3-disabled" name="button">-</button>
+        <div class="w3-bar a-margin-bottom-8">
+          <button class="w3-bar-item w3-round w3-disabled a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-left" style="width: 48%">-</button>
+          <button class="w3-bar-item w3-round w3-disabled a-button-grey-blue a-button-grey-blue-hover w3-block w3-round-large w3-right" style="width: 48%">-</button>
+        </div>
+        <div class="w3-container a-margin-bottom-8"></div>
+        <button class="w3-button w3-round a-button-blue a-button-blue-hover w3-block w3-round-large" onclick="openTab('Operator')">Вернуться к работе</button>
+      </div>
+        </div>
+    <div id="Statistics">
+      <div class="w3-container w3-padding-24" style="max-height: 274px; max-width: 570px; height: 274px; width: 570px; position: static">
+        <h1><b>Статистика</b></h1>
+        <span class="left w3-dark-grey">Дата:</span><span class="right"><b id="date">12.12.2022</b></span
+        >​<br />
+        <span class="left w3-dark-grey">Время:</span><span class="right"><b id="time">12:20:00</b></span
+        >​<br />
+        <span class="left w3-dark-grey">Этот сеанс длится:</span
+        ><span class="right"
+          ><b><span id="minutes">00</span>:<span id="seconds">00</span></b></span
+        >​<br />
+        <div class="w3-container a-margin-bottom-8"></div>
+        <span class="left w3-dark-grey">Талонов за день:</span><span class="right"><b>7</b></span
+        >​<br />
+        <span class="left w3-dark-grey">Среднее время обслуживания:</span><span class="right"><b>3:27</b></span
+        >​<br />
+        <span class="left w3-dark-grey">Нормативное время обслуживания:</span><span class="right"><b>5:00</b></span
+        >​
+      </div>
+    </div>
+    <script>
+      const milliseconds = 1000;
+      setInterval(() => {
+        var date = new Date();
+        var current_date = date.getDate() + "." + 12 + "." + date.getFullYear();
+        document.getElementById("date").innerHTML = current_date;
+        var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        document.getElementById("time").innerHTML = current_time;
+      }, milliseconds);
+    </script>
 
-		<script>
-		const milliseconds = 1000
-		setInterval(() => {
-		var date = new Date();
-			var current_date = date.getDate()+"."+date.getMonth()+"."+date.getFullYear();
-			document.getElementById("date").innerHTML = current_date;
-			var current_time = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
-			document.getElementById("time").innerHTML = current_time;}, milliseconds);
-		</script>
-
-		<script>
-		var second = 0;
-		var timer = setInterval(upTimer, 1000);
-		function upTimer (count) {return count > 9 ? count : "0" + count;}
-		setInterval(function(){
-		document.getElementById("seconds").innerHTML= upTimer(++second % 60);
-		document.getElementById("minutes").innerHTML= upTimer(parseInt(second / 60, 10));}, 1000);
-		</script>
-		<script src="../static/js/tab_opener.js"></script>
-	</body>
+    <script>
+      var second = 0;
+      var timer = setInterval(upTimer, 1000);
+      function upTimer(count) {
+        return count > 9 ? count : "0" + count;
+      }
+function Accordion(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+      setInterval(function () {
+        document.getElementById("seconds").innerHTML = upTimer(++second % 60);
+        document.getElementById("minutes").innerHTML = upTimer(parseInt(second / 60, 10));
+      }, 1000);
+    </script>
+    <script src="../static/js/tab_opener.js"></script>
+  </body>
 </html>

@@ -1,65 +1,79 @@
-from quart import g, Quart, render_template, request
-from quart_db import QuartDB
-from quart_schema import QuartSchema, validate_request, validate_response
+from sanic import Sanic
+from sanic.response import json, html, text
+from databases import Database
 from dataclasses import dataclass
-
-app = Quart(__name__)
-QuartDB(app, url="sqlite:///Tickets.db")
-QuartSchema(app)
-
+import asyncio
+import os
 
 @dataclass
-class Ticket:
-    counter: int
-    litera: str
-    id: int
-    room: str
+class TData:
+    type: str
+    number: int
+    operator_id: int
     status: int
 
-@dataclass
-class Tickets:
-    alltickets: list[Ticket]
+app = Sanic(__name__)
+app.static('/static', './static')
 
+async def create_db_connection():
+    Tickets = Database("postgresql://postgres:localhost:5432/Tickets")
+    await Tickets.connect()
+    return Tickets
 
-async def get_tickets() -> Tickets:
-    query = """SELECT counter, litera, id, room, status
-                from tickets"""
-    tickets =[
-        Ticket(**row)
-        async for row in g.connection.iterate(query)
-    ]
-    return Tickets(alltickets=tickets)
+def init_db() -> None:
+    async def _inner() -> None:
+        db = await create_db_connection()
+        db.execute("""CREATE TABLE Ticket {
+	id SERIAL PRIMARY KEY,
+	type INTEGER NOT NULL,
+	number INTEGER NOT NULL,
+	operator_id INTEGER,
+	status SMALLINT NOT NULL
+};""")
 
+@app.route('/CreateTicket', methods=["POST"])
+async def create_ticket(data: TData) -> None:
+    return()
 
+def init():
+    app.run(host='127.0.0.1', port=9001, debug=True)
 
-admin_login = "admin"
-oper_login = "oper"
-volunteer_login = "volunteer"
-admin_password = "password"
+@app.route('/')
+async def index(request):
+  template = open(os.getcwd() + "/templates/index.html", encoding='utf-8')
+  return html(template.read())
 
+@app.route("/login")
+async def login(request):
+  template = open(os.getcwd() + "/templates/login.html", encoding='utf-8')
+  return html(template.read())
 
-@app.route("/")
-@app.route("/index")
-async def index():
-    return await render_template("index.html")
-
-
-@app.route("/login", methods=['POST', 'GET'])
-async def login():
-    return await render_template("oper.html")
-
-
-
-
-@app.route('/client', methods=['POST', 'GET'])
-async def client():
-    return await render_template("client.html")
-
+@app.route("/client")
+async def client(request):
+  template = open(os.getcwd() + "/templates/client.html", encoding='utf-8')
+  return html(template.read())
 
 @app.route('/ticket')
-async def queue():
-    return await render_template("ticket.html")
+async def ticket(request):
+  template = open(os.getcwd() + "/templates/ticket.html", encoding='utf-8')
+  return html(template.read())
+
+@app.route('/volunteer')
+async def volunteer(request):
+  template = open(os.getcwd() + "/templates/volunteer.html", encoding='utf-8')
+  return html(template.read())
+
+@app.route('/screen')
+async def screen(request):
+  template = open(os.getcwd() + "/templates/screen.html", encoding='utf-8')
+  return html(template.read())
+
+@app.route('/statistic')
+async def statistic(request):
+  template = open(os.getcwd() + "/templates/statistic.html", encoding='utf-8')
+  return html(template.read())
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.50.186', debug=True, port=1911)
+    init_db()
+    init()
