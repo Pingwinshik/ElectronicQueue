@@ -6,9 +6,8 @@
     <title>СУО ДГТУ: Интерфейс администратора</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body class="a-light-grey w3-content" style="max-width: 1600px">
+  <body class="w3-content" style="max-width: 100%">
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px" id="mySidebar">
       <div class="w3-display-container w3-animate-left w3-margin" align="left">
@@ -23,16 +22,19 @@
       <hr class="w3-margin-top">
        <div class="w3-container">
        <button class="w3-button center w3-round-xlarge a-button-light-blue-hover" style="width:100%; height:6vh; padding: 0px!important;" name="button" type="submit" onclick="w3_close();openTab('overview');">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Панель администратора</h5>
+              <img class="search-icon" src="../static/img/icons/sliders.svg" alt="Перо" width="16" height="16" align="left" style="margin-left: 10px; " /><h5 style="margin-left: 40px; vertical-align: middle" align="left">Панель администратора</h5>
        </button>
        <button class="w3-button w3-padding-12 w3-round-xlarge a-button-light-blue-hover" style="width:100%; height:6vh; padding: 0px!important;" name="button" type="submit"  onclick="w3_close();openTab('tickets');">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Талоны</h5>
+              <img class="search-icon" src="../static/img/icons/tag.svg" alt="Талоны" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Талоны</h5>
        </button>
        <button class="w3-button w3-padding-12 w3-round-xlarge a-button-light-blue-hover" style="width:100%; height:6vh; padding: 0px!important;" name="button" type="submit" onclick="w3_close();openTab('stats');">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Статистика</h5>
+              <img class="search-icon" src="../static/img/icons/trending-up.svg" alt="Администратор" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Статистика</h5>
        </button>
        </div>
        <hr>
+      <div class="w3-container">
+
+      </div>
       <div class="w3-container">
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-hover-grey" title="close menu">
           <i class="fa fa-remove"></i>
@@ -120,63 +122,38 @@
       </div>
 
       <div class="tab w3-container w3-padding-large w3-grey" id="tickets">
-        <h2 class="w3-margin"><b>База талонов</b></h2>
-        <div class="w3-container w3-bar">
-          <form method="post">
-            <input type="number" name="adm_action" value="1" style="display: none" />
-            <button type="submit" class="w3-bar-item w3-button w3-right a-button-blue a-button-blue-hover w3-round-xlarge w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Обнулить</button>
-          </form>
-          <form method="post">
-            <input type="number" name="adm_action" value="2" style="display: none" />
-            <button type="submit" class="w3-bar-item w3-right w3-button a-button-blue a-button-blue-hover w3-round-xlarge w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Обновить</button>
-          </form>
-          <form method="post">
-            <input type="number" name="adm_action" value="3" style="display: none" />
-            <button type="submit" class="w3-bar-item w3-right w3-button a-button-blue a-button-blue-hover w3-round-xlarge w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Вывести</button>
-          </form>
+        <h2 class="w3-margin"><b>Панель администратора</b></h2>
+        <div class="w3-container w3-bar text-dark-grey" style="width: 100%">
+            <button type="submit" class="w3-bar-item w3-button a-grey w3-round-xlarge w3-margin-bottom" style="height: 13vh; width: 14vw"><img class="search-icon" src="../static/img/icons/tag.svg" alt="Перо" width="20" height="20" align="left" />Талоны<br><span class="text-blackish w3-left-align">5</span>
+            </button>
+            <button type="submit" class="w3-bar-item w3-button w3-margin-left a-grey w3-round-xlarge w3-margin-bottom" style="height: 13vh; width: 14vw"><img class="search-icon" src="../static/img/icons/users.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Посетители<br><span class="text-blackish w3-left-align">150 ВСЕГО</span>
+            </button>
+            <button type="submit" class="w3-bar-item w3-button w3-margin-left a-grey w3-round-xlarge w3-margin-bottom" style="height: 13vh; width: 14vw"><img class="search-icon" src="../static/img/icons/briefcase.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Сотрудники<br><span class="text-blackish w3-left-align">13</span>
+            </button>
+            <button type="submit" class="w3-bar-item w3-button w3-margin-left a-grey w3-round-xlarge w3-margin-bottom" style="height: 13vh; width: 14vw"><img class="search-icon" src="../static/img/icons/monitor.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Терминалы<br><span class="text-blackish w3-left-align">13</span>
+            </button>
         </div>
 
-        <div class="w3-container">
-          <table class="w3-table-all">
-            <thead>
-              <tr class="w3-red">
-                <th>Порядковый номер</th>
-                <th>ID</th>
-                <th>Статус</th>
-              </tr>
-            </thead>
-            {% for element in tickets %}
-            <tr>
-              <td>{{ tickets[element.counter-1].counter }}</td>
-              <td>{{ tickets[element.counter-1].type }}-{{ '{:03}'.format(tickets[element.counter-1].id) }}</td>
-              <td>{{ tickets[element.counter-1].status }}</td>
-            </tr>
-            {% endfor %}
-          </table>
-        </div>
+      <div class="w3-container w3-padding-24" style="max-height: 274px; max-width: 570px; height: 274px; width: 570px; position: static">
+        <h2><b>Статистика</b></h2>
+        <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/calendar.svg" alt="Перо" width="20" height="20" align="left" />Дата:</span><span class="right"><b id="date">12.12.2022</b></span
+        >​<br />
+        <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/clock.svg" alt="Перо" width="20" height="20" align="left" />Время:</span><span class="right"><b id="time">12:20:00</b></span
+        >​<br />
+        <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/watch.svg" alt="Перо" width="20" height="20" align="left" />Этот сеанс длится:</span
+        ><span class="right"
+          ><b><span id="minutes">00</span>:<span id="seconds">00</span></b></span
+        >​<br />
+        <div class="w3-container a-margin-bottom-8"></div>
+        <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/tag.svg" alt="Перо" width="20" height="20" align="left" />Талонов за день:</span><span class="right"><b>7</b></span
+        >​<br />
+        <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/clock.svg" alt="Перо" width="20" height="20" align="left" />Среднее время обслуживания:</span><span class="right"><b>3:27</b></span
+        >​<br />
+        <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/thumbs-up.svg" alt="Перо" width="20" height="20" align="left" />Нормативное время обслуживания:</span><span class="right"><b>5:00</b></span
+        >​
       </div>
 
-      <div class="tab w3-container w3-padding-large" style="margin-bottom: 32px; display: none" id="stats">
-        <h2 class="text-blackish"><b>Общие данные</b></h2>
-        <!-- Статы -->
-        <p>Новые посетители</p>
-        <div class="w3-grey">
-          <div class="w3-container w3-center w3-padding a-button-blue" style="width: 25%">+25%</div>
-        </div>
-
-        <p>Загруженность сотрудников</p>
-        <div class="w3-grey">
-          <div class="w3-container w3-center w3-padding a-button-blue" style="width: 50%">50%</div>
-        </div>
-
-        <p>Удовлетворённость посетителей</p>
-        <div class="w3-grey">
-          <div class="w3-container w3-center w3-padding a-button-blue" style="width: 95%">95%</div>
-        </div>
-
-        <h2 class="text-blackish"><b>За время приёмной кампании 2023:</b></h2>
-
-        <div class="w3-row-padding w3-margin-bottom">
+        <div class="w3-row-padding w3-margin-bottom" style="display: none">
           <div class="w3-quarter">
             <div class="w3-container a-button-blue w3-padding-16">
               <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>

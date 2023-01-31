@@ -21,7 +21,7 @@
   background-color: #ffffff !important;
 }
 .a-button-grey-blue-hover:hover {
-  color: #5a87e9 !important;
+  color: #1A4FC1 !important;
   background-color: #fafafa !important;
 }
 .a-button-grey-blue {
@@ -30,6 +30,10 @@
 }
 .a-button-blue {
   color: #ffffff !important;
+  background-color: #5a87e9 !important;
+}
+.a-light-grey {
+  color: #F5F5F5 !important;
   background-color: #5a87e9 !important;
 }
 .center {
@@ -48,6 +52,9 @@
 }
 .a-margin-bottom-8 {
   margin-bottom: 8px !important;
+}
+.a-margin-right-8{
+    margin-right:8px!important
 }
 .a-margin-16 {
   margin: 16px !important;
