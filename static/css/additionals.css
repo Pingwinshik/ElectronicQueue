@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: #e6e6e6; /* Цвет линии для остальных браузеров */
+    background-color: #e6e6e6; /* Цвет линии для браузера Firefox и Opera */
+    height: 2px; /* Толщина линии */
+   }
 .a-light-grey,
 .a-hover-light-grey:hover{
   color: #000 !important;
@@ -46,6 +52,10 @@
 .a-light-blue-hover:hover {
   color: #1A4FC1 !important;
   background-color: #C9D8F8 !important;
+}
+.a-margin-terminal {
+  margin-left: 12.5vw!important;
+  margin-right: 12.5vw!important;
 }
 .a-margin-8 {
   margin: 8px !important;
