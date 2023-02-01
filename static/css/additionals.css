@@ -13,6 +13,9 @@ hr {
 .text-dark-grey {
   color: #83838D !important;
 }
+.text-light-grey {
+  color: #F1F1F7 !important;
+}
 .text-blackish {
   color: #1A1B1D;
 }
@@ -56,6 +59,12 @@ hr {
 .a-margin-terminal {
   margin-left: 12.5vw!important;
   margin-right: 12.5vw!important;
+}
+.a-margin-stat {
+  margin-left: 12.5vw!important;
+  margin-right: 12.5vw!important;
+  margin-top: 25vh!important;
+  margin-bottom: 25vh!important;
 }
 .a-margin-8 {
   margin: 8px !important;
