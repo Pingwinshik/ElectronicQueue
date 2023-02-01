@@ -11,7 +11,7 @@
   color: #1A1B1D;
 }
 .text-blue {
-  color: #5a87e9;
+  color: #1A4FC1;
 }
 .a-grey {
   background-color: #f1f1f7 !important;
@@ -20,30 +20,30 @@
   color: #ffffff !important;
   background-color: #ffffff !important;
 }
-.a-button-grey-blue-hover:hover {
+.a-grey-blue-hover:hover {
   color: #1A4FC1 !important;
   background-color: #fafafa !important;
 }
-.a-button-grey-blue {
+.a-grey-blue {
   color: #5a87e9 !important;
   background-color: #f1f1f7 !important;
 }
-.a-button-blue {
+.a-blue {
   color: #ffffff !important;
-  background-color: #5a87e9 !important;
+  background-color: #1A4FC1 !important;
 }
 .a-light-grey {
   color: #F5F5F5 !important;
-  background-color: #5a87e9 !important;
+  background-color: #1A4FC1 !important;
 }
 .center {
   vertical-align: middle;
 }
-.a-button-blue-hover:hover {
+.a-blue-hover:hover {
   color: #eef2fb !important;
   background-color: #5179d2 !important;
 }
-.a-button-light-blue-hover:hover {
+.a-light-blue-hover:hover {
   color: #1A4FC1 !important;
   background-color: #C9D8F8 !important;
 }

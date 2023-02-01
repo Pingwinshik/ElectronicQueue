@@ -6,9 +6,7 @@
     <title>СУО ДГТУ: Интерфейс пользователя</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
-    <!-- Flickity CSS -->
     <link rel="stylesheet" href="../static/flickity/flickity.min.css" />
-    <!-- Flickity JavaScript -->
     <script src="../static/flickity/flickity.pkgd.min.js"></script>
     <style>
       .carousel {
@@ -33,59 +31,55 @@
     </style>
   </head>
   <body>
-    <!-- start	 -->
     <div id="Start" class="tab">
-      <!--mobile-->
       <div class="userspace-mobile hidden-terminal">
         <div class="w3-display-container w3-animate-left w3-margin" align="left">
           <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
           <h1 class="text-blackish" style="margin-left: 50px"><b>Приветствуем!</b></h1>
         </div>
-        <div class="w3-container text-dark-grey" align="left">
-          <h5>Выберите тип обращения, нажав на одну из кнопок ниже</h5>
-        </div>
+        <div class="w3-container text-dark-grey" align="left"><h5>Выберите тип обращения, нажав на одну из кнопок ниже</h5></div>
         <div class="w3-container w3-margin-top w3-margin-bottom hidden-terminal" style="width: 100%">
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="openTab('Bachelor');" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="openTab('Bachelor');" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Бакалавриат</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'M', room: '1-123'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'M', room: '1-123'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Магистратура</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="openTab('College')" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="openTab('College')" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">СПО</h4>
             </div>
           </div>
           <h2 class="text-blackish"><b>Услуги</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'П', room: '1-193А'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'П', room: '1-193А'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Перевод / восст.</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'З', room: '1-186Б'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'З', room: '1-186Б'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Зелёный зал</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Р', room: '1-110'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'Р', room: '1-110'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Договоры</h4>
             </div>
           </div>
           <h2 class="text-blackish"><b>Консультации</b></h2>
           <div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Т', room: '1-177'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'Т', room: '1-177'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Т-Университет</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Х', room: '1-177'});" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'Х', room: '1-177'});" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">Школа Х</h4>
             </div>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ш', room: '1-177'})" style="width: 150px; height: 72px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'Ш', room: '1-177'})" style="width: 150px; height: 72px">
               <img class="search-icon a-margin-8" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">ПИШ</h4>
             </div>
@@ -95,40 +89,33 @@
             <h2 class="text-blackish"><b>Для иностранцев</b><span class="text-dark-grey"> For foreigners</span></h2>
           </div>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "left"}'>
-            <div class="carousel-cell a-button-grey-blue" onclick="load({type: 'Ч', room: '1-113'})" style="width: 150px; height: 96px">
+            <div class="carousel-cell a-grey-blue" onclick="load({type: 'Ч', room: '1-113'})" style="width: 150px; height: 96px">
               <img class="search-icon a-margin-8" src="../static/img/icons/globe.svg" width="24" height="24" /><br />
               <h4 class="w3-bottom a-margin-8">I'm a foreigner<br />Я иностранец</h4>
             </div>
-            <div class="carousel-cell a-hider" style="width: 150px; height: 96px">
-            </div>
-            <div class="carousel-cell a-hider" style="width: 150px; height: 96px">
-            </div>
+            <div class="carousel-cell a-hider" style="width: 150px; height: 96px"></div>
+            <div class="carousel-cell a-hider" style="width: 150px; height: 96px"></div>
           </div>
         </div>
       </div>
-      <!--terminal-->
       <div class="userspace-terminal hidden-mobile a-margin-48">
-        <div class=" w3-animate-left w3-margin-left" align="left">
-          <img src="../static/img/icons/dstu.svg" alt="ДГТУ" width="90" height="90" style="margin-right: 10px" />
+        <div class="w3-animate-left w3-margin-left" align="left"><img src="../static/img/icons/dstu.svg" alt="ДГТУ" width="90" height="90" style="margin-right: 10px" /></div>
+        <div class="w3-animate-left w3-margin-left" align="left">
+          <h1 class="text-blackish" style=""><b>Приветствуем!</b></h1>
         </div>
-          <div class="w3-animate-left w3-margin-left" align="left">
-            <h1 class="text-blackish" style=""><b>Приветствуем!</b></h1>
-        </div>
-        <div class="w3-container text-dark-grey" align="left">
-          <h5>Выберите тип обращения, нажав на одну из кнопок ниже</h5>
-        </div>
+        <div class="w3-container text-dark-grey" align="left"><h5>Выберите тип обращения, нажав на одну из кнопок ниже</h5></div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-center hidden-mobile" style="width: 100%">
           <h2 class="text-blackish"><b>Поступление</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('Bachelor');" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="openTab('Bachelor');" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Бакалавриат</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'M', room: '1-123'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'M', room: '1-123'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Магистратура</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="openTab('College')" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="openTab('College')" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/feather.svg" alt="Перо" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">СПО</h3>
             </div>
@@ -136,15 +123,15 @@
           <br />
           <h2 class="text-blackish"><b>Услуги</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'П', room: '1-193А'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'П', room: '1-193А'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Перевод / восст.</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'З', room: '1-186Б'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'З', room: '1-186Б'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Зелёный зал</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Р', room: '1-110'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'Р', room: '1-110'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/shuffle.svg" alt="Стрелки" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Договоры</h3>
             </div>
@@ -153,76 +140,54 @@
           <br />
           <h2 class="text-blackish"><b>Консультации</b></h2>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Т', room: '1-177'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'Т', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/user.svg" alt="Человек" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Т-Университет</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Х', room: '1-177'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'Х', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/grid.svg" alt="КБ" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">Школа Х</h3>
             </div>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ш', room: '1-177'})" style="width: 30vw; height: 12.5vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'Ш', room: '1-177'})" style="width: 30vw; height: 12.5vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/monitor.svg" alt="Монитор" width="24" height="24" /><br />
               <h3 class="w3-bottom a-margin-16">ПИШ</h3>
             </div>
           </div>
           <br />
           <div style="width: 100%" display="inline">
-           <h2 class="text-blackish"><b>Для иностранцев</b> <span class="text-dark-grey"> For foreigners</h2> </span>
+            <h2 class="text-blackish"><b>Для иностранцев</b> <span class="text-dark-grey"> For foreigners</span></h2>
           </div>
           <div class="carousel" data-flickity='{ "draggable": false, "pageDots": false, "prevNextButtons": false, "contain": true, "cellAlign": "center"}'>
-            <div class="carousel-cell a-button-grey-blue a-button-grey-blue-hover" onclick="load({type: 'Ч', room: '1-113'})" style="width: 30vw; height: 14vh">
+            <div class="carousel-cell a-grey-blue a-grey-blue-hover" onclick="load({type: 'Ч', room: '1-113'})" style="width: 30vw; height: 14vh">
               <img class="search-icon a-margin-16" src="../static/img/icons/globe.svg" alt="Монитор" width="24" height="24" />
               <h3 class="w3-bottom a-margin-16">I'm foreigner<br />Я иностранец</h3>
             </div>
-            <div class="carousel-cell a-hider" style="width: 30vw; height: 12.5vh">
-            </div>
-            <div class="carousel-cell a-hider" style="width: 30vw; height: 12.5vh">
-            </div>
+            <div class="carousel-cell a-hider" style="width: 30vw; height: 12.5vh"></div>
+            <div class="carousel-cell a-hider" style="width: 30vw; height: 12.5vh"></div>
           </div>
         </div>
       </div>
     </div>
-    <!-- 	bachelor	 -->
     <div id="Bachelor" class="tab" style="display: none">
       <div class="userspace-mobile hidden-terminal">
         <div class="w3-animate-left w3-bar">
-          <button class="w3-button w3-padding-8 a-button-grey w3-margin-top w3-bar-item w3-round-xlarge a-button-dark-grey-hover" name="button" onclick="openTab('Start')">
-            <img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="24" height="24" align="left" style="margin-right: 10px" />
-          </button>
+          <button class="w3-button w3-padding-8 a-button-grey w3-margin-top w3-bar-item w3-round-xlarge a-button-dark-grey-hover" name="button" onclick="openTab('Start')"><img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="24" height="24" align="left" style="margin-right: 10px" /></button>
           <h1 class="text-blackish w3-bar-item"><b>Бакалавриат</b></h1>
         </div>
         <div class="w3-panel text-dark-grey w3-margin">
-          <p style="display:none">
-            <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
-            Поиск по факультетам...
-          </p>
+          <p style="display: none"><img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" /> Поиск по факультетам...</p>
         </div>
         <div class="w3-container">
-            <h2 class="text-blackish"><b>Основные факультеты</b></h2>
+          <h2 class="text-blackish"><b>Основные факультеты</b></h2>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom">
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_soc').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_build').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_it').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_agro').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_avia').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа и машиностроение, дизайн
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_inno').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Инноватика, энергетика, приборостроение
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 100%; height:12.5vh" onclick="document.getElementById('bach_chem').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтех
-          </button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_soc').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_build').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_it').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_agro').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_avia').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа и машиностроение, дизайн</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_inno').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Инноватика, энергетика, приборостроение</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" name="button" style="width: 100%; height: 12.5vh" onclick="document.getElementById('bach_chem').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтех</button>
         </div>
         <div id="bach_soc" class="w3-modal">
           <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 100vw">
@@ -250,8 +215,7 @@
               <br />
             </div>
             <br />
-              <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-              <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
         <div id="bach_build" class="w3-modal">
@@ -272,8 +236,7 @@
               <br />
             </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-            <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
         <div id="bach_it" class="w3-modal">
@@ -296,8 +259,7 @@
               <br />
             </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-              <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
         <div id="bach_agro" class="w3-modal">
@@ -319,8 +281,7 @@
               <br />
             </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-            <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
         <div id="bach_avia" class="w3-modal">
@@ -343,8 +304,7 @@
               <br />
             </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-              <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
         <div id="bach_inno" class="w3-modal">
@@ -366,8 +326,7 @@
               <br />
             </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-              <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
         <div id="bach_chem" class="w3-modal">
@@ -391,283 +350,233 @@
               <br />
             </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-              <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
         </div>
       </div>
       <div class="userspace-terminal hidden-mobile a-margin-48">
         <div class="w3-animate-left w3-bar">
-          <button class="w3-button w3-padding-8 a-button-grey w3-margin-top w3-bar-item w3-round-xlarge a-button-dark-grey-hover" name="button" onclick="openTab('Start')">
-            <img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="24" height="24" align="left" style="margin-right: 10px" />
-          </button>
+          <button class="w3-button w3-padding-8 a-button-grey w3-margin-top w3-bar-item w3-round-xlarge a-button-dark-grey-hover" name="button" onclick="openTab('Start')"><img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="24" height="24" align="left" style="margin-right: 10px" /></button>
           <h1 class="text-blackish w3-margin-right w3-bar-item"><b>Бакалавриат</b></h1>
-          <p class="w3-margin-left text-dark-grey right" style="display:none">
-            <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
-            Поиск по факультетам...
-          </p>
+          <p class="w3-margin-left text-dark-grey right" style="display: none"><img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" /> Поиск по факультетам...</p>
         </div>
         <div class="w3-container">
-            <h2 class="text-blackish"><b>Основные факультеты</b></h2>
+          <h2 class="text-blackish"><b>Основные факультеты</b></h2>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-bar">
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-margin-right w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 32%; height:14vh" onclick="document.getElementById('bach_soc_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-margin-right w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 32%; height:14vh" onclick="document.getElementById('bach_build_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура, геодезия
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 31%; height:14vh" onclick="document.getElementById('bach_it_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии
-          </button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-margin-right w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 32%; height: 14vh" onclick="document.getElementById('bach_soc_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Социально-гуманитарные науки</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-margin-right w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 32%; height: 14vh" onclick="document.getElementById('bach_build_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Строительство, архитектура, геодезия</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 31%; height: 14vh" onclick="document.getElementById('bach_it_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IT-Технологии</button>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-bar">
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-margin-right w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 32%; height:14vh" onclick="document.getElementById('bach_agro_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 32%; height:14vh" onclick="document.getElementById('bach_inno_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Инноватика, энергетика, приборостроение
-          </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-margin-left w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 31%; height:14vh" onclick="document.getElementById('bach_avia_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа и машиностроение, дизайн
-          </button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-margin-right w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 32%; height: 14vh" onclick="document.getElementById('bach_agro_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Агро, биотехнологии, транспорт</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 32%; height: 14vh" onclick="document.getElementById('bach_inno_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Инноватика, энергетика, приборостроение</button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-margin-left w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 31%; height: 14vh" onclick="document.getElementById('bach_avia_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиа и машиностроение, дизайн</button>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-bar">
-            <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-button-grey-blue-hover" name="button" style="width: 32%; height:14vh" onclick="document.getElementById('bach_chem_t').style.display='block'">
-            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтех
-          </button>
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-bar-item w3-round-xlarge a-grey-blue-hover" name="button" style="width: 32%; height: 14vh" onclick="document.getElementById('bach_chem_t').style.display='block'"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Пожарная безопасность, химтех</button>
         </div>
-          <div class="long-show">
-          </div>
-        </div>
-        <div id="bach_soc_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_soc_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 5: Социально-гуманитарные науки</h3>
-              <br />
-              37.00.00 Психологические науки<br />
-              38.00.00 Экономика и управления<br />
-              39.00.00 Социология и социальная работа<br />
-              40.00.00 Юриспруденция<br />
-              42.00.00 Средства массовой информации и информационно-библиотечное дело<br />
-              43.00.00 Сервис и туризм<br />
-              44.00.00 Образование и педагогические науки<br />
-              45.00.00 Языкознание и литературоведение<br />
-              48.00.00 Теология<br />
-              49.00.00 Физическая культура и спорт<br />
-              51.00.00 Культуроведение и социально культурные проекты<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
+        <div class="long-show"></div>
+      </div>
+      <div id="bach_soc_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
             <br />
-
-              <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <span onclick="document.getElementById('bach_soc_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
           </div>
-        </div>
-        <div id="bach_build_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_build_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 7: Строительство, архитектура</h3>
-              <br />
-              07.00.00 Архитектура<br />
-              08.00.00 Техника и технологии строительства<br />
-              21.00.00 Прикладная геология, горное дело, нефтегазовое дело и геодезия<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 5: Социально-гуманитарные науки</h3>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
-          </div>
-        </div>
-        <div id="bach_it_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_it_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 2: IT-Технологии</h3>
-              <br />
-              01.00.00 Математика и механика<br />
-              02.00.00 Компьютерные и информационные науки<br />
-              03.00.00 Физика и астрономия<br />
-              09.00.00 Информатика и вычислительная техника<br />
-              10.00.00 Информационная безопасность<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
+            37.00.00 Психологические науки<br />
+            38.00.00 Экономика и управления<br />
+            39.00.00 Социология и социальная работа<br />
+            40.00.00 Юриспруденция<br />
+            42.00.00 Средства массовой информации и информационно-библиотечное дело<br />
+            43.00.00 Сервис и туризм<br />
+            44.00.00 Образование и педагогические науки<br />
+            45.00.00 Языкознание и литературоведение<br />
+            48.00.00 Теология<br />
+            49.00.00 Физическая культура и спорт<br />
+            51.00.00 Культуроведение и социально культурные проекты<br />
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
-          </div>
-        </div>
-        <div id="bach_agro_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_agro_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 3: Агро, биотехнологии, транспорт</h3>
-              <br />
-              11.00.00 Электроника, радиотехника и системы связи<br />
-              19.00.00 Промышленная экология и биотехнологии<br />
-              23.00.00 Техника и технологии наземного транспорта<br />
-              35.00.00 Сельское, лесное и рыбное хозяйство<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
-          </div>
-        </div>
-        <div id="bach_avia_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_avia_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 4: Авиа и машиностроение, дизайн</h3>
-              <br />
-              15.00.00 Машиностроение<br />
-              22.00.00 Технологии материалов<br />
-              24.00.00 Авиационная и ракетно-космическая техника<br />
-              29.00.00 Технологии легкой промышленности<br />
-              54.00.00 Изобразительное и прикладные виды искусств<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
-          </div>
-        </div>
-        <div id="bach_inno_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_inno_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 1: Инноватика, энергетика, приборостроение</h3>
-              <br />
-              12.00.00 Фотоника, приборостроение, оптические и биотехнические системы и технологии<br />
-              13.00.00 Электро- и теплоэнергетика<br />
-              25.00.00 Аэронавигация и эксплуатация авиационной и ракетно-космической техники<br />
-              27.00.00 Управление в технических системах<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
           </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
         </div>
-        <div id="bach_chem_t" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
-            <div class="w3-center">
-              <br />
-              <span onclick="document.getElementById('bach_chem_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container w3-margin">
-              <h3>МФЦ 6: Пожарная безопасность, химтех</h3>
-              <br />
-              16.00.00 Физико-технические науки и технологии<br />
-              18.00.00 Химические технологии<br />
-              20.00.00 Техносферная безопасность и природообустройство<br />
-              28.00.00 Нанотехнологии и материалы<br />
-              33.00.00 Фармация<br />
-              36.00.00 Ветеринария и зоотехния<br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
+      </div>
+      <div id="bach_build_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
             <br />
-            <button class="w3-button w3-display-bottomleft w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button>
-                <button class="w3-button w3-display-bottomright w3-padding-16 a-button-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-button-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+            <span onclick="document.getElementById('bach_build_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
           </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 7: Строительство, архитектура</h3>
+            <br />
+            07.00.00 Архитектура<br />
+            08.00.00 Техника и технологии строительства<br />
+            21.00.00 Прикладная геология, горное дело, нефтегазовое дело и геодезия<br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+        </div>
+      </div>
+      <div id="bach_it_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
+            <br />
+            <span onclick="document.getElementById('bach_it_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 2: IT-Технологии</h3>
+            <br />
+            01.00.00 Математика и механика<br />
+            02.00.00 Компьютерные и информационные науки<br />
+            03.00.00 Физика и астрономия<br />
+            09.00.00 Информатика и вычислительная техника<br />
+            10.00.00 Информационная безопасность<br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+        </div>
+      </div>
+      <div id="bach_agro_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
+            <br />
+            <span onclick="document.getElementById('bach_agro_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 3: Агро, биотехнологии, транспорт</h3>
+            <br />
+            11.00.00 Электроника, радиотехника и системы связи<br />
+            19.00.00 Промышленная экология и биотехнологии<br />
+            23.00.00 Техника и технологии наземного транспорта<br />
+            35.00.00 Сельское, лесное и рыбное хозяйство<br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+        </div>
+      </div>
+      <div id="bach_avia_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
+            <br />
+            <span onclick="document.getElementById('bach_avia_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 4: Авиа и машиностроение, дизайн</h3>
+            <br />
+            15.00.00 Машиностроение<br />
+            22.00.00 Технологии материалов<br />
+            24.00.00 Авиационная и ракетно-космическая техника<br />
+            29.00.00 Технологии легкой промышленности<br />
+            54.00.00 Изобразительное и прикладные виды искусств<br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+        </div>
+      </div>
+      <div id="bach_inno_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
+            <br />
+            <span onclick="document.getElementById('bach_inno_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 1: Инноватика, энергетика, приборостроение</h3>
+            <br />
+            12.00.00 Фотоника, приборостроение, оптические и биотехнические системы и технологии<br />
+            13.00.00 Электро- и теплоэнергетика<br />
+            25.00.00 Аэронавигация и эксплуатация авиационной и ракетно-космической техники<br />
+            27.00.00 Управление в технических системах<br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
+        </div>
+      </div>
+      <div id="bach_chem_t" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-round-xlarge w3-animate-zoom" style="max-width: 50vw">
+          <div class="w3-center">
+            <br />
+            <span onclick="document.getElementById('bach_chem_t').style.display='none'" class="w3-button w3-round-xlarge w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <div class="w3-container w3-margin">
+            <h3>МФЦ 6: Пожарная безопасность, химтех</h3>
+            <br />
+            16.00.00 Физико-технические науки и технологии<br />
+            18.00.00 Химические технологии<br />
+            20.00.00 Техносферная безопасность и природообустройство<br />
+            28.00.00 Нанотехнологии и материалы<br />
+            33.00.00 Фармация<br />
+            36.00.00 Ветеринария и зоотехния<br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="w3-button w3-display-bottomleft w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Бюджет</button> <button class="w3-button w3-display-bottomright w3-padding-16 a-grey-blue w3-margin-bottom w3-margin w3-block w3-round-xlarge a-grey-blue-hover" name="button" type="submit" style="width: 45%" align="center" onclick="location.href='/ticket';">Коммерция</button>
         </div>
       </div>
     </div>
-    <!-- college     -->
     <div id="College" class="tab" style="display: none">
       <div class="userspace-mobile hidden-terminal">
         <div class="w3-animate-left w3-bar">
-          <button class="w3-button a-button-grey w3-margin-top w3-block-item w3-bar-item w3-round-xlarge a-button-dark-grey-hover" style="height: 3.5vh" name="button" onclick="openTab('Start')">
-            <img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="20" height="20" align="left" style="margin-right: 10px" />
-          </button>
+          <button class="w3-button a-button-grey w3-margin-top w3-block-item w3-bar-item w3-round-xlarge a-button-dark-grey-hover" style="height: 3.5vh" name="button" onclick="openTab('Start')"><img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="20" height="20" align="left" style="margin-right: 10px" /></button>
           <h2 class="text-blackish w3-bar-item w3-margin-left"><b>Среднее профессиональное образование</b></h2>
         </div>
         <div class="w3-panel text-dark-grey w3-margin">
-          <p>
-            <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
-            Поиск по услугам...
-          </p>
+          <p><img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" /> Поиск по услугам...</p>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-bar" style="width: 100%">
-            <button class="w3-button w3-padding-12 w3-bar-item a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" style="width:100%; height:10vh" name="button" type="submit" onclick="location.href='/ticket';">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиастроительный колледж
-            </button>
-            <button class="w3-button w3-padding-12 w3-bar-item a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" style="width:100%; height:10vh" name="button" type="submit" onclick="location.href='/ticket';">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />КЭУиП
-            </button>
-            <button class="w3-button w3-padding-12 w3-bar-item a-button-grey-blue w3-margin-top w3-block w3-round-xlarge a-button-grey-blue-hover" style="width:100%; height:10vh" name="button" type="submit" onclick="location.href='/ticket';">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IThub
-            </button>
+          <button class="w3-button w3-padding-12 w3-bar-item a-grey-blue w3-margin-top w3-block w3-round-xlarge a-grey-blue-hover" style="width: 100%; height: 10vh" name="button" type="submit" onclick="location.href='/ticket';"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиастроительный колледж</button>
+          <button class="w3-button w3-padding-12 w3-bar-item a-grey-blue w3-margin-top w3-block w3-round-xlarge a-grey-blue-hover" style="width: 100%; height: 10vh" name="button" type="submit" onclick="location.href='/ticket';"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />КЭУиП</button>
+          <button class="w3-button w3-padding-12 w3-bar-item a-grey-blue w3-margin-top w3-block w3-round-xlarge a-grey-blue-hover" style="width: 100%; height: 10vh" name="button" type="submit" onclick="location.href='/ticket';"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IThub</button>
         </div>
       </div>
       <div class="userspace-terminal hidden-mobile a-margin-48">
         <div class="w3-animate-left w3-bar">
-          <button class="w3-button w3-padding-16 a-button-grey w3-margin-top w3-block w3-bar-item w3-round-xlarge a-button-dark-grey-hover" style="height: 3.5vh" name="button" onclick="openTab('Start')">
-            <img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="20" height="20" align="left" style="margin-right: 10px" />
-          </button>
+          <button class="w3-button w3-padding-16 a-button-grey w3-margin-top w3-block w3-bar-item w3-round-xlarge a-button-dark-grey-hover" style="height: 3.5vh" name="button" onclick="openTab('Start')"><img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Назад" width="20" height="20" align="left" style="margin-right: 10px" /></button>
           <h1 class="text-blackish w3-bar-item w3-margin-top" style="width"><b>Среднее профессиональное образование</b></h1>
         </div>
         <div class="w3-panel text-dark-grey w3-margin">
-          <p>
-            <img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" />
-            Поиск по услугам...
-          </p>
+          <p><img src="../static/img/icons/search.svg" alt="ДГТУ" width="20" height="20" style="margin-right: 10px" /> Поиск по услугам...</p>
         </div>
         <div class="w3-margin-top w3-margin-bottom w3-bar">
-            <button class="w3-bar-item w3-button a-margin-8 w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" style="width: 30%; height: 12.5vh" name="button" type="submit" onclick="location.href='/ticket';">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиастроительный<br> колледж
-            </button>
-            <button class="w3-bar-item w3-button a-margin-8 w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" style="width: 30%; height: 12.5vh" name="button" type="submit" onclick="location.href='/ticket';">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Колледж экономики,<br> управления и права
-            </button>
-            <input type="text" name="type" value="К" style="display: none" />
-            <input type="text" name="room" value="1-157" style="display: none" />
-            <button class="w3-bar-item w3-button a-margin-8 w3-padding-16 a-button-grey-blue w3-margin-top w3-round-xlarge a-button-grey-blue-hover" style="width: 30%; height: 12.5vh" name="button" type="submit" onclick="location.href='/ticket';">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IThub
-            </button>
-          <div class="long-show">
-          </div>
+          <button class="w3-bar-item w3-button a-margin-8 w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" style="width: 30%; height: 12.5vh" name="button" type="submit" onclick="location.href='/ticket';">
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Авиастроительный<br />
+            колледж
+          </button>
+          <button class="w3-bar-item w3-button a-margin-8 w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" style="width: 30%; height: 12.5vh" name="button" type="submit" onclick="location.href='/ticket';">
+            <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />Колледж экономики,<br />
+            управления и права
+          </button>
+          <button class="w3-bar-item w3-button a-margin-8 w3-padding-16 a-grey-blue w3-margin-top w3-round-xlarge a-grey-blue-hover" style="width: 30%; height: 12.5vh" name="button" type="submit" onclick="location.href='/ticket';"><img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 10px" />IThub</button>
+          <div class="long-show"></div>
         </div>
       </div>
     </div>
@@ -676,18 +585,15 @@
       function load(params, method = "post") {
         const form = document.createElement("form");
         form.method = method;
-
         for (const key in params) {
           if (params.hasOwnProperty(key)) {
             const hiddenField = document.createElement("input");
             hiddenField.type = "hidden";
             hiddenField.name = key;
             hiddenField.value = params[key];
-
             form.appendChild(hiddenField);
           }
         }
-
         document.body.appendChild(form);
         form.submit();
       }

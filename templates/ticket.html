@@ -50,13 +50,13 @@
           <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета:<br /><b id="number">{% if tickets.status == True: %} Активен {% else: %} Закрыт {% endif %}</b></div>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='https://dstu.online/navigator?location=14&destination={{ nav }}';">
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='https://dstu.online/navigator?location=14&destination={{ nav }}';">
             <b>Показать путь</b>
           </button>
-          <button class="w3-button w3-padding-16 a-button-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
+          <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
             <b>Отменить запись</b>
           </button>
-          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-margin-top w3-round-large w3-block" name="button" onclick="openTab('Review');">
+          <button class="w3-button w3-padding-16 a-blue a-blue-hover w3-margin-top w3-round-large w3-block" name="button" onclick="openTab('Review');">
             <b>Оценить</b>
           </button>
         </div>
@@ -82,7 +82,7 @@
           <h5 style="width: 25vw">Сфотографируйте это окно. А лучше наведите камеру вашего смартфона на QR-код ниже — так вы сможете отслеживать свою очередь в реальном времени.</h5>
           <img src="../static/ticketQR.png" alt="QR" width="240" height="240" />
           <br />
-          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-round-large w3-block w3-margin-top w3-margin-bottom" style="width: 25%" name="button" onclick="location.href='/client';"><b>Следующий</b></button>
+          <button class="w3-button w3-padding-16 a-blue a-blue-hover w3-round-large w3-block w3-margin-top w3-margin-bottom" style="width: 25%" name="button" onclick="location.href='/client';"><b>Следующий</b></button>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
           <p style="padding-bottom: 25vh" align="left">Напишите свои предложения (необязательно)</p>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
-          <button class="w3-button w3-padding-16 a-button-blue a-button-blue-hover w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
+          <button class="w3-button w3-padding-16 a-blue a-blue-hover w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='/client';">
             <b>Отправить отзыв</b>
           </button>
         </div>
