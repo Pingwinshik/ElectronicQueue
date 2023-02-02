@@ -6,251 +6,234 @@
     <title>СУО ДГТУ: Интерфейс администратора</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body class="a-light-grey w3-content" style="max-width: 1600px">
+  <body class="w3-content" style="max-width: 100%">
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px" id="mySidebar">
+    <nav class="w3-sidebar w3-collapse w3-animate-left a-grey" style="z-index: 3; width: 300px" id="mySidebar">
       <div class="w3-display-container w3-animate-left w3-margin" align="left">
-          <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
-          <h4 class="text-blue" style="margin-left: 50px"><b>Система очередей</b></h4>
-        </div>
-      <hr class="w3-margin-top">
+        <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
+        <h4 class="text-blue" style="margin-left: 50px"><b>Система очередей</b></h4>
+      </div>
+      <hr class="w3-margin-top" />
       <div class="w3-display-container w3-animate-left w3-margin" align="left">
-          <img src="../static/img/icons/user.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
-          <h4 class="text-blackish" style="margin-left: 50px">Владимир Вист</h4>
-        </div>
-      <hr class="w3-margin-top">
-       <div class="w3-container">
-       <button class="w3-button center w3-round-xlarge a-button-light-blue-hover" style="width:100%; height:6vh; padding: 0px!important;" name="button" type="submit" onclick="w3_close();openTab('overview');">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Панель администратора</h5>
-       </button>
-       <button class="w3-button w3-padding-12 w3-round-xlarge a-button-light-blue-hover" style="width:100%; height:6vh; padding: 0px!important;" name="button" type="submit"  onclick="w3_close();openTab('tickets');">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Талоны</h5>
-       </button>
-       <button class="w3-button w3-padding-12 w3-round-xlarge a-button-light-blue-hover" style="width:100%; height:6vh; padding: 0px!important;" name="button" type="submit" onclick="w3_close();openTab('stats');">
-              <img class="search-icon" src="../static/img/icons/feather.svg" alt="Перо" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" /><h5 style="margin-left: 40px;" align="left">Статистика</h5>
-       </button>
-       </div>
-       <hr>
+        <img src="../static/img/icons/user.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
+        <h4 class="text-blackish" style="margin-left: 50px">Владимир Вист</h4>
+      </div>
+      <hr class="w3-margin-top" />
       <div class="w3-container">
-        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-hover-grey" title="close menu">
-          <i class="fa fa-remove"></i>
-        </a>
+        <button class="w3-button center w3-round-xlarge a-light-blue-hover" style="width: 100%; height: 6vh; padding: 0px !important" name="button" type="submit" onclick="w3_close();openTab('overview');">
+          <img class="search-icon" src="../static/img/icons/sliders.svg" alt="Перо" width="16" height="16" align="left" style="margin-left: 10px" />
+          <h5 style="margin-left: 40px; vertical-align: middle" align="left">Панель администратора</h5>
+        </button>
+        <button class="w3-button w3-padding-12 w3-round-xlarge a-light-blue-hover" style="width: 100%; height: 6vh; padding: 0px !important" name="button" type="submit" onclick="w3_close();openTab('tickets-desk');">
+          <img class="search-icon" src="../static/img/icons/tag.svg" alt="Талоны" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" />
+          <h5 style="margin-left: 40px" align="left">Талоны (Стол)</h5>
+        </button>
+        <button class="w3-button w3-padding-12 w3-round-xlarge a-light-blue-hover" style="width: 100%; height: 6vh; padding: 0px !important" name="button" type="submit" onclick="w3_close();openTab('tickets-window');">
+          <img class="search-icon" src="../static/img/icons/tag.svg" alt="Талоны" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" />
+          <h5 style="margin-left: 40px" align="left">Талоны (Окно)</h5>
+        </button>
+        <button class="w3-button w3-padding-12 w3-round-xlarge a-light-blue-hover" style="width: 100%; height: 6vh; padding: 0px !important" name="button" type="submit" onclick="w3_close();openTab('tickets-history');">
+          <img class="search-icon" src="../static/img/icons/tag.svg" alt="Талоны" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" />
+          <h5 style="margin-left: 40px" align="left">Талоны (История)</h5>
+        </button>
+        <button class="w3-button w3-padding-12 w3-round-xlarge a-light-blue-hover" style="width: 100%; height: 6vh; padding: 0px !important" name="button" type="submit" onclick="w3_close();openTab('stats');">
+          <img class="search-icon" src="../static/img/icons/trending-up.svg" alt="Администратор" width="20" height="20" align="left" style="margin-left: 10px; margin-top: 8px" />
+          <h5 style="margin-left: 40px" align="left">Статистика</h5>
+        </button>
+        <hr />
+        <div class="w3-padding-12 w3-round-xlarge a-grey" style="width: 100%; height: 42.5vh; padding: 0px !important"></div>
+      <button class="w3-button w3-bar w3-round-xlarge a-light-blue-hover" style="width: 100%; height: 6vh; padding: 0px !important" name="button" type="submit" onclick="w3_close()">
+        <div class="w3-bar-item"><img class="search-icon" src="../static/img/icons/arrow-left.svg" alt="Администратор" width="24" height="24" align="left" style="margin-top: 8px" /></div>
+        <div class="w3-bar-item"><h5 style="" align="left">Выйти</h5></div>
+      </button>
+      </div>
+      <div class="w3-container"></div>
+      <div class="w3-container">
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-hover-grey" title="Close menu"> </a>
       </div>
     </nav>
 
     <!-- Overlay effect when opening sidebar on small screens -->
-    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor: pointer" title="close side menu" id="myOverlay"></div>
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor: pointer" title="Close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left: 300px">
       <!-- Header -->
-      <header>
-        <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-      </header>
+      <div class="tab w3-container w3-padding-large w3-grey" id="overview">
+        <h2 class="w3-margin"><b>Панель администратора</b></h2>
+        <div class="w3-row-padding w3-margin" style="height: 274px; width: 800px; position: static">
+          <div class="w3-quarter">
+            <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
+              <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/tag.svg" alt="Перо" width="20" height="20" align="left" /></div>
+              <div class="w3-center">Талоны</div>
+              <div class="w3-clear"></div>
+              <h1 class="w3-center">5</h1>
+            </div>
+          </div>
 
-      <div class="w3-container tab" id="overview" style="display: none">
-        <div class="w3-container">
-          <h1 class="text-blackish"><b>Панель администратора</b></h1>
-        </div>
+          <div class="w3-quarter">
+            <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
+              <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/users.svg" alt="Перо" width="20" height="20" align="left" /></div>
+              <div class="w3-center">Посетители</div>
+              <div class="w3-clear"></div>
+              <h1 class="w3-center">150 всего</h1>
+            </div>
+          </div>
 
-        <div class="w3-row-padding w3-margin-bottom">
           <div class="w3-quarter">
-            <div class="w3-container a-button-blue w3-padding-16">
-              <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>{{ count }}</h3>
-              </div>
+            <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
+              <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/briefcase.svg" alt="Перо" width="20" height="20" align="left" /></div>
+              <div class="w3-center">Сотрудники</div>
               <div class="w3-clear"></div>
-              <h4>Талонов</h4>
+              <h1 class="w3-center">13</h1>
             </div>
           </div>
+
           <div class="w3-quarter">
-            <div class="w3-container w3-dark-grey w3-text-white w3-padding-16">
-              <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>{{ count }}</h3>
-              </div>
+            <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
+              <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/monitor.svg" alt="Перо" width="20" height="20" align="left" /></div>
+              <div class="w3-center">Терминалы</div>
               <div class="w3-clear"></div>
-              <h4>Посетителей</h4>
+              <h1 class="w3-center">13</h1>
             </div>
           </div>
-          <div class="w3-quarter">
-            <div class="w3-container w3-dark-grey w3-padding-16">
-              <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>13</h3>
-              </div>
-              <div class="w3-clear"></div>
-              <h4>Сотрудников</h4>
-            </div>
-          </div>
-          <div class="w3-quarter">
-            <div class="w3-container w3-dark-grey w3-padding-16">
-              <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>5</h3>
-              </div>
-              <div class="w3-clear"></div>
-              <h4>Терминалов</h4>
-            </div>
-          </div>
-        </div>
-        <div id="Statistics">
-          <div class="w3-container w3-padding-24">
+
+          <div class="w3-container w3-padding-24" style="height: 274px; width: 800px; position: static">
             <h2><b>Статистика</b></h2>
-            <span>Дата: </span><span class="right"><b id="date">12.12.2022</b></span
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/calendar.svg" alt="Перо" width="20" height="20" align="left" />Дата:</span><span class="right"><b id="date">12.12.2022</b></span
             >​<br />
-            <span>Время: </span><span class="right"><b id="time">12:20:00</b></span
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/clock.svg" alt="Перо" width="20" height="20" align="left" />Время:</span><span class="right"><b id="time">12:20:00</b></span
             >​<br />
-            <span>Этот сеанс длится: </span
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/watch.svg" alt="Перо" width="20" height="20" align="left" />Этот сеанс длится:</span
             ><span class="right"
               ><b><span id="minutes">00</span>:<span id="seconds">00</span></b></span
             >​<br />
-            <span>Талонов за день: </span><span class="right"><b>23</b></span
+            <div class="w3-container a-margin-bottom-8"></div>
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/tag.svg" alt="Перо" width="20" height="20" align="left" />Талонов за день:</span><span class="right"><b>7</b></span
             >​<br />
-            <span>Среднее время обслуживания: </span><span class="right"><b>3:27</b></span
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/clock.svg" alt="Перо" width="20" height="20" align="left" />Среднее время обслуживания:</span><span class="right"><b>3:27</b></span
             >​<br />
-            <span>Нормативное время обслуживания: </span><span class="right"><b>5:00</b></span
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/thumbs-up.svg" alt="Перо" width="20" height="20" align="left" />Нормативное время обслуживания:</span><span class="right"><b>5:00</b></span
             >​
           </div>
         </div>
-        <hr />
       </div>
-
-      <div class="tab w3-container w3-padding-large w3-grey" id="tickets">
-        <h2 class="w3-margin"><b>База талонов</b></h2>
-        <div class="w3-container w3-bar">
-          <form method="post">
-            <input type="number" name="adm_action" value="1" style="display: none" />
-            <button type="submit" class="w3-bar-item w3-button w3-right a-button-blue a-button-blue-hover w3-round-xlarge w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Обнулить</button>
-          </form>
-          <form method="post">
-            <input type="number" name="adm_action" value="2" style="display: none" />
-            <button type="submit" class="w3-bar-item w3-right w3-button a-button-blue a-button-blue-hover w3-round-xlarge w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Обновить</button>
-          </form>
-          <form method="post">
-            <input type="number" name="adm_action" value="3" style="display: none" />
-            <button type="submit" class="w3-bar-item w3-right w3-button a-button-blue a-button-blue-hover w3-round-xlarge w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Вывести</button>
-          </form>
-        </div>
-
-        <div class="w3-container">
-          <table class="w3-table-all">
-            <thead>
-              <tr class="w3-red">
-                <th>Порядковый номер</th>
-                <th>ID</th>
-                <th>Статус</th>
-              </tr>
-            </thead>
-            {% for element in tickets %}
-            <tr>
-              <td>{{ tickets[element.counter-1].counter }}</td>
-              <td>{{ tickets[element.counter-1].type }}-{{ '{:03}'.format(tickets[element.counter-1].id) }}</td>
-              <td>{{ tickets[element.counter-1].status }}</td>
+      <div class="tab w3-container w3-padding-large w3-grey" id="tickets-desk" style="display: none">
+        <h1 class="w3-margin"><b>Статистика</b></h1>
+        <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
+          <thead>
+            <tr class="a-grey">
+              <th>Всего талонов</th>
+              <th>Всего операций</th>
+              <th>В очереди</th>
+              <th>Ср. время ожидания</th>
+              <th>За день</th>
+              <th>Сейчас</th>
+              <th>Ср. время</th>
             </tr>
-            {% endfor %}
-          </table>
-        </div>
+          </thead>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
       </div>
-
-      <div class="tab w3-container w3-padding-large" style="margin-bottom: 32px; display: none" id="stats">
-        <h2 class="text-blackish"><b>Общие данные</b></h2>
-        <!-- Статы -->
-        <p>Новые посетители</p>
-        <div class="w3-grey">
-          <div class="w3-container w3-center w3-padding a-button-blue" style="width: 25%">+25%</div>
-        </div>
-
-        <p>Загруженность сотрудников</p>
-        <div class="w3-grey">
-          <div class="w3-container w3-center w3-padding a-button-blue" style="width: 50%">50%</div>
-        </div>
-
-        <p>Удовлетворённость посетителей</p>
-        <div class="w3-grey">
-          <div class="w3-container w3-center w3-padding a-button-blue" style="width: 95%">95%</div>
-        </div>
-
-        <h2 class="text-blackish"><b>За время приёмной кампании 2023:</b></h2>
-
-        <div class="w3-row-padding w3-margin-bottom">
-          <div class="w3-quarter">
-            <div class="w3-container a-button-blue w3-padding-16">
-              <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>52</h3>
-              </div>
-              <div class="w3-clear"></div>
-              <h4>Талона</h4>
-            </div>
-          </div>
-
-          <div class="w3-quarter">
-            <div class="w3-container w3-dark-grey w3-text-white w3-padding-16">
-              <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>46</h3>
-              </div>
-              <div class="w3-clear"></div>
-              <h4>Посетителей</h4>
-            </div>
-          </div>
-
-          <div class="w3-quarter">
-            <div class="w3-container w3-dark-grey w3-padding-16">
-              <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>21</h3>
-              </div>
-              <div class="w3-clear"></div>
-              <h4>Сотрудник</h4>
-            </div>
-          </div>
-
-          <div class="w3-quarter">
-            <div class="w3-container w3-dark-grey w3-padding-16">
-              <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-              <div class="w3-right">
-                <h3>5</h3>
-              </div>
-              <div class="w3-clear"></div>
-              <h4>Терминалов</h4>
-            </div>
-          </div>
-        </div>
+      <div class="tab w3-container w3-padding-large w3-grey" id="tickets-window" style="display: none">
+        <h1 class="w3-margin"><b>Статистика</b></h1>
+        <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
+          <thead>
+            <tr class="a-grey">
+              <th>Окно</th>
+              <th>Статус</th>
+              <th>Клиент</th>
+              <th>Обслужено</th>
+              <th>Время перерыва</th>
+              <th>Ср. время ожидания</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tab w3-container w3-padding-large w3-grey" id="tickets-operations" style="display: none">
+        <h1 class="w3-margin"><b>Статистика</b></h1>
+        <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
+          <thead>
+            <tr class="a-grey">
+              <th>Код</th>
+              <th>Операция</th>
+              <th>В очереди</th>
+              <th>Обслужено</th>
+              <th>Ср. время</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tab w3-container w3-padding-large w3-grey" id="tickets-history" style="display: none">
+        <h1 class="w3-margin"><b>Статистика</b></h1>
+        <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
+          <thead>
+            <tr class="a-grey">
+              <th>Код</th>
+              <th>Операция</th>
+              <th>В очереди</th>
+              <th>Обслужено</th>
+              <th>Ср. время</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
       </div>
       <!-- написать админам -->
       <div class="tab w3-container w3-padding-large w3-grey" id="contacts" style="display: none">
         <h4><b>Написать разработчикам</b></h4>
         <div class="w3-row-padding w3-center hi w3-padding-24" style="margin: 0">
           <div class="w3-third w3-dark-grey">
-            <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
+            <p></p>
             <p>dstu4ever@donstu.ru</p>
           </div>
           <div class="w3-third w3-teal">
-            <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
+            <p></p>
             <p>Ростов-на-Дону, РФ</p>
           </div>
           <div class="w3-third w3-dark-grey">
-            <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
+            <p></p>
             <p>8(800)555-35-35</p>
           </div>
         </div>
         <hr class="w3-opacity" />
-        <form action="/action_page.php" target="_blank">
-          <div class="w3-section">
-            <label>Тема</label>
-            <input class="w3-input w3-border" type="text" name="Name" required />
-          </div>
-          <div class="w3-section">
-            <label>Сообщение</label>
-            <input class="w3-input w3-border" type="text" name="Message" required />
-          </div>
-          <button type="submit" class="w3-button a-button-blue w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Отправить</button>
-        </form>
+        <div class="w3-section">
+          <label>Тема</label>
+        </div>
+        <div class="w3-section">
+          <label>Сообщение</label>
+        </div>
+        <button type="submit" class="w3-button a-blue w3-margin-bottom">Отправить</button>
       </div>
       <!-- End page content -->
     </div>
