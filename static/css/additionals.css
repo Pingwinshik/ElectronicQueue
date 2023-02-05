@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: #e6e6e6; /* Цвет линии для остальных браузеров */
+    background-color: #e6e6e6; /* Цвет линии для браузера Firefox и Opera */
+    height: 2px; /* Толщина линии */
+   }
 .a-light-grey,
 .a-hover-light-grey:hover{
   color: #000 !important;
@@ -7,11 +13,14 @@
 .text-dark-grey {
   color: #83838D !important;
 }
+.text-light-grey {
+  color: #F1F1F7 !important;
+}
 .text-blackish {
   color: #1A1B1D;
 }
 .text-blue {
-  color: #5a87e9;
+  color: #1A4FC1;
 }
 .a-grey {
   background-color: #f1f1f7 !important;
@@ -20,34 +29,51 @@
   color: #ffffff !important;
   background-color: #ffffff !important;
 }
-.a-button-grey-blue-hover:hover {
-  color: #5a87e9 !important;
+.a-grey-blue-hover:hover {
+  color: #1A4FC1 !important;
   background-color: #fafafa !important;
 }
-.a-button-grey-blue {
+.a-grey-blue {
   color: #5a87e9 !important;
   background-color: #f1f1f7 !important;
 }
-.a-button-blue {
+.a-blue {
   color: #ffffff !important;
-  background-color: #5a87e9 !important;
+  background-color: #1A4FC1 !important;
+}
+.a-light-grey {
+  color: #F5F5F5 !important;
+  background-color: #1A4FC1 !important;
 }
 .center {
   vertical-align: middle;
 }
-.a-button-blue-hover:hover {
+.a-blue-hover:hover {
   color: #eef2fb !important;
   background-color: #5179d2 !important;
 }
-.a-button-light-blue-hover:hover {
+.a-light-blue-hover:hover {
   color: #1A4FC1 !important;
   background-color: #C9D8F8 !important;
+}
+.a-margin-terminal {
+  margin-left: 12.5vw!important;
+  margin-right: 12.5vw!important;
+}
+.a-margin-stat {
+  margin-left: 12.5vw!important;
+  margin-right: 12.5vw!important;
+  margin-top: 25vh!important;
+  margin-bottom: 25vh!important;
 }
 .a-margin-8 {
   margin: 8px !important;
 }
 .a-margin-bottom-8 {
   margin-bottom: 8px !important;
+}
+.a-margin-right-8{
+    margin-right:8px!important
 }
 .a-margin-16 {
   margin: 16px !important;
