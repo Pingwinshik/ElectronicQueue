@@ -9,10 +9,10 @@
   </head>
   <body class="w3-content" style="max-width: 100%">
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse w3-animate-left a-grey" style="z-index: 3; width: 300px" id="mySidebar">
+    <nav class="w3-sidebar w3-collapse w3-animate-left a-grey" style="z-index: 3; width: 350px" id="mySidebar">
       <div class="w3-display-container w3-animate-left w3-margin" align="left">
         <img src="../static/img/icons/dstu.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
-        <h4 class="text-blue" style="margin-left: 50px"><b>Система очередей</b></h4>
+        <h4 class="text-blue" style="margin-left: 50px">Система очередей ДГТУ</h4>
       </div>
       <hr class="w3-margin-top">
       <div class="w3-display-container w3-animate-left w3-margin w3-bar" align="left">
@@ -50,15 +50,15 @@
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor: pointer" title="Close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main" style="margin-left: 300px">
+    <div class="w3-main" style="margin-left: 350px">
       <!-- Header -->
       <div class="tab w3-container w3-padding-large w3-grey" id="overview">
-        <h2 class="w3-margin"><b>Панель администратора</b></h2>
+        <h1 class="w3-row-padding w3-margin"><b>Панель администратора</b></h1>
         <div class="w3-row-padding w3-margin" style="height: 274px; width: 800px; position: static">
           <div class="w3-quarter">
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/tag.svg" alt="Перо" width="20" height="20" align="left" /></div>
-              <div class="w3-center">Талоны</div>
+              <div class="w3-center text-dark-grey">Талоны</div>
               <div class="w3-clear"></div>
               <h1 class="w3-center">5</h1>
             </div>
@@ -67,7 +67,7 @@
           <div class="w3-quarter">
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/users.svg" alt="Перо" width="20" height="20" align="left" /></div>
-              <div class="w3-center">Посетители</div>
+              <div class="w3-center text-dark-grey">Посетители</div>
               <div class="w3-clear"></div>
               <h1 class="w3-center">150 всего</h1>
             </div>
@@ -76,7 +76,7 @@
           <div class="w3-quarter">
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/briefcase.svg" alt="Перо" width="20" height="20" align="left" /></div>
-              <div class="w3-center">Сотрудники</div>
+              <div class="w3-center text-dark-grey">Сотрудники</div>
               <div class="w3-clear"></div>
               <h1 class="w3-center">13</h1>
             </div>
@@ -85,14 +85,14 @@
           <div class="w3-quarter">
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/monitor.svg" alt="Перо" width="20" height="20" align="left" /></div>
-              <div class="w3-center">Терминалы</div>
+              <div class="w3-center text-dark-grey">Терминалы</div>
               <div class="w3-clear"></div>
               <h1 class="w3-center">13</h1>
             </div>
           </div>
 
           <div class="w3-container w3-padding-24" style="height: 274px; width: 800px; position: static">
-            <h2><b>Статистика</b></h2>
+            <h1><b>Статистика</b></h1>
             <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/calendar.svg" alt="Перо" width="20" height="20" align="left" />Дата:</span><span class="right"><b id="date">12.12.2022</b></span
             >​<br />
             <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/clock.svg" alt="Перо" width="20" height="20" align="left" />Время:</span><span class="right"><b id="time">12:20:00</b></span
@@ -135,9 +135,9 @@
       <div class="tab w3-container w3-padding-large w3-grey w3-bar" id="tickets-window" style="display: none">
         <h1 class="w3-margin w3-bar-item"><b>Статистика</b></h1>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button">Рабочий стол</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" name="button">История</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" name="button">История</button>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
             <tr class="a-grey">
@@ -162,9 +162,9 @@
       <div class="tab w3-container w3-padding-large w3-grey w3-bar" id="tickets-history" style="display: none">
         <h1 class="w3-margin w3-bar-item"><b>Статистика</b></h1>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button">Рабочий стол</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" name="button">История</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" name="button">История</button>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
             <tr class="a-grey">
@@ -208,9 +208,9 @@
       <div class="tab w3-container w3-padding-large w3-grey w3-bar" id="tickets-desk" style="display: none">
         <h1 class="w3-margin w3-bar-item"><b>Статистика</b></h1>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button">Рабочий стол</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover a-margin-left-8" style="height: 6vh" name="button">История</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" name="button">История</button>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
             <tr class="a-grey">
