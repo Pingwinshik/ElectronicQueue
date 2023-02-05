@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="5" />
     <title>СУО ДГТУ: Табло</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
@@ -11,7 +10,7 @@
   <body>
     <div class="w3-bar w3-center a-grey">
       <div class="w3-bar-item w3-center" style="width: 5%">
-        <img src="../static/img/icons/dstu.svg" alt="ДГТУ" width="40" height="40" />
+        <img src="../static/img/icons/dstu.svg" alt="ДГТУ" width="40" height="40" onclick="document.getElementById('settings').style.display='block'" />
       </div>
       <div class="w3-bar-item w3-center" style="width: 90%">
         <h2>
@@ -38,8 +37,8 @@
         </th>
       </tr>
       <tr>
-        <td><h1>{% if (not tickets) or (OP==False): %} Талоны не вызваны{% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</h1></td>
-        <td><h1>{% if (not tickets) or (OP==False): %} {% else: %} {{ tickets[0].room }}/1 {% endif %}</h1></td>
+        <td><h1></h1></td>
+        <td><h1></h1></td>
       </tr>
     </table>
     <table class="w3-table-all w3-right w3-centered w3-xxlarge" style="width: 50%">
@@ -51,13 +50,32 @@
           <h1><b>Кабинет</b></h1>
         </th>
       </tr>
-      {% for element in range(start, temp) %}
       <tr>
-        <td><h1>{% if (temp>=1): %}{{ tickets[element].type }}-{{'{:03}'.format(tickets[element].id) }}{% endif %}</h1></td>
-        <td><h1>{% if (temp>=1): %}{{ tickets[element].room }}{% endif %}</h1></td>
+        <td><h1></h1></td>
+        <td><h1></h1></td>
       </tr>
-      {% endfor %}
     </table>
+    <div id="settings" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          <h2 class="w3-center"><b>Настройки</b></h2>
+          <div class="w3-container">
+            <h2>Конфигурация</h2>
+            <p>Выберите желаемую конфигурацию для этого экрана.</p>
+            <div class="w3-dropdown-click">
+              <button onclick="myFunction()" class="w3-button a-blue w3-round-xlarge">Выбрать</button>
+              <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                <a href="#" class="w3-bar-item w3-button">Link 3</a>
+              </div>
+            </div>
+          </div>
+          <br/><br/><br/><br/><br/>
+        </div>
+      </div>
+    </div>
     <script>
       const milliseconds = 10;
       setInterval(() => {
@@ -67,6 +85,15 @@
         var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         document.getElementById("time").innerHTML = current_time;
       }, milliseconds);
+
+      function myFunction() {
+        var x = document.getElementById("Demo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
     </script>
   </body>
 </html>
