@@ -3,6 +3,7 @@ from sanic.response import json, html, text
 import asyncpg
 import asyncio
 import os
+import Settings
 
 app = Sanic(__name__)
 app.static("/static", os.getcwd() + "/static")
@@ -12,62 +13,87 @@ loop = asyncio.get_event_loop()
 
 async def nigger():
     sys_conn = await asyncpg.connect(
-        host="localhost",
-        port="5432",
-        user="postgres",
-        password="Lilipu6!"
+        host=Settings.S_host,
+        port=Settings.S_port,
+        user=Settings.S_user,
+        password=Settings.S_password
     )
-    await sys_conn.execute(f'CREATE DATABASE "EQS" OWNER postgres')
+    try:
+        await sys_conn.execute(f'CREATE DATABASE "EQS" OWNER postgres')
+    except:
+        pass
     await sys_conn.close()
 
 
-async def drop_table():
+async def drop_tick_table():
     conn = await asyncpg.connect(
-        host="localhost",
-        port="5432",
+        host=Settings.S_host,
+        port=Settings.S_port,
         database="EQS",
-        user='postgres',
-        password='Lilipu6!')
-    await conn.execute('DROP TABLE IF EXISTS "Tickets";')
+        user=Settings.S_user,
+        password=Settings.S_password)
+    try:
+        await conn.execute('DROP TABLE IF EXISTS "Tickets";')
+    except:
+        pass
     await conn.close()
 
 
-async def init_table():
+async def drop_op_table():
     conn = await asyncpg.connect(
-        host="localhost",
-        port="5432",
+        host=Settings.S_host,
+        port=Settings.S_port,
         database="EQS",
-        user='postgres',
-        password='Lilipu6!')
-    await conn.execute('''CREATE TABLE "Tickets" (id serial PRIMARY KEY,
+        user=Settings.S_user,
+        password=Settings.S_password)
+    await conn.execute('DROP TABLE IF EXISTS "Operators";')
+    await conn.close()
+
+
+async def init_tables():
+    conn = await asyncpg.connect(
+        host=Settings.S_host,
+        port=Settings.S_port,
+        database="EQS",
+        user=Settings.S_user,
+        password=Settings.S_password)
+    await conn.execute('''CREATE TABLE IF NOT EXISTS "Tickets" (id serial PRIMARY KEY,
                 type varchar (2) NOT NULL,
                 number smallint NOT NULL,
                 operator_id smallint,
                 status smallint  NOT NULL);'''
                        )
+    await conn.execute('''CREATE TABLE IF NOT EXISTS "Operators" (id serial PRIMARY KEY,
+                    room varchar (5) NOT NULL,
+                    wnd smallint NOT NULL,
+                    logged_in boolean NOT NULL DEFAULT false,
+                    is_working boolean NOT NULL DEFAULT false,
+                    is_serving boolean NOT NULL DEFAULT false,
+                    login varchar (100) NOT NULL,
+                    password varchar (100) NOT NULL);'''
+                       )
     await conn.close()
 
 
-async def create_ticket():
+async def create_ticket(T_type, T_number, ):
     conn = await asyncpg.connect(
-        host="localhost",
-        port="5432",
+        host=Settings.S_host,
+        port=Settings.S_port,
         database="EQS",
-        user='postgres',
-        password='Lilipu6!')
-    await conn.execute(''' INSERT INTO "Tickets"(type, number, operator_id, status) VALUES($1, $2, $3, $4)''', 'S', 99,
-                       13, 1)
+        user=Settings.S_user,
+        password=Settings.S_password)
+    await conn.execute(''' INSERT INTO "Tickets"(type, number, operator_id, status) VALUES($1, $2, $3, $4)''', T_type, T_number, None, 0)
     await conn.close()
 
 
 @app.route('/EditTicket', methods=["POST"])
 async def edit_ticket(data: str):
     conn = await asyncpg.connect(
-        host="localhost",
-        port="5432",
+        host=Settings.S_host,
+        port=Settings.S_port,
         database="EQS",
-        user='postgres',
-        password='Lilipu6!')
+        user=Settings.S_user,
+        password=Settings.S_password)
     cur = conn.cursor()
     await cur.execute('CREATE TABLE Tickets (id serial PRIMARY KEY,'
                       'type varchar (2) NOT NULL,'
@@ -128,6 +154,6 @@ async def statistic(request):
 
 if __name__ == '__main__':
     loop.run_until_complete(nigger())
-    loop.run_until_complete(init_table())
-    loop.run_until_complete(create_ticket())
+    loop.run_until_complete(init_tables())
+    loop.run_until_complete(create_ticket("Р", 77))
     init()
