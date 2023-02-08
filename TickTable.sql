@@ -1,7 +1,0 @@
-CREATE TABLE Ticket {
-	id SERIAL PRIMARY KEY,
-	type VARCHAR(1) NOT NULL,
-	number INTEGER NOT NULL,
-	operator_id INTEGER,
-	status SMALLINT NOT NULL
-};

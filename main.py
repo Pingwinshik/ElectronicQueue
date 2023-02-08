@@ -1,5 +1,7 @@
 from sanic import Sanic
 from sanic.response import json, html, text
+from sanic_ext import render
+from sanic_jwt.decorators import protected
 import asyncpg
 import asyncio
 import os
@@ -29,7 +31,7 @@ async def drop_tick_table():
     conn = await asyncpg.connect(
         host=Settings.S_host,
         port=Settings.S_port,
-        database="EQS",
+        database=Settings.S_database,
         user=Settings.S_user,
         password=Settings.S_password)
     try:
@@ -43,7 +45,7 @@ async def drop_op_table():
     conn = await asyncpg.connect(
         host=Settings.S_host,
         port=Settings.S_port,
-        database="EQS",
+        database=Settings.S_database,
         user=Settings.S_user,
         password=Settings.S_password)
     await conn.execute('DROP TABLE IF EXISTS "Operators";')
@@ -54,12 +56,13 @@ async def init_tables():
     conn = await asyncpg.connect(
         host=Settings.S_host,
         port=Settings.S_port,
-        database="EQS",
+        database=Settings.S_database,
         user=Settings.S_user,
         password=Settings.S_password)
     await conn.execute('''CREATE TABLE IF NOT EXISTS "Tickets" (id serial PRIMARY KEY,
                 type varchar (2) NOT NULL,
                 number smallint NOT NULL,
+                wnd varchar(9) NOT NULL,
                 operator_id smallint,
                 status smallint  NOT NULL);'''
                        )
@@ -70,19 +73,25 @@ async def init_tables():
                     is_working boolean NOT NULL DEFAULT false,
                     is_serving boolean NOT NULL DEFAULT false,
                     login varchar (100) NOT NULL,
-                    password varchar (100) NOT NULL);'''
+                    password varchar (100) NOT NULL,
+                    serv_ticket_id smallint);'''
+                       )
+    await conn.execute('''CREATE TABLE IF NOT EXISTS "Administrum" (id serial PRIMARY KEY,
+                       logged_in boolean NOT NULL DEFAULT false,
+                       login varchar (100) NOT NULL,
+                       password varchar (100) NOT NULL);'''
                        )
     await conn.close()
 
 
-async def create_ticket(T_type, T_number, ):
+async def create_ticket(T_type, T_number, T_window):
     conn = await asyncpg.connect(
         host=Settings.S_host,
         port=Settings.S_port,
-        database="EQS",
+        database=Settings.S_database,
         user=Settings.S_user,
         password=Settings.S_password)
-    await conn.execute(''' INSERT INTO "Tickets"(type, number, operator_id, status) VALUES($1, $2, $3, $4)''', T_type, T_number, None, 0)
+    await conn.execute(''' INSERT INTO "Tickets"(type, number, wnd, operator_id, status) VALUES($1, $2, $3, $4, $5)''', T_type, T_number, T_window, None, 0)
     await conn.close()
 
 
@@ -91,7 +100,7 @@ async def edit_ticket(data: str):
     conn = await asyncpg.connect(
         host=Settings.S_host,
         port=Settings.S_port,
-        database="EQS",
+        database=Settings.S_database,
         user=Settings.S_user,
         password=Settings.S_password)
     cur = conn.cursor()
@@ -112,48 +121,60 @@ def init():
 
 @app.route('/')
 async def index(request):
-    template = open(os.getcwd() + "/templates/index.html", encoding='utf-8')
-    return html(template.read())
+    return await render("index.html")
 
 
 @app.route("/login")
 async def login(request):
-    template = open(os.getcwd() + "/templates/login.html", encoding='utf-8')
-    return html(template.read())
+    return await render("login.html", context={"seq": ["three", "four"]}, status=400)
 
 
 @app.route("/client")
 async def client(request):
-    template = open(os.getcwd() + "/templates/client.html", encoding='utf-8')
-    return html(template.read())
+    return await render("client.html", context={"seq": ["three", "four"]}, status=400)
 
 
 @app.route('/ticket')
-async def ticket(request):
-    template = open(os.getcwd() + "/templates/ticket.html", encoding='utf-8')
-    return html(template.read())
-
-
-@app.route('/volunteer')
-async def volunteer(request):
-    template = open(os.getcwd() + "/templates/volunteer.html", encoding='utf-8')
-    return html(template.read())
+async def ticket(request, T_id=1):
+    conn = await asyncpg.connect(
+        host=Settings.S_host,
+        port=Settings.S_port,
+        database=Settings.S_database,
+        user=Settings.S_user,
+        password=Settings.S_password)
+    temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', T_id))
+    await conn.close()
+    return await render("ticket.html", context={"tick": temp})
 
 
 @app.route('/screen')
 async def screen(request):
-    template = open(os.getcwd() + "/templates/screen.html", encoding='utf-8')
-    return html(template.read())
+    return await render("screen.html")
 
 
 @app.route('/statistic')
+@protected()
 async def statistic(request):
-    template = open(os.getcwd() + "/templates/statistic.html", encoding='utf-8')
-    return html(template.read())
+    return await render("statistic.html")
+
+
+@app.route('/admin')
+async def volunteer(request):
+    return await render("admin.html")
+
+
+@app.route('/oper')
+async def volunteer(request):
+    return await render("oper.html")
+
+
+@app.route('/volunteer')
+async def volunteer(request):
+    return await render("volunteer.html")
 
 
 if __name__ == '__main__':
     loop.run_until_complete(nigger())
     loop.run_until_complete(init_tables())
-    loop.run_until_complete(create_ticket("Р", 77))
+    loop.run_until_complete(create_ticket("S", 101, "6-404"))
     init()
