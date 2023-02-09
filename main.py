@@ -1,4 +1,4 @@
-from sanic import Sanic
+from sanic import Sanic, redirect
 from sanic.response import json, html, text
 from sanic_ext import render
 from sanic_jwt.decorators import protected
@@ -62,12 +62,12 @@ async def init_tables():
     await conn.execute('''CREATE TABLE IF NOT EXISTS "Tickets" (id serial PRIMARY KEY,
                 type varchar (2) NOT NULL,
                 number smallint NOT NULL,
-                wnd varchar(9) NOT NULL,
+                room varchar(6) NOT NULL,
                 operator_id smallint,
                 status smallint  NOT NULL);'''
                        )
     await conn.execute('''CREATE TABLE IF NOT EXISTS "Operators" (id serial PRIMARY KEY,
-                    room varchar (5) NOT NULL,
+                    room varchar (6) NOT NULL,
                     wnd smallint NOT NULL,
                     logged_in boolean NOT NULL DEFAULT false,
                     is_working boolean NOT NULL DEFAULT false,
@@ -81,17 +81,6 @@ async def init_tables():
                        login varchar (100) NOT NULL,
                        password varchar (100) NOT NULL);'''
                        )
-    await conn.close()
-
-
-async def create_ticket(T_type, T_number, T_window):
-    conn = await asyncpg.connect(
-        host=Settings.S_host,
-        port=Settings.S_port,
-        database=Settings.S_database,
-        user=Settings.S_user,
-        password=Settings.S_password)
-    await conn.execute(''' INSERT INTO "Tickets"(type, number, wnd, operator_id, status) VALUES($1, $2, $3, $4, $5)''', T_type, T_number, T_window, None, 0)
     await conn.close()
 
 
@@ -129,20 +118,40 @@ async def login(request):
     return await render("login.html")
 
 
-@app.route("/client")
+@app.route("/client", methods=['GET', 'POST'])
 async def client(request):
-    return await render("client.html")
+    if request.method == 'GET':
+        return await render("client.html")
+    if request.method == 'POST':
+        T_type = request.form.get("type")
+        T_room = request.form.get("room")
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
+        if temp != None:
+            T_number = (temp['number'])+1
+        else:
+            T_number = 1
+        await conn.execute(
+            ''' INSERT INTO "Tickets"(type, number, room, operator_id, status) VALUES($1, $2, $3, $4, $5)''', T_type, T_number, T_room, None, 0)
+        redr = await conn.fetchrow(''' SELECT id FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
+        await conn.close()
+        return redirect(app.url_for('ticket', num=redr['id']))
 
 
-@app.route('/ticket')
-async def ticket(request, T_id=1):
+@app.route('/ticket/<num:int>')
+async def ticket(request, num: int):
     conn = await asyncpg.connect(
         host=Settings.S_host,
         port=Settings.S_port,
         database=Settings.S_database,
         user=Settings.S_user,
         password=Settings.S_password)
-    temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', T_id))
+    temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', num))
     await conn.close()
     return await render("ticket.html", context={"tick": temp})
 
