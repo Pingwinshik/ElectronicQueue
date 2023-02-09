@@ -74,7 +74,7 @@ async def init_tables():
                     is_serving boolean NOT NULL DEFAULT false,
                     login varchar (100) NOT NULL,
                     password varchar (100) NOT NULL,
-                    serv_ticket_id smallint);'''
+                    serv_ticket_id smallint DEFAULT NULL);'''
                        )
     await conn.execute('''CREATE TABLE IF NOT EXISTS "Administrum" (id serial PRIMARY KEY,
                        logged_in boolean NOT NULL DEFAULT false,
@@ -116,7 +116,7 @@ async def edit_ticket(data: str):
 
 
 def init():
-    app.run(host='127.0.0.1', port=9001, debug=True)
+    app.run(host=Settings.a_host, port=Settings.a_port, debug=Settings.a_debug)
 
 
 @app.route('/')
@@ -126,12 +126,12 @@ async def index(request):
 
 @app.route("/login")
 async def login(request):
-    return await render("login.html", context={"seq": ["three", "four"]}, status=400)
+    return await render("login.html")
 
 
 @app.route("/client")
 async def client(request):
-    return await render("client.html", context={"seq": ["three", "four"]}, status=400)
+    return await render("client.html")
 
 
 @app.route('/ticket')
@@ -159,12 +159,12 @@ async def statistic(request):
 
 
 @app.route('/admin')
-async def volunteer(request):
+async def admin(request):
     return await render("admin.html")
 
 
 @app.route('/oper')
-async def volunteer(request):
+async def oper(request):
     return await render("oper.html")
 
 
@@ -176,5 +176,4 @@ async def volunteer(request):
 if __name__ == '__main__':
     loop.run_until_complete(nigger())
     loop.run_until_complete(init_tables())
-    loop.run_until_complete(create_ticket("S", 101, "6-404"))
     init()
