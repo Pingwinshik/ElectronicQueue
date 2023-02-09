@@ -177,9 +177,29 @@ async def oper(request):
     return await render("oper.html")
 
 
-@app.route('/volunteer')
+@app.route('/volunteer', methods=['GET', 'POST'])
 async def volunteer(request):
-    return await render("volunteer.html")
+    if request.method == 'GET':
+        return await render("volunteer.html")
+    if request.method == 'POST':
+        T_type = request.form.get("type")
+        T_room = request.form.get("room")
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
+        if temp != None:
+            T_number = (temp['number'])+1
+        else:
+            T_number = 1
+        await conn.execute(
+            ''' INSERT INTO "Tickets"(type, number, room, operator_id, status) VALUES($1, $2, $3, $4, $5)''', T_type, T_number, T_room, None, 0)
+        redr = await conn.fetchrow(''' SELECT id FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
+        await conn.close()
+        return redirect(app.url_for('ticket', num=redr['id']))
 
 
 if __name__ == '__main__':
