@@ -1,4 +1,4 @@
-from sanic import Sanic, redirect
+from sanic import Sanic, redirect, Websocket
 from sanic.response import json, html, text
 from sanic_ext import render
 from sanic_jwt.decorators import protected
@@ -156,6 +156,16 @@ async def ticket(request, num: int):
     return await render("ticket.html", context={"tick": temp})
 
 
+@app.websocket("/feed")
+async def feed(request, ws: Websocket):
+    while True:
+        data = "hello!"
+        print("Sending: " + data)
+        await ws.send(data)
+        data = await ws.recv()
+        print("Received: " + data)
+
+
 @app.route('/screen')
 async def screen(request):
     return await render("screen.html")
@@ -200,6 +210,7 @@ async def volunteer(request):
         redr = await conn.fetchrow(''' SELECT id FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
         await conn.close()
         return redirect(app.url_for('ticket', num=redr['id']))
+
 
 
 if __name__ == '__main__':
