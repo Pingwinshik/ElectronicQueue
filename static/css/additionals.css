@@ -138,6 +138,10 @@ hr {
 .a-margin-48 {
   margin: 48px !important;
 }
+.a-dropdown-hover:hover{
+    background-color:#ffffff;
+    color:#000
+}
 .a-ticket{color:#000000!important;width: 522px; height: 90px;  background: #E9EDF5; border-radius: 10px;}
 .right{float:right;}
 .left{float:left;}
