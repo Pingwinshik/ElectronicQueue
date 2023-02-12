@@ -159,11 +159,11 @@ async def ticket(request, num: int):
 @app.websocket("/feed")
 async def feed(request, ws: Websocket):
     while True:
-        data = "hello!"
-        print("Sending: " + data)
-        await ws.send(data)
         data = await ws.recv()
-        print("Received: " + data)
+        reply = f"Data recieved as:  {data}!"
+        await ws.send(reply)
+    return await render("feed.html")
+        
 
 
 @app.route('/screen')
