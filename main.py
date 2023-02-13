@@ -4,8 +4,10 @@ from sanic_ext import render
 from sanic_jwt.decorators import protected
 import asyncpg
 import asyncio
+import websockets
 import os
 import Settings
+import json
 
 app = Sanic(__name__)
 app.static("/static", os.getcwd() + "/static")
@@ -108,6 +110,22 @@ def init():
     app.run(host=Settings.a_host, port=Settings.a_port, debug=Settings.a_debug)
 
 
+@app.websocket("/Tick_WS")
+async def Serve(request, ws: Websocket):
+    while True:
+        t_id = await ws.recv()
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', int(t_id)))
+        await conn.close()
+        data = json.dumps(temp)
+        await ws.send(data)
+
+
 @app.route('/')
 async def index(request):
     return await render("index.html")
@@ -145,25 +163,14 @@ async def client(request):
 
 @app.route('/ticket/<num:int>')
 async def ticket(request, num: int):
-    conn = await asyncpg.connect(
-        host=Settings.S_host,
-        port=Settings.S_port,
-        database=Settings.S_database,
-        user=Settings.S_user,
-        password=Settings.S_password)
-    temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', num))
-    await conn.close()
-    return await render("ticket.html", context={"tick": temp})
-
-
-@app.websocket("/feed")
-async def feed(request, ws: Websocket):
-    while True:
-        data = await ws.recv()
-        reply = f"Data recieved as:  {data}!"
-        await ws.send(reply)
-    return await render("feed.html")
-        
+    limiter = 0
+    while limiter < 2:
+        async with websockets.connect("ws://" + Settings.a_host+ ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+            await ws.send(str(num))
+            response = await ws.recv()
+            data = json.loads(response)
+            limiter = int(response["status"])
+            return await render("ticket.html", context={"tick": data})
 
 
 @app.route('/screen')
@@ -172,7 +179,6 @@ async def screen(request):
 
 
 @app.route('/statistic')
-@protected()
 async def statistic(request):
     return await render("statistic.html")
 
