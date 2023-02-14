@@ -69,13 +69,13 @@
         <div class="w3-container w3-animate-top" align="center">
           <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2>
           <br />
-          <h1 class="text-blackish"><b>{{tick.type}}-{{'{:03}'.format(tick.number)}}</b></h1>
+          <h1 class="text-blackish"><b id="type">{{tick.type}}-{{'{:03}'.format(tick.number)}}</b></h1>
           <br />
         </div>
         <div class="w3-container" align="center">
           <div class="w3-bar w3-margin-top" style="width: 25vw">
-            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет: {{tick.room}}<br /><b id="number"></b></div>
-            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета: {{tick.status}}<br /><b id="number"></b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет: <br /><b id="room">{{tick.room}}</b></div>
+            <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета: <br /><b id="status">{{tick.status}}</b></div>
           </div>
         </div>
         <div class="w3-container text-dark-grey" align="center">
@@ -113,5 +113,25 @@
       </div>
     </div>
     <script src="../static/js/tab_opener.js"></script>
+    <script>
+      setInterval(function() {
+        fetch('/ticket-listener' + window.location.pathname)
+                .then(response => response.json())
+                .then(data =>
+              updateElement(data))
+      }, 1500
+    );
+
+    function updateElement(data) {
+      for (var i = 0; i < data.items.length; i++) {
+            let vnumber = data.items[i].number;
+            let vroom = data.items[i].room;
+
+            document.querySelector("#number").innerHTML += `${vnumber}`;
+            document.querySelector("#room").innerHTML += `${vroom}`;
+
+          }
+  }
+  </script>
   </body>
 </html>

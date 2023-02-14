@@ -161,16 +161,25 @@ async def client(request):
         return redirect(app.url_for('ticket', num=redr['id']))
 
 
+@app.route('/ticket-listener/ticket/<num:int>')
+async def ticket_listener(request, num: int):
+    async with websockets.connect("ws://" + Settings.a_host+ ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+        await ws.send(str(num))
+        response = await ws.recv()
+        return json(response)
+
+
 @app.route('/ticket/<num:int>')
 async def ticket(request, num: int):
-    limiter = 0
-    while limiter < 2:
-        async with websockets.connect("ws://" + Settings.a_host+ ":" + str(Settings.a_port) + "/Tick_WS") as ws:
-            await ws.send(str(num))
-            response = await ws.recv()
-            data = json.loads(response)
-            limiter = int(response["status"])
-            return await render("ticket.html", context={"tick": data})
+    data = {
+            "id": num,
+            "type": "0",
+            "number": 0,
+            "room": "0",
+            "operator_id": 0,
+            "status": 0,
+        }
+    return await render("ticket.html", context={"tick": data})
 
 
 @app.route('/screen')
@@ -223,3 +232,6 @@ if __name__ == '__main__':
     loop.run_until_complete(nigger())
     loop.run_until_complete(init_tables())
     init()
+    answer = input()
+    if answer:
+        os.system('pause')
