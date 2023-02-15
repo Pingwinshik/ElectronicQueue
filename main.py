@@ -189,7 +189,7 @@ async def screen(request):
 
 @app.route('/stat')
 async def statistic(request):
-    return await render("statistic.html")
+    return await render("stat.html")
 
 
 @app.route('/admin')
