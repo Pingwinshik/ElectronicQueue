@@ -131,7 +131,8 @@
         <h1 class="w3-margin w3-bar-item"><b>Статистика</b></h1>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button">Рабочий стол</button>
         <button class="w3-margin-top w3-bar-item a-light-blue w3-round-xlarge w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window'); "name="button"><img class="search-icon" src="../static/img/icons/check.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 5px" />Окна</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-operations');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">История</button>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
             <tr class="a-grey">
@@ -153,11 +154,12 @@
           </tr>
         </table>
       </div>
-      <div class="tab w3-container w3-padding-large w3-grey w3-bar" id="tickets-history" style="display: none">
+      <div class="tab w3-container w3-padding-large w3-grey w3-bar" id="tickets-operations" style="display: none">
         <h1 class="w3-margin w3-bar-item"><b>Статистика</b></h1>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button">Рабочий стол</button>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
-        <button class="w3-margin-top w3-bar-item a-light-blue w3-round-xlarge w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history'); "name="button"><img class="search-icon" src="../static/img/icons/check.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 5px" />Операции</button>
+        <button class="w3-margin-top w3-bar-item a-light-blue w3-round-xlarge w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-operations'); "name="button"><img class="search-icon" src="../static/img/icons/check.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 5px" />Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">История</button>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
             <tr class="a-grey">
@@ -177,7 +179,7 @@
           </tr>
         </table>
       </div>
-      <div class="tab w3-container w3-padding-large w3-grey" id="tickets-history" style="display: none">
+      <div class="tab w3-container w3-padding-large w3-grey" id="tickets-operations" style="display: none">
         <h1 class="w3-margin"><b>Статистика</b></h1>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
@@ -202,7 +204,8 @@
         <h1 class="w3-margin w3-bar-item"><b>Статистика</b></h1>
         <button class="w3-margin-top w3-bar-item a-light-blue w3-round-xlarge" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button"><img class="search-icon" src="../static/img/icons/check.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 5px" />Рабочий стол</button>
         <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
-        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-operations');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button">История</button>
         <table class="w3-margin w3-table w3-round-xlarge w3-bordered w3-border">
           <thead>
             <tr class="a-grey">
@@ -226,6 +229,27 @@
           </tr>
         </table>
       </div>
+      <div class="tab w3-container w3-padding-large w3-grey w3-bar" id="tickets-history" style="display: none">
+        <h1 class="w3-margin w3-bar-item"><b>История</b></h1>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-desk'); "name="button">Рабочий стол</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-window');" name="button">Окна</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-grey w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-operations');" name="button">Операции</button>
+        <button class="w3-button w3-margin-top w3-bar-item a-light-blue w3-round-xlarge a-light-blue-hover w3-margin-left" style="height: 6vh" onclick="w3_close();openTab('tickets-history');" name="button"><img class="search-icon" src="../static/img/icons/check.svg" alt="Перо" width="20" height="20" align="left" style="margin-right: 5px" />История</button>
+        <div class="w3-margin w3-dropdown-click a-dropdown-hover" style="width:100%; height:7vh">
+         <button class="w3-button a-grey w3-round-xlarge" onclick="nigger_admin()">Время ожидания:</button>
+          <div id="zhmyh" class="w3-dropdown-content w3-bar-block w3-border w3-round-xlarge">
+             <a href="#" class="w3-bar-item w3-button">Любое</a>
+             <a href="#" class="w3-bar-item w3-button">Не любое</a>
+             <a href="#" class="w3-bar-item w3-button">Совсем не любое, жесть</a>
+          </div>
+          <button class="w3-button a-grey w3-round-xlarge" onclick="jude()">Операция:</button>
+          <div id="amogus" class="w3-dropdown-content w3-bar-block w3-border w3-round-xlarge">
+             <a href="#" class="w3-bar-item w3-button">Любая</a>
+             <a href="#" class="w3-bar-item w3-button">Не любая</a>
+             <a href="#" class="w3-bar-item w3-button">Специальная военная</a>
+          </div>
+        </div>
+      </div>  
       <!-- написать админам -->
       <div class="tab w3-container w3-padding-large w3-grey" id="contacts" style="display: none">
         <h4><b>Написать разработчикам</b></h4>
@@ -292,5 +316,25 @@
         document.getElementById("minutes").innerHTML = upTimer(parseInt(second / 60, 10));
       }, 1000);
     </script>
+    <script>
+     function nigger_admin() {
+      var x = document.getElementById("zhmyh");
+       if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+       } else {
+        x.className = x.className.replace(" w3-show", "");
+        }
+       }
+    </script>
+  <script>
+function jude() {
+  var x = document.getElementById("amogus");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
   </body>
 </html>
