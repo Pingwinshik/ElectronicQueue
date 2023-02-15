@@ -187,7 +187,7 @@ async def screen(request):
     return await render("screen.html")
 
 
-@app.route('/statistic')
+@app.route('/stat')
 async def statistic(request):
     return await render("statistic.html")
 
@@ -195,6 +195,11 @@ async def statistic(request):
 @app.route('/admin')
 async def admin(request):
     return await render("admin.html")
+
+
+@app.route('/mine')
+async def mine(request):
+    return await render("mine.html")
 
 
 @app.route('/oper')
