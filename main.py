@@ -86,32 +86,13 @@ async def init_tables():
     await conn.close()
 
 
-@app.route('/EditTicket', methods=["POST"])
-async def edit_ticket(data: str):
-    conn = await asyncpg.connect(
-        host=Settings.S_host,
-        port=Settings.S_port,
-        database=Settings.S_database,
-        user=Settings.S_user,
-        password=Settings.S_password)
-    cur = conn.cursor()
-    await cur.execute('CREATE TABLE Tickets (id serial PRIMARY KEY,'
-                      'type varchar (2) NOT NULL,'
-                      'number smallint NOT NULL,'
-                      'operator_id smallint,'
-                      'status smallint  NOT NULL);'
-                      )
-    await conn.commit()
-    await cur.close()
-    await conn.close()
-
 
 def init():
     app.run(host=Settings.a_host, port=Settings.a_port, debug=Settings.a_debug)
 
 
 @app.websocket("/Tick_WS")
-async def Serve(request, ws: Websocket):
+async def Serve_tick(request, ws: Websocket):
     while True:
         t_id = await ws.recv()
         conn = await asyncpg.connect(
@@ -135,26 +116,29 @@ async def ticket_listener(request, num: int):
 
 
 @app.websocket("/Op_WS")
-async def Serve(request, ws: Websocket):
+async def Serve_op(request, ws: Websocket):
     while True:
-        t_id = await ws.recv()
+        op_data = await ws.recv()
         conn = await asyncpg.connect(
             host=Settings.S_host,
             port=Settings.S_port,
             database=Settings.S_database,
             user=Settings.S_user,
             password=Settings.S_password)
-        temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', int(t_id)))
+        temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
+        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 ORDER BY id LIMIT 2;''', temp["room"])
+        resp = dict(one=dict(tickets[0]), two=dict(tickets[1]))
         await conn.close()
-        data = json.dumps(temp)
+        data = json.dumps(resp)
         await ws.send(data)
 
 
 @app.route('/op-listener/oper/<num:int>')
-async def ticket_listener(request, num: int):
-    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+async def operator_listener(request, num: int):
+    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Op_WS") as ws:
         await ws.send(str(num))
         response = json.loads(await ws.recv())
+        return jsr(response)
 
 
 @app.route('/')
@@ -220,10 +204,19 @@ async def mine(request):
     return await render("mine.html")
 
 
-@app.route('/oper')
-async def oper(request):
+@app.route('/oper/<num:int>')
+async def oper(request, num: int):
     if request.method == 'GET':
-        return await render("oper.html")
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
+        tickets = await conn.fetch('''SELECT * FROM "Tickets" WHERE room = $1 ORDER BY id LIMIT 2;''', temp["room"])
+        await conn.close()
+        return await render("oper.html", context={"tickets": tickets})
 
 
 @app.route('/volunteer', methods=['GET', 'POST'])

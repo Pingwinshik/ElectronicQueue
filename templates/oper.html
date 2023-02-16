@@ -14,10 +14,10 @@
         <h2 class="text-blackish"><b>Номер талона:</b></h2>
         <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
           <div class="w3-display-middle">
-            <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+            <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].number) }} {% endif %}</b></h1>
           </div>
         </div>
-        <span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b>{% if not tickets or count == 1: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].id) }} {% endif %}</b></span
+        <span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b id="next">{% if not tickets or count == 1: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].number) }} {% endif %}</b></span
         >​<br />
         <span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>{{ count }}</b></span
         >​
@@ -40,7 +40,7 @@
         <h2><b>Номер талона:</b></h2>
           <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
            <div class="w3-display-middle">
-              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].number) }} {% endif %}</b></h1>
            </div>
          </div>
         <div class="w3-container a-margin-bottom-8"></div>
@@ -92,7 +92,7 @@
         <h2><b>Номер талона:</b></h2>
           <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
            <div class="w3-display-middle">
-              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].number) }} {% endif %}</b></h1>
            </div>
          </div>
                 <div class="w3-container a-margin-bottom-8"></div>
@@ -177,6 +177,20 @@ function Accordion(id) {
       }, 1000);
     </script>
     <script src="../static/js/tab_opener.js"></script>
+    <script>
+      setInterval(function() {
+        fetch('/op-listener' + window.location.pathname)
+                .then(response => response.json())
+                .then(data => updateElement(data))}, 1500);
 
+    function updateElement(tick) {
+      n = document.getElementById('number');
+      if (tick.one == null) n.innerHTML = 'Талонов нет'
+      else n.innerHTML = (tick.one.type + "-" + ('000' + tick.one.number).slice(-3))
+      e = document.getElementById('next');
+      if (tick.two == null) e.innerHTML = 'Талонов нет'
+      else e.innerHTML = (tick.two.type + "-" + ('000' + tick.two.number).slice(-3))
+    }
+  </script>
   </body>
 </html>
