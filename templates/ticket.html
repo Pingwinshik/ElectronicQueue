@@ -46,8 +46,8 @@
           <br />
         </div>
         <div class="w3-bar w3-margin-top" style="width: 80vw; height: 20vh">
-          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b id="number"></b></div>
-          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета:<br /><b id="number"></b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b></b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета:<br /><b></b></div>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
           <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='https://dstu.online/navigator?location=14&destination={{ nav }}';">
@@ -117,21 +117,16 @@
       setInterval(function() {
         fetch('/ticket-listener' + window.location.pathname)
                 .then(response => response.json())
-                .then(data =>
-              updateElement(data))
-      }, 1500
-    );
+                .then(data => updateElement(data))}, 1500);
 
-    function updateElement(data) {
-      for (var i = 0; i < data.items.length; i++) {
-            let vnumber = data.items[i].number;
-            let vroom = data.items[i].room;
-
-            document.querySelector("#number").innerHTML += `${vnumber}`;
-            document.querySelector("#room").innerHTML += `${vroom}`;
-
-          }
-  }
+    function updateElement(tick) {
+      r = document.getElementById('room');
+      r.innerHTML = tick.room
+      s = document.getElementById('status');
+      s.innerHTML = tick.status
+      t = document.getElementById('type');
+      t.innerHTML = (tick.type + "-" + ('000' + tick.number).slice(-3))
+    }
   </script>
   </body>
 </html>

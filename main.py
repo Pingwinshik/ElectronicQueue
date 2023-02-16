@@ -1,5 +1,5 @@
 from sanic import Sanic, redirect, Websocket
-from sanic.response import json, html, text
+from sanic.response import json as jsr, html, text
 from sanic_ext import render
 from sanic_jwt.decorators import protected
 import asyncpg
@@ -126,6 +126,37 @@ async def Serve(request, ws: Websocket):
         await ws.send(data)
 
 
+@app.route('/ticket-listener/ticket/<num:int>')
+async def ticket_listener(request, num: int):
+    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+        await ws.send(str(num))
+        response = json.loads(await ws.recv())
+        return jsr(response)
+
+
+@app.websocket("/Op_WS")
+async def Serve(request, ws: Websocket):
+    while True:
+        t_id = await ws.recv()
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = dict(await conn.fetchrow(''' SELECT * FROM "Tickets" WHERE id = $1''', int(t_id)))
+        await conn.close()
+        data = json.dumps(temp)
+        await ws.send(data)
+
+
+@app.route('/op-listener/oper/<num:int>')
+async def ticket_listener(request, num: int):
+    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+        await ws.send(str(num))
+        response = json.loads(await ws.recv())
+
+
 @app.route('/')
 async def index(request):
     return await render("index.html")
@@ -161,25 +192,12 @@ async def client(request):
         return redirect(app.url_for('ticket', num=redr['id']))
 
 
-@app.route('/ticket-listener/ticket/<num:int>')
-async def ticket_listener(request, num: int):
-    async with websockets.connect("ws://" + Settings.a_host+ ":" + str(Settings.a_port) + "/Tick_WS") as ws:
-        await ws.send(str(num))
-        response = await ws.recv()
-        return json(response)
-
-
 @app.route('/ticket/<num:int>')
 async def ticket(request, num: int):
-    data = {
-            "id": num,
-            "type": "0",
-            "number": 0,
-            "room": "0",
-            "operator_id": 0,
-            "status": 0,
-        }
-    return await render("ticket.html", context={"tick": data})
+    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+        await ws.send(str(num))
+        response = json.loads(await ws.recv())
+    return await render("ticket.html", context={"tick": response})
 
 
 @app.route('/screen')
@@ -204,7 +222,8 @@ async def mine(request):
 
 @app.route('/oper')
 async def oper(request):
-    return await render("oper.html")
+    if request.method == 'GET':
+        return await render("oper.html")
 
 
 @app.route('/volunteer', methods=['GET', 'POST'])
@@ -230,7 +249,6 @@ async def volunteer(request):
         redr = await conn.fetchrow(''' SELECT id FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
         await conn.close()
         return redirect(app.url_for('ticket', num=redr['id']))
-
 
 
 if __name__ == '__main__':

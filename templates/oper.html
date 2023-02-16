@@ -40,7 +40,7 @@
         <h2><b>Номер талона:</b></h2>
           <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
            <div class="w3-display-middle">
-              <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
            </div>
          </div>
         <div class="w3-container a-margin-bottom-8"></div>
@@ -92,7 +92,7 @@
         <h2><b>Номер талона:</b></h2>
           <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
            <div class="w3-display-middle">
-              <h1><b id="number">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
+              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].id) }} {% endif %}</b></h1>
            </div>
          </div>
                 <div class="w3-container a-margin-bottom-8"></div>
@@ -112,7 +112,7 @@
         <h2><b>Номер талона:</b></h2>
         <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
           <div class="w3-display-middle">
-            <h1><b id="number"></b></h1>
+            <h1><b></b></h1>
           </div>
         </div>
         <span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b></b></span>​<br />
@@ -177,5 +177,6 @@ function Accordion(id) {
       }, 1000);
     </script>
     <script src="../static/js/tab_opener.js"></script>
+
   </body>
 </html>
