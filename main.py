@@ -126,8 +126,13 @@ async def Serve_op(request, ws: Websocket):
             user=Settings.S_user,
             password=Settings.S_password)
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
-        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 ORDER BY id LIMIT 2;''', temp["room"])
-        resp = dict(one=dict(tickets[0]), two=dict(tickets[1]))
+        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 AND status !=3 ORDER BY id LIMIT 2;''', temp["room"])
+        if len(tickets) == 2:
+            resp = dict(one=dict(tickets[0]), two=dict(tickets[1]))
+        elif len(tickets) == 1:
+            resp = dict(one=dict(tickets[0]), two=None)
+        else:
+            resp = dict(one=None, two=None)
         await conn.close()
         data = json.dumps(resp)
         await ws.send(data)
@@ -169,8 +174,7 @@ async def client(request):
             T_number = (temp['number'])+1
         else:
             T_number = 1
-        await conn.execute(
-            ''' INSERT INTO "Tickets"(type, number, room, operator_id, status) VALUES($1, $2, $3, $4, $5)''', T_type, T_number, T_room, None, 0)
+        await conn.execute(''' INSERT INTO "Tickets"(type, number, room, operator_id, status) VALUES($1, $2, $3, $4, $5)''', T_type, T_number, T_room, None, 0)
         redr = await conn.fetchrow(''' SELECT id FROM "Tickets" WHERE type = $1 ORDER BY id DESC''', T_type)
         await conn.close()
         return redirect(app.url_for('ticket', num=redr['id']))
@@ -204,7 +208,7 @@ async def mine(request):
     return await render("mine.html")
 
 
-@app.route('/oper/<num:int>')
+@app.route('/oper/<num:int>', methods=['GET', 'POST'])
 async def oper(request, num: int):
     if request.method == 'GET':
         conn = await asyncpg.connect(
@@ -214,10 +218,23 @@ async def oper(request, num: int):
             user=Settings.S_user,
             password=Settings.S_password)
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
-        tickets = await conn.fetch('''SELECT * FROM "Tickets" WHERE room = $1 ORDER BY id LIMIT 2;''', temp["room"])
+        tickets = await conn.fetch('''SELECT * FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id LIMIT 2;''', temp["room"])
         await conn.close()
         return await render("oper.html", context={"tickets": tickets})
-
+    if request.method == 'POST':
+        action = request.form.get("oper_action")
+        if action == "1":
+            conn = await asyncpg.connect(
+                host=Settings.S_host,
+                port=Settings.S_port,
+                database=Settings.S_database,
+                user=Settings.S_user,
+                password=Settings.S_password)
+            temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
+            change = await conn.fetchrow('''SELECT id FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id''', temp["room"])
+            await conn.execute('''UPDATE "Tickets" SET status=3 WHERE id = $1 AND status !=3''', change["id"])
+            await conn.close()
+            return redirect(app.url_for('oper', num=num))
 
 @app.route('/volunteer', methods=['GET', 'POST'])
 async def volunteer(request):
