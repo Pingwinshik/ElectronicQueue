@@ -42,12 +42,12 @@
         <div class="w3-container w3-animate-top" align="center">
           <h2 class="text-blackish"><b>Ваш номер в очереди:</b></h2>
           <br />
-          <h1 class="text-blackish"><b>{{tick.type}}-{{'{:03}'.format(tick.number)}}</b></h1>
+          <h1 class="text-blackish"><b id="type_m">{{tick.type}}-{{'{:03}'.format(tick.number)}}</b></h1>
           <br />
         </div>
         <div class="w3-bar w3-margin-top" style="width: 80vw; height: 20vh">
-          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br /><b></b></div>
-          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета:<br /><b></b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет: <br /><b id="room_m">{{tick.room}}</b></div>
+          <div class="w3-bar-item w3-round w3-padding-8 a-light-grey w3-block w3-round-large w3-right" style="width: 48%">Статус билета: <br /><b id="status_m">{{tick.status}}</b></div>
         </div>
         <div class="w3-container w3-margin-top w3-margin-bottom w3-display-bottommiddle" style="width: 100%">
           <button class="w3-button w3-padding-16 a-grey-blue w3-margin-top w3-round-large w3-block" name="button" onclick="location.href='https://dstu.online/navigator?location=14&destination={{ nav }}';">
@@ -126,6 +126,12 @@
       s.innerHTML = tick.status
       t = document.getElementById('type');
       t.innerHTML = (tick.type + "-" + ('000' + tick.number).slice(-3))
+      r_m = document.getElementById('room_m');
+      r_m.innerHTML = tick.room
+      s_m = document.getElementById('status_m');
+      s_m.innerHTML = tick.status
+      t_m = document.getElementById('type_m');
+      t_m.innerHTML = (tick.type + "-" + ('000' + tick.number).slice(-3))
     }
   </script>
   </body>
