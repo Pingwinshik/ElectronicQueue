@@ -14,6 +14,10 @@ app.static("/static", os.getcwd() + "/static")
 
 loop = asyncio.get_event_loop()
 
+admin_log = "admin"
+password = "password"
+oper_log = "oper"
+
 
 async def nigger():
     sys_conn = await asyncpg.connect(

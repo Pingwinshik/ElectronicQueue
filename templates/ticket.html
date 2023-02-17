@@ -6,6 +6,8 @@
     <title>СУО ДГТУ: Интерфейс пользователя</title>
     <link rel="stylesheet" type="text/css" href="../static/css/w3pro.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/additionals.css" />
+    <script src="../static/js/qrcode.min.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
     <!-- Flickity CSS -->
     <link rel="stylesheet" href="../static/flickity/flickity.min.css" />
     <!-- Flickity JavaScript -->
@@ -79,8 +81,11 @@
           </div>
         </div>
         <div class="w3-container text-dark-grey" align="center">
+          <br>
+          <div class="" id="qrcode" style="width:256px; height:256px; margin-top:15px;"></div>
+          <br>
+          <br>
           <h5 style="width: 25vw">Сфотографируйте это окно. А лучше наведите камеру вашего смартфона на QR-код ниже — так вы сможете отслеживать свою очередь в реальном времени.</h5>
-          <img src="../static/ticketQR.png" alt="QR" width="240" height="240" />
           <br />
           <button class="w3-button w3-padding-16 a-blue a-blue-hover w3-round-large w3-block w3-margin-top w3-margin-bottom" style="width: 25%" name="button" onclick="location.href='/client';"><b>Следующий</b></button>
         </div>
@@ -133,6 +138,10 @@
       t_m = document.getElementById('type_m');
       t_m.innerHTML = (tick.type + "-" + ('000' + tick.number).slice(-3))
     }
+
+  </script>
+  <script type="text/javascript">
+new QRCode(document.getElementById("qrcode"), window.location.href);
   </script>
   </body>
 </html>
