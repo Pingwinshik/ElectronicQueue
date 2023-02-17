@@ -131,12 +131,13 @@ async def Serve_op(request, ws: Websocket):
             password=Settings.S_password)
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
         tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 AND status !=3 ORDER BY id LIMIT 2;''', temp["room"])
+        count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"])
         if len(tickets) == 2:
-            resp = dict(one=dict(tickets[0]), two=dict(tickets[1]))
+            resp = dict(one=dict(tickets[0]), two=dict(tickets[1]), three=dict(count[0]))
         elif len(tickets) == 1:
-            resp = dict(one=dict(tickets[0]), two=None)
+            resp = dict(one=dict(tickets[0]), two=None, three=dict(count[0]))
         else:
-            resp = dict(one=None, two=None)
+            resp = dict(one=None, two=None, three=dict(count[0]))
         await conn.close()
         data = json.dumps(resp)
         await ws.send(data)
@@ -202,9 +203,20 @@ async def statistic(request):
     return await render("stat.html")
 
 
-@app.route('/admin')
-async def admin(request):
-    return await render("admin.html")
+@app.route('/admin/<num:int>', methods=['GET', 'POST'])
+async def admin(request, num: int):
+    if request.method == 'GET':
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        t_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets";'''))
+        g_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets" WHERE status < 2;'''))
+        op_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Operators";'''))
+        await conn.close()
+        return await render("admin.html", context={"t_count": t_count["count"], "g_count": g_count["count"], "p_count": op_count["count"], "d_count": 1})
 
 
 @app.route('/mine')
@@ -223,8 +235,9 @@ async def oper(request, num: int):
             password=Settings.S_password)
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
         tickets = await conn.fetch('''SELECT * FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id LIMIT 2;''', temp["room"])
+        count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"]))
         await conn.close()
-        return await render("oper.html", context={"tickets": tickets})
+        return await render("oper.html", context={"tickets": tickets, "count": count["count"]})
     if request.method == 'POST':
         action = request.form.get("oper_action")
         if action == "1":
