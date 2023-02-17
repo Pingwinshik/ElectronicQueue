@@ -235,6 +235,19 @@ async def oper(request, num: int):
             await conn.execute('''UPDATE "Tickets" SET status=3 WHERE id = $1 AND status !=3''', change["id"])
             await conn.close()
             return redirect(app.url_for('oper', num=num))
+        if action == "2":
+            reroute_room = request.form.get("reroute_room")
+            conn = await asyncpg.connect(
+                host=Settings.S_host,
+                port=Settings.S_port,
+                database=Settings.S_database,
+                user=Settings.S_user,
+                password=Settings.S_password)
+            temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
+            change = await conn.fetchrow('''SELECT id FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id''', temp["room"])
+            await conn.execute('''UPDATE "Tickets" SET room=$1 WHERE id = $2 AND status !=3''', str(reroute_room), change["id"])
+            await conn.close()
+            return redirect(app.url_for('oper', num=num))
 
 @app.route('/volunteer', methods=['GET', 'POST'])
 async def volunteer(request):

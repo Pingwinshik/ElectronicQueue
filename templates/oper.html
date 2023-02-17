@@ -40,14 +40,18 @@
         <h2><b>Номер талона:</b></h2>
           <div class="w3-display-container w3-panel a-ticket w3-round-xlarge" style="">
            <div class="w3-display-middle">
-              <h1><b>{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].number) }} {% endif %}</b></h1>
+              <h1><b id="rer_num">{% if not tickets: %} Талонов нет {% else: %} {{ tickets[0].type }}-{{'{:03}'.format(tickets[0].number) }} {% endif %}</b></h1>
            </div>
          </div>
         <div class="w3-container a-margin-bottom-8"></div>
         <button class="w3-button w3-round a-blue a-blue-hover w3-block w3-round-large" onclick="Accordion('Demo1')" class="w3-btn w3-block w3-black w3-left-align">Выберите комиссию для перенапрваления</button>
         <div id="Demo1" class="w3-container w3-hide" style="max-height: 150px; overflow: scroll">
                   <div class="w3-container a-margin-bottom-8"></div>
+          <form method="post">
+          <input type="number" name="oper_action" value="2" style="display: none" />
+          <input type="text" name="reroute_room" value="1-140" style="display: none" />
           <button class="w3-bar-item w3-button w3-padding-8 a-grey-blue a-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Социально-гуманитарные науки</button>
+          </form>
                   <div class="w3-container a-margin-bottom-8"></div>
           <button class="w3-bar-item w3-button w3-padding-8 a-grey-blue a-grey-blue-hover w3-block w3-round-large w3-left" name="button" onclick="openTab('Operator')">Строительство, архитектура</button>
                   <div class="w3-container a-margin-bottom-8"></div>
@@ -184,12 +188,15 @@ function Accordion(id) {
                 .then(data => updateElement(data))}, 1500);
 
     function updateElement(tick) {
-      n = document.getElementById('number');
-      if (tick.one == null) n.innerHTML = 'Талонов нет'
-      else n.innerHTML = (tick.one.type + "-" + ('000' + tick.one.number).slice(-3))
-      e = document.getElementById('next');
-      if (tick.two == null) e.innerHTML = 'Талонов нет'
-      else e.innerHTML = (tick.two.type + "-" + ('000' + tick.two.number).slice(-3))
+      num = document.getElementById('number');
+      if (tick.one == null) num.innerHTML = 'Талонов нет'
+      else num.innerHTML = (tick.one.type + "-" + ('000' + tick.one.number).slice(-3))
+      nex = document.getElementById('next');
+      if (tick.two == null) nex.innerHTML = 'Талонов нет'
+      else nex.innerHTML = (tick.two.type + "-" + ('000' + tick.two.number).slice(-3))
+      rer_num = document.getElementById('number');
+      if (tick.one == null) rer_num.innerHTML = 'Талонов нет'
+      else rer_num.innerHTML = (tick.one.type + "-" + ('000' + tick.one.number).slice(-3))
     }
   </script>
   </body>
