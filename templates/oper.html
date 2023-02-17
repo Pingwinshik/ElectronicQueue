@@ -19,7 +19,7 @@
         </div>
         <span class="left w3-dark-grey">Следующий в очереди:</span><span class="right"><b id="next">{% if not tickets or tickets[1] == null: %} Талонов нет {% else: %} {{ tickets[1].type }}-{{'{:03}'.format(tickets[1].number) }} {% endif %}</b></span
         >​<br />
-        <span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b>{{ count }}</b></span
+        <span class="left w3-dark-grey a-margin-bottom-8">Количество ожидающих:</span><span class="right"><b id="count">{{count}}</b></span
         >​
         <form method="post">
           <input type="number" name="oper_action" value="1" style="display: none" />
@@ -252,6 +252,8 @@ function Accordion(id) {
                 .then(data => updateElement(data))}, 1500);
 
     function updateElement(tick) {
+      cnt = document.getElementById('count');
+      cnt.innerHTML = tick.three.count
       num = document.getElementById('number');
       if (tick.one == null) num.innerHTML = 'Талонов нет'
       else num.innerHTML = (tick.one.type + "-" + ('000' + tick.one.number).slice(-3))
