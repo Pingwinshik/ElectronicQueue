@@ -199,9 +199,20 @@ async def statistic(request):
     return await render("stat.html")
 
 
-@app.route('/admin/oper/<num:int>', methods=['GET', 'POST'])
+@app.route('/admin/<num:int>', methods=['GET', 'POST'])
 async def admin(request, num: int):
-    return await render("admin.html")
+    if request.method == 'GET':
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        t_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets";'''))
+        g_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets" WHERE status < 2;'''))
+        op_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Operators";'''))
+        await conn.close()
+        return await render("admin.html", context={"t_count": t_count["count"], "g_count": g_count["count"], "p_count": op_count["count"], "d_count": 1})
 
 
 @app.route('/mine')

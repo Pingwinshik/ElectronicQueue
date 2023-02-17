@@ -17,7 +17,7 @@
       <hr class="w3-margin-top">
       <div class="w3-display-container w3-animate-left w3-margin w3-bar" align="left">
         <img src="../static/img/icons/user.svg" alt="ДГТУ" class="w3-display-left" width="40" height="40" style="margin-right: 10px" />
-        <h4 class="text-blackish" style="margin-left: 50px">Владимир Вист<br>Администратор</h4>
+        <h4 class="text-blackish" style="margin-left: 50px">Михаил Зубенко<br>Администратор</h4>
       </div>
       <hr class="w3-margin-top">
       <div class="w3-container w3-bar">
@@ -58,7 +58,7 @@
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/tag-grey.svg" alt="Перо" width="25" height="25" align="left" /></div>
               <div class="w3-center text-dark-grey"><h3 style="margin-top:0px !important">Талоны</h3></div>
-              <h1 class="w3-center">5</h1>
+              <h1 class="w3-center">{{t_count}}</h1>
             </div>
           </div>
 
@@ -66,7 +66,7 @@
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/users-grey.svg" alt="Перо" width="25" height="25" align="left" /></div>
               <div class="w3-center text-dark-grey"><h3 style="margin-top:0px !important">Посетители</h3></div>
-              <h1 class="w3-center">150 всего</h1>
+              <h1 class="w3-center">{{g_count}}</h1>
             </div>
           </div>
 
@@ -74,7 +74,7 @@
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/briefcase-grey.svg" alt="Перо" width="25" height="25" align="left" /></div>
               <div class="w3-center text-dark-grey"><h3 style="margin-top:0px !important">Сотрудники</h3></div>
-              <h1 class="w3-center">13</h1>
+              <h1 class="w3-center">{{p_count}}</h1>
             </div>
           </div>
 
@@ -82,7 +82,7 @@
             <div class="w3-container a-grey w3-padding-16 w3-round-xlarge w3-margin-bottom">
               <div class="w3-left"><img class="search-icon w3-margin-16" src="../static/img/icons/monitor-grey.svg" alt="Перо" width="25" height="25" align="left" /></div>
               <div class="w3-center text-dark-grey"><h3 style="margin-top:0px !important">Терминалы</h3></div>
-              <h1 class="w3-center">13</h1>
+              <h1 class="w3-center">{{d_count}}</h1>
             </div>
           </div>
 
@@ -97,7 +97,7 @@
               ><b><span id="minutes">00</span>:<span id="seconds">00</span></b></span
             >​<br />
             <div class="w3-container a-margin-bottom-8"></div>
-            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/tag-grey.svg" alt="Перо" width="22" height="22" align="left" />Талонов за день:</span><span class="right"><b>7</b></span
+            <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/tag-grey.svg" alt="Перо" width="22" height="22" align="left" />Талонов за день:</span><span class="right"><b>{{t_count}}</b></span
             >​<br />
             <span class="left text-dark-grey"><img class="search-icon a-margin-right-8" src="../static/img/icons/clock-grey.svg" alt="Перо" width="22" height="22" align="left" />Среднее время обслуживания:</span><span class="right"><b>3:27</b></span
             >​<br />
