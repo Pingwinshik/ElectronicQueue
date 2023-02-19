@@ -336,5 +336,20 @@ function jude() {
   }
 }
 </script>
+      <script>
+      setInterval(function() {
+        fetch('/Ad-listener' + window.location.pathname)
+                .then(response => response.json())
+                .then(data => updateElement(data))}, 1500);
+
+    function updateElement(tick) {
+      mp_t = document.getElementById('t_count');
+      mp_t.innerHTML = tick.room
+      mp_g = document.getElementById('g_count');
+      mp_g.innerHTML = tick.status
+      mp_p = document.getElementById('p_count');
+      mp_p.innerHTML = (tick.type + "-" + ('000' + tick.number).slice(-3))
+    }
+  </script>
   </body>
 </html>

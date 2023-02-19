@@ -151,6 +151,70 @@ async def operator_listener(request, num: int):
         return jsr(response)
 
 
+@app.websocket("/Ad_WS")
+async def Serve_op(request, ws: Websocket):
+    while True:
+        op_data = await ws.recv()
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
+        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 AND status !=3 ORDER BY id LIMIT 2;''', temp["room"])
+        count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"])
+        if len(tickets) == 2:
+            resp = dict(one=dict(tickets[0]), two=dict(tickets[1]), three=dict(count[0]))
+        elif len(tickets) == 1:
+            resp = dict(one=dict(tickets[0]), two=None, three=dict(count[0]))
+        else:
+            resp = dict(one=None, two=None, three=dict(count[0]))
+        await conn.close()
+        data = json.dumps(resp)
+        await ws.send(data)
+
+
+@app.route('/Ad-listener/admin/<num:int>')
+async def operator_listener(request, num: int):
+    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Op_WS") as ws:
+        await ws.send(str(num))
+        response = json.loads(await ws.recv())
+        return jsr(response)
+
+
+@app.websocket("/Screen_WS")
+async def Serve_op(request, ws: Websocket):
+    while True:
+        op_data = await ws.recv()
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
+        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 AND status !=3 ORDER BY id LIMIT 2;''', temp["room"])
+        count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"])
+        if len(tickets) == 2:
+            resp = dict(one=dict(tickets[0]), two=dict(tickets[1]), three=dict(count[0]))
+        elif len(tickets) == 1:
+            resp = dict(one=dict(tickets[0]), two=None, three=dict(count[0]))
+        else:
+            resp = dict(one=None, two=None, three=dict(count[0]))
+        await conn.close()
+        data = json.dumps(resp)
+        await ws.send(data)
+
+
+@app.route('/Screen-listener/screen/<num:int>')
+async def operator_listener(request, num: int):
+    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Op_WS") as ws:
+        await ws.send(str(num))
+        response = json.loads(await ws.recv())
+        return jsr(response)
+
+
 @app.route('/')
 async def index(request):
     return await render("index.html")
@@ -193,7 +257,7 @@ async def ticket(request, num: int):
     return await render("ticket.html", context={"tick": response})
 
 
-@app.route('/screen')
+@app.route('/screen/<num:int>')
 async def screen(request):
     return await render("screen.html")
 

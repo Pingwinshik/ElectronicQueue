@@ -93,5 +93,15 @@
         }
       }
     </script>
+        <script>
+      setInterval(function() {
+        fetch('/Screen-listener' + window.location.pathname)
+                .then(response => response.json())
+                .then(data => updateElement(data))}, 1500);
+
+    function updateElement(tick) {
+
+    }
+  </script>
   </body>
 </html>
