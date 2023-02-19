@@ -27,7 +27,7 @@
         <h2><b class="w3-centered">В очереди</b></h2>
       </div>
     </div>
-    <table class="w3-table-all w3-left w3-centered w3-xxlarge" style="width: 50%">
+    <table class="w3-table-all w3-left w3-centered w3-xxlarge" style="width: 50%" id="Summoned">
       <tr>
         <th>
           <h1><b>Талон</b></h1>
@@ -35,13 +35,9 @@
         <th>
           <h1><b>Кабинет</b></h1>
         </th>
-      </tr>
-      <tr>
-        <td><h1></h1></td>
-        <td><h1></h1></td>
       </tr>
     </table>
-    <table class="w3-table-all w3-right w3-centered w3-xxlarge" style="width: 50%">
+    <table class="w3-table-all w3-right w3-centered w3-xxlarge" style="width: 50%" id="Awaiting">
       <tr>
         <th>
           <h1><b>Талон</b></h1>
@@ -49,10 +45,6 @@
         <th>
           <h1><b>Кабинет</b></h1>
         </th>
-      </tr>
-      <tr>
-        <td><h1></h1></td>
-        <td><h1></h1></td>
       </tr>
     </table>
     <div id="settings" class="w3-modal">
@@ -97,10 +89,19 @@
       setInterval(function() {
         fetch('/Screen-listener' + window.location.pathname)
                 .then(response => response.json())
-                .then(data => updateElement(data))}, 1500);
+                .then(data => updateElement(data))}, 2000);
 
     function updateElement(tick) {
-
+    var s_table = document.getElementById("Summoned");
+    s_table.innerHTML = "<tr><th><h1><b>Талон</b></h1></th><th><h1><b>Кабинет</b></h1></th></tr>"
+      for(let sch = 0; sch< tick.summon.length; sch++) {
+        s_table.insertRow(s_table.rows.length).outerHTML = "<tr><td><h1>" + tick.summon[sch].type + "-" + ('000' + tick.summon[sch].number).slice(-3) + "</h1></td><td><h1>" + tick.summon[sch].room + "</h1></td></tr>"
+      }
+    var a_table = document.getElementById("Awaiting");
+    a_table.innerHTML = "<tr><th><h1><b>Талон</b></h1></th><th><h1><b>Кабинет</b></h1></th></tr>"
+      for(let sch = 0; sch< tick.awaiting.length; sch++) {
+        a_table.insertRow(a_table.rows.length).outerHTML = "<tr><td><h1>" + tick.awaiting[sch].type + "-" + ('000' + tick.awaiting[sch].number).slice(-3) + "</h1></td><td><h1>" + tick.awaiting[sch].room + "</h1></td></tr>"
+      }
     }
   </script>
   </body>
