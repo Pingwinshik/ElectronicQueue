@@ -155,23 +155,24 @@ async def operator_listener(request, num: int):
 async def Serve_Admin(request, ws: Websocket):
     while True:
         op_data = await ws.recv()
+        response = {'stat': [], 'tickets': []}
         conn = await asyncpg.connect(
             host=Settings.S_host,
             port=Settings.S_port,
             database=Settings.S_database,
             user=Settings.S_user,
             password=Settings.S_password)
-        temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
-        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 AND status !=3 ORDER BY id LIMIT 2;''', temp["room"])
-        count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"])
-        if len(tickets) == 2:
-            resp = dict(one=dict(tickets[0]), two=dict(tickets[1]), three=dict(count[0]))
-        elif len(tickets) == 1:
-            resp = dict(one=dict(tickets[0]), two=None, three=dict(count[0]))
-        else:
-            resp = dict(one=None, two=None, three=dict(count[0]))
+        t_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets";'''))
+        g_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets" WHERE status < 2;'''))
+        op_count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Operators";'''))
+        response['stat'].append(t_count["count"])
+        response['stat'].append(g_count["count"])
+        response['stat'].append(op_count["count"])
+        temp = await conn.fetch('''SELECT id, type, number, status, operator_id FROM "Tickets" ORDER BY id''')
+        for element in temp:
+            response['tickets'].append(dict(element))
         await conn.close()
-        data = json.dumps(resp)
+        data = json.dumps(response)
         await ws.send(data)
 
 
