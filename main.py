@@ -130,8 +130,10 @@ async def Serve_op(request, ws: Websocket):
             user=Settings.S_user,
             password=Settings.S_password)
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
-        tickets = await conn.fetch('''SELECT type, number FROM "Tickets" WHERE room = $1 AND status !=3 ORDER BY id LIMIT 2;''', temp["room"])
-        count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"])
+        tickets = await conn.fetch('''SELECT type, number, id FROM "Tickets" WHERE room = $1 AND status <3 ORDER BY id LIMIT 2;''', temp["room"])
+        if tickets:
+            await conn.execute('''UPDATE "Tickets" SET status=2, operator_id=$1 WHERE id = $2 AND status <3''', int(op_data), tickets[0]["id"])
+        count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 3;''', temp["room"])
         if len(tickets) == 2:
             resp = dict(one=dict(tickets[0]), two=dict(tickets[1]), three=dict(count[0]))
         elif len(tickets) == 1:
@@ -217,10 +219,30 @@ async def index(request):
     return await render("index.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 async def login(request):
-    return await render("login.html")
-
+    if request.method == 'GET':
+        return await render("login.html")
+    if request.method == "POST":
+        lg = request.form.get("username")
+        ps = request.form.get("password")
+        conn = await asyncpg.connect(
+            host=Settings.S_host,
+            port=Settings.S_port,
+            database=Settings.S_database,
+            user=Settings.S_user,
+            password=Settings.S_password)
+        temp = await conn.fetchrow(''' SELECT id FROM "Operators" WHERE login = $1 AND password = $2 ''', lg, str(ps))
+        if temp:
+            await conn.close()
+            return redirect(app.url_for('oper', num=temp['id']))
+        else:
+            ad = await conn.fetchrow(''' SELECT id FROM "Administrum" WHERE login = $1 AND password = $2 ''', lg, str(ps))
+            await conn.close()
+            if ad:
+                return redirect(app.url_for('admin', num=ad['id']))
+            else:
+                return redirect(app.url_for('login'))
 
 @app.route("/client", methods=['GET', 'POST'])
 async def client(request):
@@ -248,10 +270,23 @@ async def client(request):
 
 @app.route('/ticket/<num:int>')
 async def ticket(request, num: int):
-    async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
-        await ws.send(str(num))
-        response = json.loads(await ws.recv())
-    return await render("ticket.html", context={"tick": response})
+    conn = await asyncpg.connect(
+        host=Settings.S_host,
+        port=Settings.S_port,
+        database=Settings.S_database,
+        user=Settings.S_user,
+        password=Settings.S_password)
+    temp = dict(await conn.fetchrow(''' SELECT status FROM "Tickets" WHERE id = $1''', num))
+    if temp["status"] == 0:
+        await conn.execute('''UPDATE "Tickets" SET status=1 WHERE id = $1''', num)
+        await conn.close()
+        async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
+            await ws.send(str(num))
+            response = json.loads(await ws.recv())
+        return await render("ticket.html", context={"tick": response})
+    else:
+        await conn.close()
+        return redirect(app.url_for('client'))
 
 
 @app.route('/screen/<num:int>')
@@ -296,6 +331,8 @@ async def oper(request, num: int):
             password=Settings.S_password)
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
         tickets = await conn.fetch('''SELECT * FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id LIMIT 2;''', temp["room"])
+        if tickets:
+            await conn.execute('''UPDATE "Tickets" SET status=2, operator_id=$1 WHERE id = $2 AND status !=3''', num, tickets[0]["id"])
         count = dict(await conn.fetchrow('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 2;''', temp["room"]))
         await conn.close()
         return await render("oper.html", context={"tickets": tickets, "count": count["count"]})
@@ -309,8 +346,8 @@ async def oper(request, num: int):
                 user=Settings.S_user,
                 password=Settings.S_password)
             temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
-            change = await conn.fetchrow('''SELECT id FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id''', temp["room"])
-            await conn.execute('''UPDATE "Tickets" SET status=3 WHERE id = $1 AND status !=3''', change["id"])
+            change = await conn.fetchrow('''SELECT id FROM "Tickets" WHERE room = $1 AND status <3  ORDER BY id''', temp["room"])
+            await conn.execute('''UPDATE "Tickets" SET status=3 WHERE id = $1 AND status <=2''', change["id"])
             await conn.close()
             return redirect(app.url_for('oper', num=num))
         if action == "2":
@@ -323,7 +360,7 @@ async def oper(request, num: int):
                 password=Settings.S_password)
             temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', num)
             change = await conn.fetchrow('''SELECT id FROM "Tickets" WHERE room = $1 AND status !=3  ORDER BY id''', temp["room"])
-            await conn.execute('''UPDATE "Tickets" SET room=$1 WHERE id = $2 AND status !=3''', str(reroute_room), change["id"])
+            await conn.execute('''UPDATE "Tickets" SET room=$1, status=1 WHERE id = $2 AND status !=3''', str(reroute_room), change["id"])
             await conn.close()
             return redirect(app.url_for('oper', num=num))
 
