@@ -11,6 +11,7 @@ import json
 
 app = Sanic(__name__)
 app.static("/static", os.getcwd() + "/static")
+app.config.FORWARDED_SECRET = "Test secret"
 
 loop = asyncio.get_event_loop()
 
@@ -393,6 +394,3 @@ if __name__ == '__main__':
     loop.run_until_complete(nigger())
     loop.run_until_complete(init_tables())
     init()
-    answer = input()
-    if answer:
-        os.system('pause')
