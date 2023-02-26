@@ -6,5 +6,4 @@ S_database = "EQS"
 
 a_host = 'localhost'
 a_port = 9001
-a_worker = 8
 a_debug = True
