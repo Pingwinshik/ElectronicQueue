@@ -133,7 +133,7 @@ async def Serve_op(request, ws: Websocket):
         temp = await conn.fetchrow(''' SELECT room FROM "Operators" WHERE id = $1 ORDER BY id''', int(op_data))
         tickets = await conn.fetch('''SELECT type, number, id FROM "Tickets" WHERE room = $1 AND status <3 ORDER BY id LIMIT 2;''', temp["room"])
         if tickets:
-            await conn.execute('''UPDATE "Tickets" SET status=2, operator_id=$1 WHERE id = $2 AND status <3''', int(op_data), tickets[0]["id"])
+            await conn.execute('''UPDATE "Tickets" SET status=2, operator_id=$1 WHERE id = $2 AND (status <3 AND status !=0)''', int(op_data), tickets[0]["id"])
         count = await conn.fetch('''SELECT COUNT(*) FROM "Tickets" WHERE room = $1 AND status < 3;''', temp["room"])
         if len(tickets) == 2:
             resp = dict(one=dict(tickets[0]), two=dict(tickets[1]), three=dict(count[0]))
@@ -280,11 +280,12 @@ async def ticket(request, num: int):
     temp = dict(await conn.fetchrow(''' SELECT status FROM "Tickets" WHERE id = $1''', num))
     if temp["status"] == 0:
         await conn.execute('''UPDATE "Tickets" SET status=1 WHERE id = $1''', num)
+        nav_id = dict(await conn.fetchrow(''' SELECT room FROM "Tickets" WHERE id = $1''', num))
         await conn.close()
         async with websockets.connect("ws://" + Settings.a_host + ":" + str(Settings.a_port) + "/Tick_WS") as ws:
             await ws.send(str(num))
             response = json.loads(await ws.recv())
-        return await render("ticket.html", context={"tick": response})
+        return await render("ticket.html", context={"tick": response, "nav": Settings.room_id[nav_id["room"]]})
     else:
         await conn.close()
         return redirect(app.url_for('client'))
